@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>功能图解</title>
+
+    <style>
+        html{width: 1080px;height: 620px;}
+        .index{height: 570px;background:rgba(2,15,29,0.2);border:2px solid rgba(231, 251, 255, 0.75);border-radius:5px;}
+        .index_title{height:118px;line-height:118px;text-align: center;
+            font-size:40px;font-weight:bold;color:rgba(235,247,255,1);;background:rgba(0,0,0,0.3);
+            border:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;
+            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;}
+        .index_cont{width: 980px;height: 258px;margin: 0 auto;}
+        .cont_center{border-bottom:1px dashed rgba(146,195,255,1);display: flex;justify-content: space-between;padding:20px 0;}
+
+        .cont_info{font-size:22px;display: flex;align-items: center;line-height:50px;color: #fff;width: 240px;}
+        .cont_info span{color:rgba(153,153,153,1);width: 130px;}
+
+        .cont_bottom{display: flex;justify-content: space-between;padding:20px 0}
+        .cont_bottom .cont_info{width: 490px;}
+    </style>
+</head>
+<body>
+<div class="index">
+    <div class="index_title">高杆路灯 - 510100011801</div>
+    <div class="index_cont">
+        <div class="cont_center">
+            <div class="cont_center_item">
+                <div class="cont_info"><span>光源</span>LED</div>
+                <div class="cont_info"><span>光源寿命 </span>50000h </div>
+                <div class="cont_info"><span>额定功率 </span>75W</div>
+                <div class="cont_info"><span>供电方式 </span>市电供电</div>
+            </div>
+            <div class="cont_center_item">
+                <div class="cont_info"><span>有效光效 </span>90Lm/W</div>
+                <div class="cont_info"><span>光源功率 </span>70W</div>
+                <div class="cont_info"><span>系统功率 </span>75W</div>
+                <div class="cont_info"><span>年耗电量 </span>338.5kWh </div>
+            </div>
+            <div class="cont_center_item">
+                <div class="cont_info"><span>灯杆高度</span>6.5m </div>
+                <div class="cont_info"><span>材质 </span>不锈钢 </div>
+                <div class="cont_info"><span>悬臂仰角 </span>15°</div>
+            </div>
+
+        </div>
+        <div class="cont_bottom">
+            <div class="cont_center_item">
+                <div class="cont_info"><span>主管部门  </span>成都市高新区城市管理委员会 </div>
+                <div class="cont_info"><span>权属单位 </span>成都市高新区区政府 </div>
+                <div class="cont_info"><span>养护单位 </span>成都市高新区照明管理中心</div>
+            </div>
+            <div class="cont_center_item">
+                <div class="cont_info"><span>所在网格 </span>510100005000100  </div>
+                <div class="cont_info"><span>所在位置 </span>成都市高新区天府一街 </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script src="../../../common/js/common.js"></script>
+<script>
+
+    window.onload = function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<1800){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<1800){
+            narrow();
+        }else if(window.innerWidth>1800){
+        }
+    }
+</script>

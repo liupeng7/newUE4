@@ -4,10 +4,253 @@
     <meta charset="UTF-8">
     <title>路灯报警概况</title>
     <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{background: #000;}
+        .index{width:838px;height:600px;background:rgba(6,9,14,0.2);border:3px solid rgba(255, 97, 18, 0.75);border-radius:4px;}
+        .index_title{height:118px;line-height:118px;text-align: center;font-size:40px;font-weight:bold;color:rgba(235,247,255,1);
+            background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;
+            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;}
+        .index_cont{height: 150px;display: flex;align-items: center;justify-content: space-around}
+        .index_cont_item{display: flex;align-items: center}
+        .index_cont_item img{width: 74px;height: 80px;margin-right: 20px;}
+        .warning_num{font-size:50px;}
+        .warning_name{font-size:20px;color:rgba(255,255,255,1);}
+        .index_bottom{margin: 50px auto 0;display: flex;justify-content:space-between;width: 700px;}
+
+        .chart_title{font-size:24px;}
+        #lineChart{width: 360px;height: 210px;}
+
+        .barChart{margin-top: 20px;}
+        .barChart_item{display: flex;align-items: center;line-height: 36px;}
+        .barChart_item_name{font-size:18px;color:rgba(255,255,255,0.75);}
+        .barChart_item_bar{width: 180px;display: flex;align-items: center;margin-left: 20px;margin-right: 13px;}
+        .barChart_item_ac{width:150px;height:17px;background:-webkit-linear-gradient(90deg,rgba(20,130,255,0.9),rgba(20,130,255,0.9));}
+        .barChart_item_bg{width:30px;height:2px;background:rgba(255,255,255,0.15)}
+        .barChart_item_num{font-size:26px;}
+    </style>
 </head>
 <body oncontextmenu=self.event.returnValue=false>
 <div class="index">
-
+    <div class="index_title"><img>路灯报警概况</div>
+    <div class="index_cont">
+        <div class="index_cont_item">
+            <img src="">
+            <div class="">
+                <div class="warning_num">12</div>
+                <div class="warning_name">总报警次数</div>
+            </div>
+        </div>
+        <div class="index_cont_item">
+            <img src="">
+            <div class="">
+                <div class="warning_num">2</div>
+                <div class="warning_name">未处理报警</div>
+            </div>
+        </div>
+    </div>
+    <div class="index_bottom">
+        <div class="chart">
+            <div class="chart_title">每月报警次数走势</div>
+            <div id="lineChart"></div>
+        </div>
+        <div class="chart">
+            <div class="chart_title">报警类型分布</div>
+            <div class="barChart">
+                <div class="barChart_item">
+                    <div class="barChart_item_block"></div>
+                    <div class="barChart_item_name">灯泡损坏</div>
+                    <div class="barChart_item_bar">
+                        <div class="barChart_item_ac" style=""></div>
+                        <div class="barChart_item_bg" style=""></div>
+                    </div>
+                    <div class="barChart_item_num">5 次</div>
+                </div>
+                <div class="barChart_item">
+                    <div class="barChart_item_block"></div>
+                    <div class="barChart_item_name">灯泡损坏</div>
+                    <div class="barChart_item_bar">
+                        <div class="barChart_item_ac" style=""></div>
+                        <div class="barChart_item_bg" style=""></div>
+                    </div>
+                    <div class="barChart_item_num">5 次</div>
+                </div>
+                <div class="barChart_item">
+                    <div class="barChart_item_block"></div>
+                    <div class="barChart_item_name">灯泡损坏</div>
+                    <div class="barChart_item_bar">
+                        <div class="barChart_item_ac" style=""></div>
+                        <div class="barChart_item_bg" style=""></div>
+                    </div>
+                    <div class="barChart_item_num">5 次</div>
+                </div>
+                <div class="barChart_item">
+                    <div class="barChart_item_block"></div>
+                    <div class="barChart_item_name">灯泡损坏</div>
+                    <div class="barChart_item_bar">
+                        <div class="barChart_item_ac" style=""></div>
+                        <div class="barChart_item_bg" style=""></div>
+                    </div>
+                    <div class="barChart_item_num">5 次</div>
+                </div>
+                <div class="barChart_item">
+                    <div class="barChart_item_block"></div>
+                    <div class="barChart_item_name">灯泡损坏</div>
+                    <div class="barChart_item_bar">
+                        <div class="barChart_item_ac" style=""></div>
+                        <div class="barChart_item_bg" style=""></div>
+                    </div>
+                    <div class="barChart_item_num">5 次</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script src="../../../common/js/common.js"></script>
+
+<script>
+
+    window.onload = function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<1800){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<1800){
+            narrow();
+        }else if(window.innerWidth>1800){
+        }
+    };
+
+    let data= [{name:'灯泡损坏',value:5,},{name:'灯泡故障',value:2},{name:'线路老化',value:3},
+        {name:'灯罩损坏',value:1},{name:'灯杆倾斜',value:1}];
+    barChart($('.barChart'),data);
+    function barChart(dom,data) {
+        let html = '';
+        let width = dom.find('.barChart_item_bar').width();
+        console.log(width);
+        for(let i =0;i<data.length;i++){
+            html +=`<div class="barChart_item">
+<div class="barChart_item_name">${data[i].name}</div>
+<div class="barChart_item_bar">
+    <div class="barChart_item_ac" style=""></div>
+    <div class="barChart_item_bg" style=""></div>
+</div>
+<div class="barChart_item_num">${data[i].value}</div>
+</div>`
+        }
+    }
+    
+    lineChart();
+    function lineChart() {
+        let myChart = echarts.init(document.getElementById('lineChart'));
+        let option = {
+            legend:{
+                show:false,
+            },
+            tooltip: {
+                trigger:'axis',
+            },
+            grid: {
+                left:'12%' ,
+                right:'10%' ,
+                top:'20%',
+                bottom: '20%',
+            },
+            color:['#FFC36A'],
+            xAxis: {
+                type: 'category',
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: 'rgba(255,255,255,0.75)',
+                        fontSize: 18,
+                        inside: true,
+                    }
+                },
+                axisLine: {
+                    show:true,
+                    lineStyle:{
+                        color:'#88949E',
+                        width:3,
+                    },
+                },
+                boundaryGap:false,
+                data: ['1月','2月','3月','4月','5月','6月']
+            },
+            yAxis: {
+                min:20,
+                max:0,
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    show: true,
+                    color:'rgba(255,255,255,0.5)',
+                    margin:16,
+                    fontSize:20,
+                },
+                splitLine: {
+                    show: false,
+                    lineStyle:{
+                        color:'rgba(255,255,255,0.15)',
+                        type:'dashed'
+                    }
+                },
+            },
+            series: [
+                {
+                    name:'今日人流数',
+                    type: 'line',
+                    showSymbol:false,
+                    smooth:true,
+                    z: 3,
+                    lineStyle:{
+                        normal:{
+                            width:4,
+                            color:'#2D94D8',
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgba(190,148,255,0.5)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(140,65,255,0)'
+                            }])
+                        }
+                    },
+                    animationEasing: 'linear',
+                    animationDelay: function (idx) {
+                        return idx * 400;
+                    },
+                    data: [12,9,10,15,13,11],
+                },
+            ]
+        };
+        myChart.setOption(option)
+    }
+    // Xchart.LineChart({
+    //     conId:"lineChart",
+    //     isArea:true,
+    //     lineWidth:2,
+    //     lineColor:'#2D94D8',
+    //     dataArray:[{name:'1月',value:12},{name:'2月',value:10},{name:'3月',value:12},
+    //         {name:'4月',value:5},{name:'5月',value:8},{name:'6月',value:15}]
+    // })
+
+</script>

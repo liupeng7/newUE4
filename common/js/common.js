@@ -1,3 +1,8 @@
+
+
+
+
+
 function narrow(){
     let width = $('html').width()*0.25;
     let height = $('html').height()*0.25;
