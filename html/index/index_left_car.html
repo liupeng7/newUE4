@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>停车点</title>
+    <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <style>
+        html{width: 660px;height: 900px;overflow: hidden}
+        body{height: 100%}
+        .title{font-size: 36px;font-weight: bold;width:100%;height:80px;background:-webkit-linear-gradient(left,rgba(169,220,255,0.15),rgba(169,220,255,0));
+            border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
+        .cont{display: flex;justify-content: space-between;padding:50px}
+        .cont_left .name{font-size: 24px}
+        .cont_left .num{font-size: 56px}
+        .cont_img{width: 108px;height: 52px;margin-top:40px;}
+        .cont_cent {flex-direction: column}
+        .cent_list_item .name{font-size:20px;color:rgba(255,255,255,0.5);}
+        .cent_list_item .num{font-size: 32px;}
+        .box_list{flex-wrap: wrap;width: 60px;margin-right: 20px}
+        .box_item{width: 10px;height: 9px;background:rgba(255,255,255,0.2);margin:1px}
+        .right_title{font-size: 20px;font-weight: bold;margin-bottom:24px;}
+        .right_list_item .name{font-size: 20px}
+        .right_bar{position: relative;height: 10px;width: 154px;margin-top:9px;}
+        .right_barBg{background:rgba(255,255,255,0.1);width: 154px;height: 10px;border-radius:2px;position: absolute;}
+        .right_barAc{background:rgba(80,252,246,1);;border-radius:2px;height: 10px;position: absolute}
+        .index_img{height: 10px;width: 90%;background: url("../../image/index/white_line.png");background-size:100%;margin:0 5%; }
+        .list{padding:30px 0 0 27px;}
+        .list_title{font-size: 28px;font-weight: bold;}
+        .list_item{margin-top: 42px;cursor: pointer}
+        .list_item .list_img{width: 40px;height: 50px;font-size: 18px;line-height: 40px;text-align: center;font-weight: bold}
+        .list_item .img_green{background: url("../../image/index/marker_green_bg.png");color:rgba(1, 215, 76, 1)}
+        .list_item .img_yellow{background: url("../../image/index/marker_yellow_bg.png");color:rgba(255, 200, 32, 1)}
+        .list_item .img_red{background: url("../../image/index/marker_red_bg.png");color:rgba(255, 74, 18, 1)}
+        .list_info{padding-left: 19px;width: 230px;}
+        .list_info .name{font-size: 26px;font-weight: bold}
+        .list_info .location{font-size: 20px; color:rgba(255,255,255,0.5);}
+        .list_item .time{font-size:22px;color:rgba(255,255,255,0.5);margin-left:55px;}
+        .list_item .status{width:100px;height:36px;margin-left:117px;font-weight: bold}
+        .list_item .status div{width:8px;height:8px;margin-right: 9px;}
+
+
+
+        /*动画*/
+        .index{border:2px solid #A9DCFF;border-radius:4px; width: 100%;height: 100%;transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
+        .index.in{transform: translate(0,0);opacity: 1}
+        .top{transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
+        .top.in{transform: translate(0,0);opacity: 1}
+        .center{transition: all 0.5s 0.1s;transform: translate(-660px,0);opacity: 0}
+        .center.in{transform: translate(0,0);opacity: 1}
+        .bottom{transition: all 0.5s 0.2s;transform: translate(-660px,0);opacity: 0}
+        .bottom.in{transform: translate(0,0);opacity: 1}
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false >
+<div class="index">
+    <div class="top">
+        <div class="title flex_cen">停车位状态</div>
+    </div>
+    <div class="center">
+        <div class="cont ">
+            <div class="cont_left">
+                <div class="cont_item">
+                    <div class="name">总车位</div>
+                    <div class="num">1246</div>
+                </div>
+                <img class="cont_img" src="../../image/index/car_line.png">
+            </div>
+            <div class="cont_cent flex">
+                <div class="cent_list flex">
+                    <div class="box_list flex">
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                    </div>
+                    <div class="cent_list_item">
+                        <div class="name">空闲<span>（29.1%）</span></div>
+                        <div class="num">373</div>
+                    </div>
+                </div>
+                <div class="cent_list flex">
+                    <div class="box_list flex">
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                    </div>
+                    <div class="cent_list_item">
+                        <div class="name">已停<span>（15.2%）</span></div>
+                        <div class="num">189</div>
+                    </div>
+                </div>
+                <div class="cent_list flex">
+                    <div class="box_list flex">
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                    </div>
+                    <div class="cent_list_item">
+                        <div class="name">预定<span>（17.2%）</span></div>
+                        <div class="num">339</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cont_right">
+                <div class="right_title">预定来源</div>
+                <div class="right_list">
+                    <div class="right_list_item ">
+                        <div class="name">微信程序</div>
+                        <div class="right_bar">
+                            <div class="right_barBg"></div>
+                            <div class="right_barAc" style="width: 121px"></div>
+                        </div>
+                    </div>
+                    <div class="right_list_item ">
+                        <div class="name">电话服务</div>
+                        <div class="right_bar">
+                            <div class="right_barBg"></div>
+                            <div class="right_barAc" style="width: 91px"></div>
+                        </div>
+                    </div>
+                    <div class="right_list_item ">
+                        <div class="name">APP</div>
+                        <div class="right_bar">
+                            <div class="right_barBg"></div>
+                            <div class="right_barAc" style="width: 52px"   ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="index_img" ></div>
+    </div>
+    <div class="bottom">
+        <div class="list">
+            <div class="list_title">停车场列表</div>
+            <div class="list_item flex" onclick="car1()">
+                <div class="list_img img_green">P</div>
+                <div class="list_info">
+                    <div class="name">华阳大厦停车场</div>
+                    <div class="location">吴庆路东三段</div>
+                </div>
+                <div class="time">13:34</div>
+                <div class="status flex_cen green_bg_border" ><div class="green_bg"></div>正常</div>
+            </div>
+            <div class="list_item flex" onclick="car2()">
+                <div class="list_img img_red">P</div>
+                <div class="list_info">
+                    <div class="name">凤翔路停车场</div>
+                    <div class="location">吴庆路东三段</div>
+                </div>
+                <div class="time">12:44</div>
+                <div class="status flex_cen red_bg_border" ><div class="red_bg"></div>已满</div>
+            </div>
+            <div class="list_item flex" onclick="car3()">
+                <div class="list_img img_yellow">P</div>
+                <div class="list_info">
+                    <div class="name">金融城停车场</div>
+                    <div class="location">吴庆路东三段</div>
+                </div>
+                <div class="time">11:44</div>
+                <div class="status flex_cen yellow_bg_border"><div class="yellow_bg"></div>紧张</div>
+            </div>
+            <div class="list_item flex" onclick="car4()">
+                <div class="list_img img_green">P</div>
+                <div class="list_info">
+                    <div class="name">华阳大厦停车场</div>
+                    <div class="location"><div></div>吴庆路东三段</div>
+                </div>
+                <div class="time">12:12</div>
+                <div class="status flex_cen green_bg_border"><div class="green_bg"></div>正常</div>
+            </div>
+            <!--        <div class="list_item flex" onclick="car5()">-->
+            <!--            <div class="space_title">-->
+            <!--                <div>阳光城停车场</div>-->
+            <!--                <div>吴庆路东三段</div>-->
+            <!--            </div>-->
+            <!--            <div class="time">12:29</div>-->
+            <!--            <div class="status">正常</div>-->
+            <!--        </div>-->
+        </div>
+    </div>
+</div>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../plugin/echarts.min.js"></script>
+<script src="../../plugin/chart.js"></script>
+</body>
+</html>
+<script>
+
+    window.onload = function(){
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<600){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<600){
+            narrow();
+        }else if(window.innerWidth>600){
+        }
+    };
+
+
+
+
+
+
+    function car1() {
+        window.ue.XBWeb.webmainleftcar1()
+    }
+    function car2() {
+        window.ue.XBWeb.webmainleftcar2()
+    }
+    function car3() {
+        window.ue.XBWeb.webmainleftcar3()
+    }
+    function car4() {
+        window.ue.XBWeb.webmainleftcar4()
+    }
+    function car5() {
+        window.ue.XBWeb.webmainleftcar5()
+    }
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+
+    function comeIn() {
+        $('.index').addClass('in');
+        $('.top').addClass('in');
+        $('.center').addClass('in');
+        $('.bottom').addClass('in');
+    }
+
+    function goOut() {
+        $('.index').removeClass('in');
+        $('.top').removeClass('in');
+        $('.center').removeClass('in');
+        $('.bottom').removeClass('in');
+    }
+</script>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>重点街区：王府井百货</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width: 1040px;height: 600px;overflow: hidden; }
+        body{height: 100%;display: flex;flex-direction: column;justify-content: center}
+        .index{padding-left:40px;}
+
+
+        .title_street{margin-left:25px}
+        .title_area{display: flex;flex-direction: column;margin-left:40px;}
+        .title_street .name{font-size:32px;font-weight:bold;}
+        .title_street .location{font-size:24px;    margin-top: 14px;}
+        .title_area .title_area{display: flex}
+        .title_area .area{display: flex;align-items: center;font-size:20px;}
+        .title_area .number{font-size:40px;font-weight: bold;margin-left: 12px;}
+        .title_area .number span{font-size: 24px;font-weight: normal}
+        .border{width: 12px;height: 12px;background: rgba(255,255,255,0.5);margin-right:5px;}
+        .border_yellow{width: 12px;height: 12px;background: rgba(4, 228, 255, 1);margin-right:5px;}
+
+
+
+        .border_list{display: flex;flex-wrap: wrap;}
+        .border_big div,.border_small div{display: flex;align-items: center;justify-content: center;height:100%}
+        .border_big{background:rgba(255,255,255,0.15);width: 128px;height:76px;font-size:30px;font-weight:bold;}
+        .border_big.ac{background: -webkit-linear-gradient(bottom left, rgba(255, 174, 32, 0.5), rgba(255, 103, 28, 1));}
+        .border_big.ac div{border:2px solid rgba(255, 174, 32, 1);}
+        .border_small{background:rgba(255,255,255,0.15);width: 176px;height: 34px;margin:0 0 8px 12px;font-size:20px;}
+        .border_small.ac{background: -webkit-linear-gradient(bottom left,rgba(255, 174, 32, 0.5), rgba(255, 103, 28, 1));}
+        .border_small.ac div{border:1px solid rgba(255, 173, 106, 1);}
+        .bottom_left{position: absolute;left:0;bottom:-3px}
+        .bottom_right{position: absolute;right:0;bottom: -3px;}
+
+
+
+
+        .bottom{padding-top:50px;}
+        .bar_list{border-right: 1px solid rgba(255,255,255,0.3);padding:0 24px 0 33px}
+        .bar_item{position:relative;display: flex;align-items: center;margin-bottom: 12px}
+        .bar_name{width: 110px;font-size: 20px;}
+        .bar_bg{width:114px;height:10px;background:rgba(255,255,255,0.15);border-radius:2px;margin-right:16px}
+        .bar_active{position: absolute;left:110px;}
+        .bar_color1{background: rgba(4, 228, 255, 1);border-radius:2px;width:84px;height: 10px}
+        .bar_color2{background:rgba(149, 172, 179, 1);border-radius:2px;width:54px;height: 10px}
+        .bar_color3{background:rgba(149, 172, 179, 1);border-radius:2px;width:54px;height: 10px}
+        .main{display: flex;margin-left:28px;font-size:20px;line-height:30px;}
+        .main img{margin-right: 20px;    border-radius: 50%;}
+        .main_pho{line-height: 20px;margin-top:12px;}
+        .main_border{padding-right:10px;margin-right: 10px;border-right: 1px solid}
+        .info_list{display: flex;flex-direction: column;font-weight:bold;border-right: 1px solid rgba(255,255,255,0.3);padding-right:30px;}
+        .info_list_item{display: flex;align-items: center;font-size: 24px;}
+        .info_list_item b{font-size: 34px;line-height: 34px;}
+        .info_list_item span{font-size: 20px}
+
+
+
+        /* 动画*/
+        .top_title{width: 440px;transition:all  0.6s; transform: translate(200px,0);opacity: 0}
+        .top_title.comeIn{transform:translate(0,0);opacity: 1;}
+
+        .top_right{transition:all  0.6s 0.1s; transform: translate(200px,0);opacity: 0}
+        .top_right.comeIn{transform:translate(0,0);opacity: 1;}
+
+        .lineChart{width: 400px;height: 160px;margin-right: 67px;transition:all  0.6s; transform: translate(200px,0);opacity: 0}
+        .lineChart.comeIn{transform:translate(0,0);opacity: 1;}
+
+        .list{width: 530px;display: flex;transition:all  0.6s 0.2s; transform: translate(200px,0);opacity: 0}
+        .list.comeIn{transform:translate(0,0);opacity: 1;}
+
+        .center{display: flex;padding:40px 0;position: relative;border-bottom:1px solid rgba(255,255,255,0);transition:all  0.6s 0.2s;opacity:0;}
+        .center.comeIn{border-bottom:1px solid rgba(255,255,255,0.3);opacity:1;}
+
+        .info{transition:all  0.6s 0.3s ; transform: translate(100px,0);opacity: 0}
+        .bar{transition:all  0.6s 0.4s; transform: translate(100px,0);opacity: 0}
+        .main{transition:all  0.6s 0.5s; transform: translate(100px,0);opacity: 0}
+        .info.comeIn,.main.comeIn,.bar.comeIn{transform:translate(0,0);opacity: 1;}
+
+    </style>
+</head>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/svg.js"></script>
+<body oncontextmenu=self.event.returnValue=false >
+<div class="index ">
+    <div class="top flex" >
+            <div class="top_title flex" >
+                <img src="../../../image/index/icon_street_1.png" width="90px" height="100px">
+                <div class="title_street">
+                    <div class="name">王府井百货</div>
+                    <div class="location">地址：繁华区西戎路108号</div>
+                </div>
+            </div>
+            <div class="top_right flex_cen">
+                <div class="donut">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 220 220">
+                        <circle stroke="rgba(255,255,255,0.5)" stroke-width="10" fill="transparent" r="90" cx="110" cy="110"></circle>
+                        <path id="circlePath" d="M 110 20 a 90 90 90 0 1 0 180 a 90 90 90 0 1 0 -180 Z" fill="none" stroke="rgba(4, 228, 255, 1)" stroke-width="30"  stroke-dasharray="628.4073486328125">
+                            <animate id="circleAnimate" attributeName="stroke-dashoffset" from="628.4073486328125" to="0" dur="3s" repeatDur="" fill="freeze" begin="indefinite" restart="whenNotActive"></animate>
+                        </path>
+                    </svg>
+                </div>
+                <div class="title_area">
+                    <div class="area"><div class="border_yellow"></div>核心面积</div>
+                    <div class="number">0.92<span>㎡</span></div>
+                </div>
+                <div class="title_area">
+                    <div class="area"><div class="border"></div>总面积</div>
+                    <div class="number">3.6<span>万㎡</span></div>
+                </div>
+            </div>
+
+        </div>
+    <div class="center">
+            <div id="line_chart" class="lineChart"></div>
+            <div class="list">
+                <div class="border_list">
+                    <div class="border_big"> <div>东广场</div></div>
+                    <div class="border_big ac"><div>西广场</div></div>
+                </div>
+                <div class="border_list">
+                    <div class="border_small"><div>人流量正常</div></div>
+                    <div class="border_small"><div>环境卫生正常</div></div>
+                    <div class="border_small"><div>视频监控正常</div></div>
+                    <div class="border_small"><div>街道秩序正常</div></div>
+                    <div class="border_small"><div>人流量正常</div></div>
+                    <div class="border_small ac"><div>垃圾堆放</div></div>
+                    <div class="border_small"><div>视频监控正常</div></div>
+                    <div class="border_small"><div>街道秩序正常</div></div>
+                </div>
+            </div>
+            <img class="bottom_left" src="../../../image/index/white_dot.png">
+            <img class="bottom_right" src="../../../image/index/white_dot.png">
+        </div>
+    <div class="bottom flex">
+        <div class="info">
+            <div class="info_list">
+                <div class="info_list_item" style="margin-bottom: 27px;">
+                    <img src="../../../image/index/icon_street_2.png" width="36px" height="32px">
+                    <p>商户:<b style="color:rgba(255, 174, 32, 1)" id="NumScroll">3274</b><span>家</span></p>
+                </div>
+                <div class="info_list_item">
+                    <img src="../../../image/index/icon_street_3.png" width="36px" height="32px">
+                    <p>日均人流量：<b>33 </b><span>万人次</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="bar">
+            <div class="bar_list">
+                <div class="bar_item">
+                    <div class="bar_name">执法队员</div><div class="bar_bg"></div><div class="bar_active bar_color1"></div> <p>5人</p>
+                </div>
+                <div class="bar_item">
+                    <div class="bar_name">环卫人员</div><div class="bar_bg"></div><div class="bar_active bar_color2" ></div><p>4人</p>
+                </div>
+                <div class="bar_item">
+                    <div class="bar_name">网格巡查员</div><div class="bar_bg"></div><div class="bar_active bar_color3"></div><p>2人</p>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <img src="../../../image/index/head_pic.jpg" width="63px" height="63px">
+            <div class="main_info">
+                <div class="main_peo">值班负责人：<b>王全明</b></div>
+                <div class="flex_bet main_pho"><p class="main_border">3大队队长</p><p>182003212 </p></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    window.onload= function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                // lineChart();
+                if(window.innerWidth<900){
+                    narrow()
+                    }
+            }
+        }else if(window.innerWidth<900){
+            // lineChart();
+            narrow();
+        }else if(window.innerWidth>900){
+            // lineChart();
+        }
+
+
+
+
+    };
+    let dom1 = document.getElementById('NumScroll');
+
+
+    runAnimate(30,$('.donut'));
+    comeIn();
+
+
+    setInterval(function () {
+
+        refresh();
+
+
+        let MathNum = [0,1,2,3,4,5,6,7];
+        let Array = [];
+        let RandomLength = Math.floor(Math.random()*2+1);
+
+        for( let i=0;i<RandomLength;i++){
+            let RandomNum = Math.floor(Math.random()*8);
+            Array.push(MathNum[RandomNum]);
+        }
+
+        if(RandomLength==2&&Array[0]==Array[1]){
+            if(Array[0]<4){
+                $('.border_big').eq(0).addClass('ac');
+            }else{
+                $('.border_big').eq(1).addClass('ac');
+            }
+            active(Array[0]);
+
+        }else if(RandomLength==2){
+            if(Array[0]<4){
+                $('.border_big').eq(0).addClass('ac');
+            }else{
+                $('.border_big').eq(1).addClass('ac');
+            }
+            active(Array[0]);
+
+            setTimeout(function () {
+                if(Array[1]<4){
+                    $('.border_big').eq(0).addClass('ac');
+                }else{
+                    $('.border_big').eq(1).addClass('ac');
+                }
+                active(Array[1]);
+            },500);
+
+        }else{
+            if(Array[0]<4){
+                $('.border_big').eq(0).addClass('ac');
+            }else{
+                $('.border_big').eq(1).addClass('ac');
+            }
+            active(Array[0]);
+        }
+        runAnimate(30, $('.donut'))
+
+        lineChart();
+    },4000);
+
+
+
+    function comeIn(){
+        lineChart();
+        numRunFun(0,3274,dom1,30);
+        $('.top_title').addClass('comeIn');
+        $('.top_right').addClass('comeIn');
+        $('.lineChart').addClass('comeIn');
+        $('.center').addClass('comeIn');
+        $('.list').addClass('comeIn');
+        $('.info').addClass('comeIn');
+        $('.bar').addClass('comeIn');
+        $('.main').addClass('comeIn');
+    }
+    function goOut() {
+        $('.top_title').removeClass('comeIn');
+        $('.top_right').removeClass('comeIn');
+        $('.lineChart').removeClass('comeIn');
+        $('.center').removeClass('comeIn');
+        $('.list').removeClass('comeIn');
+        $('.info').removeClass('comeIn');
+        $('.bar').removeClass('comeIn');
+        $('.main').removeClass('comeIn');
+    }
+
+
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+
+    function lineChart() {
+        let myChart = echarts.init(document.getElementById('line_chart'));
+        let option = {
+            legend:{
+                show:true,
+                left:0,
+                top:0,
+                itemWidth:12,
+                itemHeight:12,
+                icon:'roundRect',
+                textStyle:{
+                    color:'#ffffff',
+                    fontSize:24
+                },
+                data:['今日人流数']
+            },
+            tooltip: {
+                trigger:'axis',
+            },
+            grid: {
+                left:0 ,
+                right:0 ,
+                top:'30%',
+                bottom: 0,
+                containLabel: true
+            },
+            color:['#FFC36A'],
+            xAxis: {
+                type: 'category',
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    interval:function (index,value) {
+                        if(index%2 !=0){
+                            return value
+                        }
+                    },
+                    textStyle: {
+                        color: 'rgba(255,255,255,0.75)',
+                        fontSize: 20,
+                        inside: true,
+                    }
+                },
+                axisLine: {
+                    show:true,
+                    lineStyle:{
+                        color:'#88949E',
+                        width:3,
+                    },
+                },
+                boundaryGap:false,
+                data: ['0点','02点','04点','06点','08点','10点','12点','14点','16点','18点','20点']
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    show: false,
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle:{
+                        color:'rgba(255,255,255,0.15)',
+                        type:'dashed'
+                    }
+                },
+            },
+            series: [
+                {
+                    name:'今日人流数',
+                    type: 'line',
+                    showSymbol:false,
+                    smooth:false,
+                    z: 3,
+                    lineStyle:{
+                        normal:{
+                            width:4,
+                            color:'#FFBB39',
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgba(255, 195, 106, 0.3)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(255, 195, 106, 0.1)'
+                            }])
+                        }
+                    },
+                    markPoint:{
+                        name:'',
+                        data:[{
+                            type:'max',
+                            symbol:'circle',
+                            symbolSize:'20',
+                            label:{
+                                show:false
+                            },
+                            itemStyle:{
+                                color:'rgba(255, 200, 161, 1)',
+                                borderColor:'rgba(235, 97, 0, 0.5)',
+                                borderWidth:10,
+                                shadowColor:'rgba(235, 97, 0, 0.1)',
+                                shadowBlur:20,
+                            },
+                        }],
+                        animationEasing: 'linear',
+                        animationDelay: function (idx) {
+                            return idx * 400;
+                        },
+                    },
+                    animationEasing: 'linear',
+                    animationDelay: function (idx) {
+                        return idx * 400;
+                    },
+                    data: [18,16,12,14,19,15,9,6,8,12,14],
+                },
+            ]
+        };
+        myChart.clear();
+        myChart.setOption(option)
+    }
+
+
+    function refresh() {
+        $('.border_big').removeClass('ac');
+        $('.border_small').removeClass('ac');
+        $('.border_small').eq(0).children().html('人流量正常');
+        $('.border_small').eq(4).children().html('人流量正常');
+        $('.border_small').eq(1).children().html('环境卫生正常');
+        $('.border_small').eq(5).children().html('环境卫生正常');
+        $('.border_small').eq(2).children().html('视频监控正常');
+        $('.border_small').eq(6).children().html('视频监控正常');
+        $('.border_small').eq(3).children().html('街道秩序正常');
+        $('.border_small').eq(7).children().html('街道秩序正常');
+    }
+    function active(num) {
+        $('.border_small').eq(num).addClass('ac');
+
+        switch (num) {
+            case 0:
+                $('.border_small').eq(0).children().html('人流拥挤');
+                break;
+            case 1:
+                $('.border_small').eq(1).children().html('垃圾堆放');
+                break;
+            case 2:
+                $('.border_small').eq(2).children().html('视频监控异常');
+                break;
+            case 3:
+                $('.border_small').eq(3).children().html('店外经营');
+                break;
+            case 4:
+                $('.border_small').eq(4).children().html('人流拥挤');
+                break;
+            case 5:
+                $('.border_small').eq(5).children().html('垃圾堆放');
+                break;
+            case 6:
+                $('.border_small').eq(6).children().html('视频监控异常');
+                break;
+            case 7:
+                $('.border_small').eq(7).children().html('店外经营');
+                break;
+
+        }
+    }
+
+</script>
+
+
+
+

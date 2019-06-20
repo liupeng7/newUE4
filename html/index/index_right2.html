@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <style>
+        html{width: 740px;height: 1080px;background: #000}
+
+        .index{position: relative;margin-top: 100px;}
+        .right{width: 325px;float: right}
+        .left{width: 415px;float: left;margin-top: 44px; }
+        .gauge{display: flex;align-items: center}
+        .gauge_name{font-size:24px;font-weight:bold;color:rgba(255,255,255,1);}
+        .gauge_sta{font-size:40px;font-weight:bold;color:rgba(255,174,32,1);}
+
+        .bottom{padding-top: 40px;}
+        .list_item{display: flex;justify-content: flex-end;margin-bottom: 10px;}
+        .list_item_border{display: none;width:12px;height:90px;background:rgba(215,59,23,1);margin-right: 6px;}
+        .list_item_block img{position: absolute;top:-2px;left: -2px;}
+        .list_item_block{position: relative;width: 90px;height: 90px;background:rgba(255,255,255,0.3);}
+        .list_item_name{width:173px;height:90px;font-size:28px;;background:rgba(255,255,255,0.2);font-weight:bold;color:rgba(225,225,225,1);text-align: center;line-height: 90px;}
+        .list_item.ac .list_item_border{display: block}
+        .list_item.ac .list_item_name{width: 183px;}
+
+        .topic{float: right}
+        .topic_title{display: flex;align-items: center;font-size:38px;font-weight:bold;color:rgba(255,255,255,1)}
+        .topic_title img{margin-right: 15px;}
+        .topic_info{margin-top: 27px;width:366px;height:40px;background:-webkit-linear-gradient(left,rgba(255,97,18,0.3),rgba(255,97,18,0.01));border:1px solid rgba(255, 175, 60, 0.5);display: flex;padding-left: 14px;}
+        .topic_info_item{font-size:30px;color:rgba(254,255,254,1);margin-right: 20px}
+        .topic_info_item img{width: 18px;height: 23px;}
+
+
+        .center{margin-top: 47px;float: right}
+        .center_item{width: 372px;display: flex;align-items: center;margin-bottom: 18px;float: right}
+        .center_item_block{width:80px;height:80px;border:2px solid rgba(255,249,244,1);border-radius:50%;margin-right: 20px;}
+        .center_item_name{font-size:26px;font-weight:bold;color:rgba(255,255,255,1);}
+        .center_item_num{display: flex;align-items: center;font-size:24px;color:rgba(254,255,254,0.75);}
+        .center_item_num img{margin-right:7px;width: 18px;height: 23px; }
+        .center_item_bar{margin: 0 13px;width:1px;height:18px;background:rgba(255,255,255,0.3);}
+        .center_item.ac{width: 382px;}
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false>
+    <div class="index">
+        <div class="left">
+            <div class="topic">
+                <div class="topic_title"><img width="44" height="44"> 市政公用</div>
+                <div class="topic_info">
+                    <div class="topic_info_item"><img> 11145</div>
+                    <div class="topic_info_item"><img> 123</div>
+                    <div class="topic_info_item"><img> 12</div>
+                </div>
+            </div>
+            <div class="center">
+                <div class="center_item ac">
+                    <div class="center_item_block"></div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">井盖</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item">
+                    <div class="center_item_block"></div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">井盖</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item">
+                    <div class="center_item_block"></div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">井盖</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item">
+                    <div class="center_item_block"></div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">井盖</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item">
+                    <div class="center_item_block"></div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">井盖</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item">
+                    <div class="center_item_block"></div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">井盖</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="top">
+                <div class="gauge">
+                    <div id="gaugeChart" style="height:160px;width: 200px"></div>
+                    <div class="gauge_info">
+                        <div class="gauge_name">实时态势</div>
+                        <div class="gauge_sta">良好</div>
+                    </div>
+                </div>
+                <img src="../../image/index/white_line.png" width="294" height="10" style="float: right">
+            </div>
+            <div class="bottom">
+                <div class="list_item ac">
+                    <div class="list_item_border"></div>
+                    <div class="list_item_block">
+                        <img src="../../image/index/white_dot.png" class="left_top_spot">
+                    </div>
+                    <div class="list_item_name">市容秩序</div>
+                </div>
+                <div class="list_item">
+                    <div class="list_item_border"></div>
+                    <div class="list_item_block">
+                        <img src="../../image/index/white_dot.png" class="left_top_spot">
+                    </div>
+                    <div class="list_item_name">环境卫生</div>
+                </div>
+                <div class="list_item">
+                    <div class="list_item_border"></div>
+                    <div class="list_item_block">
+                        <img src="../../image/index/white_dot.png" class="left_top_spot">
+                    </div>
+                    <div class="list_item_name">市政公用</div>
+                </div>
+                <div class="list_item">
+                    <div class="list_item_border"></div>
+                    <div class="list_item_block">
+                        <img src="../../image/index/white_dot.png" class="left_top_spot">
+                    </div>
+                    <div class="list_item_name">社会治理</div>
+                </div>
+                <div class="list_item">
+                    <div class="list_item_border"></div>
+                    <div class="list_item_block">
+                        <img src="../../image/index/white_dot.png" class="left_top_spot">
+                    </div>
+                    <div class="list_item_name">城市生命线</div>
+                </div>
+                <div class="list_item">
+                    <div class="list_item_border"></div>
+                    <div class="list_item_block">
+                        <img src="../../image/index/white_dot.png" class="left_top_spot">
+                    </div>
+                    <div class="list_item_name">市民投诉</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script src="../../plugin/echarts.min.js"></script>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script>
+
+    window.onload = function() {
+        gaugeChart();
+        if (window.innerWidth == 0) {
+            window.onresize = function () {
+                gaugeChart();
+                if (window.innerWidth < 600) {
+                    narrow()
+                }
+            };
+        } else if (window.innerWidth < 600) {
+
+            gaugeChart();
+            narrow();
+        } else if (window.innerWidth > 600) {
+            gaugeChart();
+        }
+    }
+
+        $('.list_item').click(function () {
+        $('.list_item').removeClass('ac');
+       $(this).addClass('ac');
+       let index = $(this).index();
+       switch (index) {
+           case 2:
+               // window.ue.XBWeb.webmainright();
+       }
+    });
+
+
+    function gaugeChart() {
+        let myChart= echarts.init(document.getElementById('gaugeChart'));
+        let option ={
+            tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            series: [
+                {
+                    name: '',
+                    type: 'gauge',
+                    radius: '80%',
+                    center:['50%','55%'],
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: [[0.3, 'rgba(255, 97, 18, 1)'],[0.7, 'rgba(255, 174, 32, 1)'],[1, 'rgba(88, 255, 84, 1)']],
+                            width: 10,
+                        }
+                    },
+                    axisLabel: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    splitLine: {           // 分隔线
+                        show:false,
+                    },
+                    pointer: {           // 分隔线
+                        show:false
+                    },
+                    title:{
+                        offsetCenter: [0, 0],
+                        borderColor:'rgba(165, 165, 165, 0.5)',
+                        borderWidth:2,
+                        borderRadius:66,
+                        width:66,
+                        height:66,
+                        rich:{
+                        }
+                    },
+                    detail: {
+                        show:false,
+                    },
+                    data: [{value:'', name: ' '}]
+                },
+                {
+                    type: 'gauge',
+                    radius:'65%',
+                    center:['50%','55%'],
+                    axisLine: {            // 坐标轴线
+                        show:false,
+                        lineStyle: {
+                            opacity: 0
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length:5,
+                        color:'#fff'
+                    },
+                    splitLine: {           // 分隔线
+                        length:8,
+                        color:'#fff'
+                    },
+                    axisLabel:{
+                        show:false
+                    },
+                    title:{
+                        offsetCenter: [0,0],
+                        borderColor:'rgba(255, 255, 255, 0.5)',
+                        borderWidth:2,
+                        borderRadius:18,
+                        width:18,
+                        height:18,
+                        rich:{
+                        }
+                    },
+                    detail:{
+                        show:false
+                    },
+                    pointer: {           // 分隔线
+                        show:false,
+                    },
+                    data: [{value:'', name: ' '}]
+                },
+                {
+                    type: 'gauge',
+                    radius:'65%',
+                    center:['50%','55%'],
+                    tooltip:{
+                        show:false
+                    },
+                    axisLine: {            // 坐标轴线
+                        show:false,
+                        lineStyle: {
+                            opacity: 0
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false
+                    },
+                    splitLine: {           // 分隔线
+                        show:false
+                    },
+                    axisLabel:{
+                        show:false
+                    },
+                    title:{
+                        show:false
+                    },
+                    detail:{
+                        show:false
+                    },
+                    itemStyle:{
+                        color:'rgba(255,255,255,1)',
+                    },
+                    pointer: {           // 分隔线
+                        width:'4',
+                        length:'90%',
+                        show:true,
+                    },
+                    data: [{value: 70, name: ''}]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+</script>

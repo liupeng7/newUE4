@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
+    <style>
+        html{height: 1080px;width: 3800px;position: relative;overflow: hidden;display: none}
+        body{height: 100%;}
+        .index{width: 600px;height: 260px;background:rgba(0,0,0,0.75);border:2px solid;
+	        border-image:linear-gradient(0deg, rgba(91, 108, 122, 0.75), rgba(225, 254, 255, 0.75)) 2 2;
+	        box-shadow:0px 0px 29px 0px rgba(0, 0, 0, 0.57), 0px 0px 51px 0px rgba(0, 0, 0, 0.5);border-radius:10px;padding-top: 61px}
+        .index_top{width:445px;height:43px;font-size:43px;font-weight:bold;color:rgba(255,255,255,1);margin: 0 auto;text-align: center}
+        .index_input{margin-top:60px;border-bottom:1px solid rgb(77,80,85);padding-bottom: 20px;min-width: 292px;}
+        .index_input input{border:none;background: none;font-size: 24px;outline:none;width: 260px;}
+        .index_input .xb_icon{font-size: 24px;margin-right:20px}
+        .index_btn{cursor:pointer;width: 102px;height: 50px;border-radius:10px;background: rgb(11,144,206);
+	        text-align:center;margin-top:60px;font-size: 26px;line-height: 50px;margin-left: 26px}
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false >
+    <div class="index position">
+        <div class="index_top">智慧城市管理运营中心</div>
+	    <div style="display: flex;justify-content: center">
+		    <div class="index_input">
+			    <i class="xb_icon lock-alt-re input_icon"></i>
+			    <input type="password" id="password" placeholder="请输入密码" value="">
+		    </div>
+		    <div class="index_btn" >登陆</div>
+	    </div>
+
+    </div>
+</body>
+</html>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+
+<script>
+
+    $('#password').bind('keyup', function(event) {
+        if (event.keyCode == "13") {
+            $('.index_btn').click();
+        }
+    });
+
+    $('.index_btn').click(function () {
+        let val = $('#password').val();
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth()+1;
+        let day = date.getDate();
+        let week = getYearWeek(year,month,day);
+        let num = year+''+ week;
+        let newNum = num * num.split('').reverse().join('');
+        newNum = newNum.toString().substring(0,6);
+        console.log(newNum);
+
+        // if (val == newNum) {
+            window.ue.XBWeb.login();
+        // }else{
+        //     alert('密码错误')
+        // }
+    });
+    function getYearWeek(a,b,c){
+        var date1 = new Date(a, parseInt(b) - 1, c),
+            date2 = new Date(a, 0, 1),
+            d = Math.round((date1.valueOf() - date2.valueOf()) / 86400000);
+        return Math.ceil((d + ((date2.getDay() + 1) - 1)) / 7);
+    }
+
+
+    window.onload= function () {
+        setTimeout(function () {
+            $('html').show();
+            if(window.innerWidth<3000){
+                narrow();
+
+            }
+        },500)
+
+    };
+
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+</script>

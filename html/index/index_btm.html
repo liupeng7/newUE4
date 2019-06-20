@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>综合态势：底部列表</title>
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
+    <style>
+        html{width:2200px;height:180px;padding:0 20px 20px;overflow: hidden}
+        body{height: 100%}
+        .index{}
+        .index_title{text-align: center;font-weight:bold;font-size: 24px;line-height: 90px;}
+        .index_item{cursor: pointer;background: url("../../image/index/bottom_bg_1.png") no-repeat;height: 102px;width: 272px;position: relative;
+            background-size: 100% 100%}
+        .index_img{position:absolute;left: 15px;top: -23px;width: 120px;}
+        .list_title{font-size: 24px;color: #fff;font-weight: bolder;position: absolute;left: 74%;top: 10%;transform: translate(-50%, -50%);width: 140px;
+            text-shadow:#000 1px 0 1px,#000 0 1px 1px,#000 -1px 0 1px,#000 0 -1px 1px;}
+        .list{position: absolute;display: flex;bottom: 0;left: 40px;}
+        .list_item{ width: 55px;height: 55px;}
+        .fun_list_1{background: url("../../image/index/circle_green.png") no-repeat;background-size: cover}
+        .fun_list_2{background: url("../../image/index/circle_yellow.png") no-repeat;background-size: cover}
+        .fun_list_3{background: url("../../image/index/circle_red.png") no-repeat;background-size: cover}
+        .index_item{transition: 0.2s linear;}
+        .index_item:hover{transition: 0.5s;transform: scale(1.15);}
+
+        .index_more{text-align: center;font-weight:bold;font-size: 24px;line-height: 90px;width: 217px;height: 102px;
+            text-shadow:#000 1px 0 1px,#000 0 1px 1px,#000 -1px 0 1px,#000 0 -1px 1px;}
+        .index_more img{margin: 10px 0 0 10px;vertical-align: sub;}
+
+        /*动画*/
+        .index{position: relative;width: 100%;height: 100%;display: flex;align-items: flex-end;transition: all  0.5s;transform: translate(0,180px);opacity: 0}
+        .index.in{transform: translate(0,0);opacity: 1}
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false >
+    <div class="index">
+        <div class="index_item index_title">全局态势</div>
+        <div class="index_item " onclick="importArea4()">
+            <div class="list_title">王府井百货</div>
+            <img src="../../image/index/wangfujin.png" alt="" style=" width:75px;top:-46px;left:54px" class="index_img">
+            <div class="list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+        <div class="index_item " onclick="importArea2()">
+            <div class="list_title">环球中心</div>
+            <img src="../../image/index/tingzi.png" alt="" style="width:110px;top:-68px;left:34px" class="index_img">
+            <div class="list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+        <div class="index_item " onclick="importArea5()">
+            <div class="list_title">九眼桥</div>
+            <img src="../../image/index/huanqiu.png" alt=""  class="index_img">
+            <div class="list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+        <div class="index_item " onclick="importArea3()">
+            <div class="list_title">成都七中</div>
+            <img src="../../image/index/xuexiao.png" style="top:-76px;left:26px" alt="" class="index_img">
+            <div class="list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+        <div class="index_item " onclick="importArea6()">
+            <div class="list_title">华西医院</div>
+            <img src="../../image/index/yiyuan.png" style="top:-68px;left:22px" alt="" class="index_img">
+            <div class="list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+        <div class="index_item " onclick="importArea1()">
+            <div class="list_title">火车南站</div>
+            <img src="../../image/index/huanqiu.png" width="120"  alt="" class="index_img">
+            <div class="list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+        <div class="index_more index_item" onclick="moreArea()">
+            更多<img src="../../image/index/icon_arrow_down.png">
+        </div>
+    </div>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script>
+
+    window.onload = function(){
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<1800){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<1800){
+            narrow();
+        }else if(window.innerWidth>1800){
+        }
+    };
+
+
+
+    function importArea1(){
+        window.ue.XBWeb.webmainbuttomarea1()
+    }
+    function importArea2(){
+        window.ue.XBWeb.webmainbuttomarea2()
+    }
+    function importArea3(){
+        window.ue.XBWeb.webmainbuttomarea3()
+    }
+    function importArea4(){
+        window.ue.XBWeb.webmainbuttomarea4()
+    }
+    function importArea5(){
+        window.ue.XBWeb.webmainbuttomarea5()
+    }
+    function importArea6(){
+        window.ue.XBWeb.webmainbuttomarea6()
+    }
+    let rotate = true;
+    function moreArea() {
+        rotate =! rotate ;
+        if(rotate){
+            $('.index_more img').css("transform","rotate(0)");
+            window.ue.XBWeb.webmainbottomclose();
+        }else{
+            $('.index_more img').css("transform","rotate(180deg)");
+            window.ue.XBWeb.webmainbottommore();
+        }
+    }
+
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+
+    $('.index_title').on('click',function () {
+        window.ue.XBWeb.webmainbuttomback();
+    });
+    $('.index_item').on('click',function () {
+
+    });
+    comeIn();
+    function comeIn() {
+        setTimeout(function () {
+            $('.index').addClass('in');
+
+        },300)
+    }
+
+    function goOut() {
+        $('.index').removeClass('in');
+    }
+
+</script>
+</body>
+</html>

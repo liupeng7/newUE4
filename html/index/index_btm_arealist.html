@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
+    <style>
+        html{width:420px;height:270px;overflow: hidden}
+        body{height: 100%}
+        .index{background: url("../../image/index/btn_more_bg.png") no-repeat;height: 270px;display: flex;flex-direction: column}
+        .area_item{height:140px;display: flex;align-items: center}
+        .area_item_img{width: 52px;height: 52px;margin: 0 15px 0 21px;}
+        .area_item_name{font-weight: bold;font-size: 26px;width: 160px;text-shadow:#000 1px 0 1px,#000 0 1px 1px,#000 -1px 0 1px,#000 0 -1px 1px;}
+        .area_item_list{display: flex;bottom: 0;left: 40px;}
+        .list_item{ width: 50px;height: 50px;}
+        .fun_list_1{background: url("../../image/index/circle_green.png") no-repeat;background-size: cover}
+        .fun_list_2{background: url("../../image/index/circle_yellow.png") no-repeat;background-size: cover}
+        .fun_list_3{background: url("../../image/index/circle_red.png") no-repeat;background-size: cover}
+    </style>
+</head>
+<body>
+    <div class="index">
+        <div class="area_item">
+            <img class="area_item_img">
+            <div class="area_item_name">天府广场</div>
+            <div class="area_item_list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+        <div class="area_item">
+            <img class="area_item_img">
+            <div class="area_item_name">东湖公园</div>
+            <div class="area_item_list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+        <div class="area_item">
+            <img class="area_item_img">
+            <div class="area_item_name">红牌楼广场</div>
+            <div class="area_item_list">
+                <div class="list_item flex_cen fun_list_1"><i class="xb_icon pavement-xb"></i></div>
+                <div class="list_item flex_cen fun_list_2"><i class="xb_icon car-xb"></i></div>
+                <div class="list_item flex_cen fun_list_3"><i class="xb_icon camera-xb"></i></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script>
+    window.onload = function(){
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<420){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<420){
+            narrow();
+        }else if(window.innerWidth>420){
+        }
+    };
+
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+</script>

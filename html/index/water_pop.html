@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>内涝点-弹窗</title>
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <style>
+        html{width: 600px;height: 700px;overflow: hidden;}
+        .index_title{border-bottom:2px solid #323846;padding-bottom: 30px;font-weight: bold }
+        .index_title_topic{font-size: 46px;}
+        .index_title_box{background: #861f18;border: 8px solid red;width: 140px;height: 50px;font-size: 22px;margin-right:20px;}
+        .small_block{width: 10px;height: 10px;background: #fff;margin-right:5px;}
+
+        .index_cont{padding: 40px 0}
+        .index_item{font-size: 36px;padding-bottom:20px;}
+        .index_item_value{font-weight: bold;font-size:40px; }
+        .index_item_value span{font-size: 30px;font-weight: normal}
+
+        .index_chart_title{font-weight: bold;font-size: 36px;display: flex;align-items: center}
+
+
+        /*动画*/
+        .index_title{transition:all  0.6s;opacity:0;transform:translate(300px,0)}
+        .index_cont{transition:all  0.6s 0.1s;opacity:0;transform:translate(300px,0)}
+        .index_chart{transition:all  0.6s 0.2s;opacity:0;transform:translate(300px,0)}
+        .index_title.comeIn{transform:translate(0,0);opacity:1;}
+        .index_cont.comeIn{transform:translate(0,0);opacity:1;}
+        .index_chart.comeIn{transform:translate(0,0);opacity:1;}
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false>
+    <div class="index">
+        <div class="index_title flex_bet">
+            <div class="index_title_topic">武侯立交下凹桥区</div>
+            <div class="index_title_box flex_cen"><div class="small_block"></div>红色预警</div>
+        </div>
+        <div class="index_cont">
+            <div class="index_item flex">
+                <div class="index_item_name">积水时间：</div>
+                <div class="index_item_value">35 <span>min</span></div>
+            </div>
+            <div class="index_item flex">
+                <div class="index_item_name">积水深度：</div>
+                <div class="index_item_value">0.35 <span>m</span></div>
+            </div>
+            <div class="index_item flex">
+                <div class="index_item_name">未来1h积水深度：</div>
+                <div class="index_item_value">0.58 <span>m</span></div>
+            </div>
+            <div class="index_item flex">
+                <div class="index_item_name">积水范围：</div>
+                <div class="index_item_value">1300 <span>平</span></div>
+            </div>
+        </div>
+        <div class="index_chart">
+            <div class="index_chart_title"><img style="margin-right: 10px;" src="../../image/index/icon_waterlogging.png">未来1h积水深度走势图</div>
+            <div id="lineChart" style="width: 600px;height: 260px;">
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../plugin/echarts.min.js"></script>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+</html>
+<script>
+    window.onload=function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                lineChart();
+                if(window.innerWidth<500){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<500){
+            lineChart();
+            narrow();
+        }else if(window.innerWidth>500){
+            lineChart();
+        }
+    };
+
+
+
+    function lineChart(){
+        let myChart2= echarts.init(document.getElementById('lineChart'));
+        let option2 = {
+            legend:{
+                show:false,
+            },
+            tooltip: {
+                trigger:'axis',
+            },
+            grid: {
+                left:'5%',
+                right:'10%' ,
+                top:'10%' ,
+                bottom: '10%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap:false,
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    interval: 0,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 20,
+                        lineHeight:40,
+                        inside: true,
+                    }
+                },
+                axisLine: {
+                    show:true
+                },
+                splitLine:{
+                    show:false,
+
+                },
+                data: ['4月','5月','6月','7月','8月','9月']
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 16,
+                        inside: true,
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle:{
+                        width:1,
+                        color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                            offset: 0,
+                            color: 'rgba(255, 255, 250, 0.3)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(255, 255, 255, 0)'
+                        }])
+                    }
+                },
+            },
+            series: {
+                name:'',
+                type: 'line',
+                symbolSize:'9',
+                showSymbol:false,
+                smooth: true,
+                data: [20,14,8,13,6,12,],
+                lineStyle:{
+                    normal:{
+                        width:4,
+                        color:new echarts.graphic.LinearGradient(0,0,0,1,[{
+                            offset: 0,
+                            color: 'rgba(255, 67, 2, 1)'
+                        },{
+                            offset: 1,
+                            color: 'rgba(255, 196, 53, 1)'
+                        }
+                        ]),
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(235, 97, 0, 0.5)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(235, 97, 0, 0)'
+                        }])
+                    }
+                },
+            }
+        };
+        myChart2.setOption(option2);
+    }
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+
+    comeIn();
+    function comeIn() {
+        $('.index_title').addClass('comeIn');
+        $('.index_cont').addClass('comeIn');
+        $('.index_chart').addClass('comeIn');
+    }
+
+    function goOut() {
+        $('.index_title').removeClass('comeIn');
+        $('.index_cont').removeClass('comeIn');
+        $('.index_chart').removeClass('comeIn')
+    }
+</script>

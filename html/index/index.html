@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <style>
+        html{width: 2200px;height: 1040px;overflow: hidden}
+        .index{text-align: center;width: 100%;height:100%}
+        .index h2{font-size:84px;font-weight:bold;color:rgba(227,237,248,1);text-shadow:4px 9px 4px rgba(0, 0, 0, 0.75);-webkit-text-stroke:2px rgba(6, 44, 51, 0.75);}
+        .index_cont{margin-top:110px;}
+        .index_item{width: 507px;height: 706px;position: relative;background: rgba(6,9,14,0.9) url("../../image/index/bg_white_lines.png") no-repeat;
+            border:3px solid rgba(255, 209, 119, 0.75);border-radius:10px; }
+        .index_top{position: absolute;left:50%;top:0;transform: translate(-50%,-40%);cursor: pointer}
+        .index_top img{width: 160px;height: 160px;border:3px solid rgba(255,240,215,1);border-radius: 50%;background: rgba(0,0,0,0.5);}
+        .index_item_title{cursor: pointer}
+        .index_item h3{font-size:48px;font-weight:bold;color:rgba(255,255,255,0.9);text-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);display: inline-block;-webkit-text-stroke:1.5px rgba(13, 66, 75, 0.75);margin-top:110px;}
+        .index_item_cont{padding:20px 0;height:400px;position: relative}
+        .panel1_cont{width: 381px;height: 357px;position: absolute;left:30px;background: url("../../image/index/air_bg.png");background-size: 100% 100%;}
+        .panel1_cont2{width:110px;height:83px;bottom:58px;position: absolute;right:57px;
+            background: url("../../image/index/river_bg.png");background-size: 100% 100%;}
+        .panel1_cont .number{font-size:68px;}
+        .panel1_cont .number span{font-size: 28px;}
+        .panel1_cont .number2{font-size: 19px;color: rgba(104, 241, 101, 1);margin-top:100px;border:1px solid rgba(86,225,104,1);border-radius:14px;
+            width:93px;height:28px;display: inline-block;line-height: 28px}
+        .panel1_cont .number3{font-size: 20px;}
+        .panel1_cont2 .number4{font-size:30px;color:rgba(196,247,255,1);line-height:24px;margin-top:40px;}
+        .panel1_cont2 .number4 span{font-size: 16px}
+        .panel1_cont2 .number5{font-size:17px;font-weight:bold;margin-top:20px;}
+        .radar_border{position: absolute;border:1px solid rgba(206,241,255,0.3);width: 232px;height: 232px;border-radius: 50%;top:50%;left:50%;transform: translate(-50%,-50%);z-index: -1;}
+        .index_item_list{padding-top:40px;margin:0 40px;border-color: rgba(241,254,254,0.2)}
+        .index_list_item{display: flex;align-items: center;color:#fff}
+        .index_list_item .num{font-size:36px;font-weight:bold;}
+        .index_list_item .num span{font-size: 24px}
+        .index_list_item .name{font-size:20px;font-weight:400;}
+        .index_list_item .xb_icon{font-size: 46px;margin-right: 10px;}
+        .index_list_item .xb_icon.tree-re{color:rgba(86, 225, 104, 1)}
+        .index_list_item .xb_icon.bolt-re{color:rgba(255, 195, 106, 1)}
+        .index_item h4{font-size:24px;font-weight:bold;color:#fff;text-align: center}
+        .svg_num span{font-size: 16px;}
+
+        /*列表样式*/
+        .index_list li{width: 100%;text-align: left;height: 58px;line-height: 58px;padding-left: 120px;font-size: 30px;color: #ffffff;cursor: pointer;}
+        .index_list span{margin-left: 20px;}
+        .list_bkg_img{background: url("../../image/index/index_list_hover.png") no-repeat;background-size:100% 77px;}
+        .index_list{margin-top:30px;display: none;}
+        .index_list i{font-size: 30px;}
+
+        .scale_img{animation: free_download 0.3s linear alternate 1;}
+        @keyframes free_download{
+            0%{transform:scale(1);}
+            50%{transform:scale(1.1);}
+            100%{transform:scale(1);}
+        }
+        .index_list li:hover{background:url("../../image/index/index_list_hover.png") no-repeat;background-size: 100% 77px;}
+        .index_btn .btn_item{font-size:24px;width: 170px;height: 40px;cursor: pointer;display: flex;margin: 50px 20px 0;}
+        .btn_item img{width: 40px;height: 40px;}
+        .btn_item p{margin-left: 12px;line-height: 40px}
+        .index_btn .btn_item.ac{background-size: 100%;background: url("../../image/index/index_btn_bg.png") no-repeat; background-position-x: 24px; }
+
+
+        /*动画*/
+        .index_item{transition:all  0.6s;opacity:0;transform:translate(0,-200px)}
+        .index_item.comeIn{transform:translate(0,0);opacity:1;}
+        .index_title{transition:all  0.6s;opacity:0;transform:translate(0,-200px)}
+        .index_title.comeIn{transform:translate(0,0);opacity:1;}
+        .index_btn{transition:all  0.6s;opacity:0;transform:translate(0,-200px)}
+        .index_btn.comeIn{transform:translate(0,0);opacity:1;}
+    </style>
+
+</head>
+<body oncontextmenu=self.event.returnValue=false >
+<div class="index">
+    <h2 class="index_title">智慧城市管理运营中心</h2>
+    <div class="index_cont flex_bet">
+        <div class="index_item"  >
+            <div class="index_top flex_cen" onclick="toindex()"><img class="index_image1" ></div>
+            <h3 class="index_item_title" onclick="toindex()">城市治理</h3>
+            <div class="index_tab">
+                <div class="index_item_cont">
+                    <div id="radarChart" style="height: 360px"></div>
+                    <div class="radar_border"></div>
+                </div>
+                <div class="index_item_list border_top flex_bet">
+                    <div class="index_list_item ">
+                        <div>
+                            <p class="num">22.4<span>万</span></p>
+                            <p class="name">案件量</p>
+                        </div>
+                    </div>
+                    <div class="index_list_item">
+                        <div>
+                            <p class="num">79.6<span>%</span></p>
+                            <p class="name">街道处置率</p>
+                        </div>
+                    </div>
+                    <div class="index_list_item">
+                        <div>
+                            <p class="num">94.6<span>%</span></p>
+                            <p class="name">案件处置率</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class ="index_list">
+                <li class="list_bkg_img" onclick="toindex()"><i class="xb_icon chart-bar-re"></i><span>综合态势</span></li>
+                <li><i class="xb_icon grip-horizontal-re"></i><span>网格化管理</span></li>
+                <li><i class="xb_icon broadcast-tower-re"></i><span>智能视频监控</span></li>
+                <li><i class="xb_icon trees-re1"></i><span>环境卫生整治</span></li>
+                <li><i class="xb_icon university-re"></i><span>市政设施</span></li>
+                <li><i class="xb_icon parking-circle-re"></i><span>智慧停车</span></li>
+                <li><i class="xb_icon hotel-re"></i><span>智慧公测</span></li>
+            </ul>
+        </div>
+        <div class="index_item" style="transition-delay: 0.1s">
+            <div class="index_top flex_cen"><img class="index_image2" ></div>
+            <h3 class="index_item_title">生态环境</h3>
+            <div class="index_tab">
+                <div class="index_item_cont">
+                    <div class="panel1_cont">
+                        <p class="number2">2%</p>
+                        <p class="number">59<span>%</span></p>
+                        <p class="number3">空气优良天数率</p>
+                    </div>
+                    <div class="panel1_cont2">
+                        <p class="number4">82.2<span>%</span></p>
+                        <p class="number5">河道合格率</p>
+                    </div>
+                </div>
+                <div class="index_item_list flex_bet border_top">
+                    <div class="index_list_item">
+                        <i class="xb_icon bolt-re"></i>
+                        <div>
+                            <p class="num">0.3<span>度/天/平</span></p>
+                            <p class="name">大型建筑耗能</p>
+                        </div>
+                    </div>
+                    <div class="index_list_item">
+                        <i class="xb_icon tree-re" ></i>
+                        <div>
+                            <p class="num">36.4<span>%</span></p>
+                            <p class="name">城市绿地率</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="index_list">
+                <li><i class="xb_icon globe-americas-re"></i><span>综合环境</span></li>
+                <li><i class="xb_icon wind-re"></i><span>大气污染防治</span></li>
+                <li><i class="xb_icon water-re"></i><span>河道治理</span></li>
+                <li><i class="xb_icon teeth-re"></i><span>噪声治理</span></li>
+                <li><i class="xb_icon vihara-re"></i><span>公园绿地</span></li>
+                <li><i class="xb_icon leaf-re"></i><span>绿色节能</span></li>
+            </ul>
+        </div>
+        <div class="index_item" style="transition-delay: 0.2s">
+            <div class="index_top flex_cen"><img class="index_image3" ></div>
+            <h3 class="index_item_title">产业经济</h3>
+            <div class="index_tab">
+                <div class="index_item_cont">
+                <h4>GDP总量变化</h4>
+                <div id="lineChart" style="height: 320px"></div>
+                </div>
+                <div class="index_item_list  flex_bet border_top" >
+                    <div class="index_list_item ">
+                        <div>
+                            <p class="num ">17 / 948</p>
+                            <p class="name">上市/规上企业</p>
+                        </div>
+                    </div>
+                    <div class="index_list_item">
+                        <div>
+                            <p class="num">3500</p>
+                            <p class="name">GDP(亿)</p>
+                        </div>
+                    </div>
+                    <div class="index_list_item">
+                        <div>
+                            <p class="num">223</p>
+                            <p class="name">税收(亿)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <ul class="index_list">
+                <li><i class="xb_icon money-check-alt-re"></i><span>经济总览</span></li>
+                <li><i class="xb_icon pi-re"></i><span>数字经济</span></li>
+                <li><i class="xb_icon american-sign-language-interpreting-re"></i><span>企业集约</span></li>
+                <li><i class="xb_icon fingerprint-re"></i><span>智慧园区</span></li>
+                <li><i class="xb_icon draw-circle-re"></i><span>产业配套</span></li>
+            </ul>
+        </div>
+        <div class="index_item" style="transition-delay: 0.3s">
+            <div class="index_top flex_cen"><img class="index_image4"></div>
+            <h3 class="index_item_title">民生服务</h3>
+            <div class="index_tab">
+                <div class="index_item_cont">
+                    <h4>市民满意度</h4>
+                    <div id="linesChart" style="height: 320px;"></div>
+                </div>
+                <div class="index_item_list  flex_bet border_top" >
+                    <div class="index_list_item ">
+                        <div>
+                            <p class="num ">17 / 948</p>
+                            <p class="name">上市/规上企业</p>
+                        </div>
+                    </div>
+                    <div class="index_list_item">
+                        <div>
+                            <p class="num">3500</p>
+                            <p class="name">GDP(亿)</p>
+                        </div>
+                    </div>
+                    <div class="index_list_item">
+                        <div>
+                            <p class="num">223</p>
+                            <p class="name">税收(亿)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="index_list">
+                <li><i class="xb_icon grin-alt-re"></i><span>民生综合呈现</span></li>
+                <li><i class="xb_icon coffee-re"></i><span>政务服务</span></li>
+                <li><i class="xb_icon car-re"></i><span>交通服务</span></li>
+                <li><i class="xb_icon stethoscope-re"></i><span>医疗服务</span></li>
+                <li><i class="xb_icon pen-alt-re"></i><span>教育服务</span></li>
+                <li><i class="xb_icon user-re"></i><span>社保服务</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="index_btn flex_cen">
+        <div class="btn_item ac"><img src="../../image/index/index_icon_1_s.png"><p>关键指标</p></div>
+        <div class="btn_item"><img src="../../image/index/index_icon_2.png"><p>云图列表</p></div>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="../../plugin/echarts.min.js"></script>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../common/js/svg.js"></script>
+<script>
+
+
+
+    window.onload = function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                radarChart();
+                lineChart();
+                linesChart();
+                if(window.innerWidth<1800){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<1800){
+            radarChart();
+            lineChart();
+            linesChart();
+            narrow();
+        }else if(window.innerWidth>1800){
+            radarChart();
+            lineChart();
+            linesChart();
+        }
+        //列表项选择效果.
+        $('.index_list li').on('click',function(){
+            $('.index_list li').removeClass('list_bkg_img');
+            $(this).addClass('list_bkg_img');
+            $('.index_list span').css('font-weight','normal');
+            $(this).find('span').css('font-weight','bold')
+        });
+
+        $('.btn_item').on('click',function () {
+            $('.btn_item').removeClass('ac');
+            let index  = $(this).index();
+            $('.index_list').fadeIn('slow');
+            if(index==0){
+                $('.index_tab').show();
+                $('.index_list').hide();
+                $('.btn_item').eq(0).children('img').attr('src','../../image/index/index_icon_1_s.png');
+                $('.btn_item').eq(1).children('img').attr('src','../../image/index/index_icon_2.png')
+            }else{
+                $('.index_list').show();
+                $('.index_tab').hide();
+                $('.btn_item').eq(0).children('img').attr('src','../../image/index/index_icon_1.png');
+                $('.btn_item').eq(1).children('img').attr('src','../../image/index/index_icon_2_s.png')
+            }
+            $(this).addClass('scale_img');
+            $(this).addClass('ac');
+            setTimeout(function () {
+                $('.btn_item').removeClass('scale_img');
+            },500)
+        });
+
+    };
+
+    function toindex(e){
+        // // window.event? window.event.cancelBubble = true : e.stopPropagation();
+        // if('webmainindex' in window.ue.XBWeb){
+        //     window.ue.XBWeb.webmainindex()
+        // }else{
+        //     window.ue.XBWeb.webmainindex()
+        // }
+        goOut(e)
+    }
+
+    function radarChart(){
+        let myChart= echarts.init(document.getElementById('radarChart'));
+        let option ={
+            tooltip: {
+                show:false,
+            },
+            radar: [
+                {
+                    name: {
+                        show:true,
+                        formatter:function (params,series) {
+                            if(series.br){
+                                return '{b|'+series.value+'}'+'\n'+  '{a| '+params+'}'
+                            }else{
+                                return '{a| '+params+'}'+'{b|'+series.value+'}'
+                            }
+                        },
+                        rich:{
+                            a:{
+                                fontSize:18,
+                                color:'rgba(255,255,255,0.9)'
+                            },
+                            b:{
+                                fontSize:24,
+                                padding:[0,10,0,10],
+                                color:'rgba(255,209,114,1)',
+                                fontWeight:'bold',
+                            },
+                        }
+                    },
+                    textStyle:{
+                        fontSize:18
+                    },
+                    nameGap:10,
+                    splitNumber: 4,
+                    shape:'circle',
+                    indicator: [
+                        {text: '绩效指数',value:'97.1', max: 100},
+                        {text: '活力指数',value:'96.5',br:true,max: 100},
+                        {text: '服务指数',value:'98',br:true,max: 100},
+                        {text: '先锋指数',value:'98.1',max: 100},
+                        {text: '和谐指数',value:'98.1',br:true,max: 100},
+                        {text: '平安指数',value:'98.1',br:true,max: 100}
+                    ],
+                    center:['50%','50%'],
+                    radius: '75%',
+                    splitLine: {
+                        lineStyle: {
+                            width:2,
+                            color: 'rgba(188, 255, 253, 0.5)'
+                        }
+                    },
+                    splitArea: {
+                        show: false
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            width:2,
+                            color: 'rgba(238, 238, 238, 0.2)'
+                        }
+                    }
+                },
+
+            ],
+            series: [
+                {
+                    name:'1',
+                    type: 'radar',
+                    symbol: 'none',
+                    lineStyle:{
+                        normal: {
+                            color:'rgba(188, 255, 253, 0.4)',
+                            width: 1,
+                        }
+                    },
+                    itemStyle: {
+                        normal:{
+                            color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                                offset: 0,
+                                color: 'rgba(3, 17, 36, 1)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(11, 112, 159, 1)'
+                            }])
+                        }
+                    },
+                    areaStyle:{
+                        normal: {
+                            borderColor:'rgba(56, 255, 196, 1)',
+
+                            opacity: 0.2
+                        }
+                    },
+                    data: [
+                        {
+                            value:  [66.3, 98, 83, 93.3, 93.5, 71.9],
+                            name:'1'
+                        },
+                        {
+                            value:  [87.3, 64, 63, 73.3, 60.5, 98.9],
+                            name:'2'
+                        },
+                        {
+                            value:  [73.3, 81, 65, 89.3, 78.5, 67.9],
+                            name:'3'
+                        },
+                        {
+                            value:  [75.3, 86, 71, 76.3, 71.5, 59.9],
+                            name:'3'
+                        },
+                        {
+                            value:  [91.3, 89, 86, 61.3, 73.5, 76.9],
+                            name:'3'
+                        },
+                        {
+                            value:  [89.3, 85, 77, 84.3, 92.5, 73.9],
+                            name:'3'
+                        }
+                    ]
+                },
+
+            ]
+        };
+        myChart.setOption(option);
+    }
+    function lineChart(){
+        let myChart2= echarts.init(document.getElementById('lineChart'));
+        let option2 = {
+            legend:{
+                show:false,
+            },
+            tooltip: {
+                trigger:'axis',
+            },
+            grid: {
+                left:0,
+                right:0 ,
+                top:'0' ,
+                bottom: 0,
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap:false,
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    interval: 0,
+                    formatter: function (value, index) {
+                        if (index == 0||index ==7) {
+                            value = ''
+                        }
+                        return value
+                    },
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 20,
+                        fontWeight:'bold',
+                        inside: true,
+                    }
+                },
+                axisLine: {
+                    show:false
+                },
+                splitLine:{
+                    show:true,
+                    lineStyle:{
+                        width:1,
+                        color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                            offset: 0,
+                            color: 'rgba(255, 255, 250, 0.3)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(255, 255, 255, 0)'
+                        }])
+                    }
+                },
+                data: ['2012','2012','2012','2012','2012','2012','2017','2018']
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+
+                },
+                axisLabel: {
+                    show: false,
+                },
+                splitLine: {
+                    show: false,
+                },
+            },
+            series: {
+                name:'',
+                type: 'line',
+                symbolSize:'9',
+                showSymbol:false,
+                smooth: true,
+                smoothMonotone:'false',
+                data: [820, 932, 836, 934, 1339, 1193,1000,1340],
+                lineStyle:{
+                    normal:{
+                        width:4,
+                        color:new echarts.graphic.LinearGradient(0,0,0,1,[{
+                            offset: 0,
+                            color: 'rgba(255, 67, 2, 1)'
+                        },{
+                            offset: 1,
+                            color: 'rgba(255, 196, 53, 1)'
+                        }
+                        ]),
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(235, 97, 0, 0.5)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(235, 97, 0, 0)'
+                        }])
+                    }
+                },
+            }
+        };
+        myChart2.setOption(option2);
+    }
+    function linesChart(){
+        let myChart3= echarts.init(document.getElementById('linesChart'));
+        let option3 = {
+            legend:{
+                show:true,
+                right:'center',
+                top:'20',
+                itemWidth:14,
+                icon:'roundRect',
+                itemGap:30,
+                textStyle:{
+                    color:'rgba(255, 255, 255, 0.75)',
+                    fontSize:18
+                },
+                data:['交通','教育','医疗']
+            },
+            tooltip: {
+                trigger:'axis',
+            },
+            grid: {
+                left:'0',
+                right:0 ,
+                top:'10%' ,
+                bottom: 0,
+                containLabel: true
+            },
+            color:['rgba(154,237,255, 1)','rgba(88 , 255, 84, 1)','rgba(246,76,88, 1)'],
+            xAxis: {
+                type: 'category',
+                boundaryGap:false,
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    interval: 0,
+                    formatter: function (value, index) {
+                        if (index == 0||index ==6) {
+                            value = ''
+                        }
+                        return value
+                    },
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 20,
+                        fontWeight:'bold',
+                        inside: true,
+                    }
+                },
+                axisLine: {
+                    show:false,
+                    lineStyle:{
+                        color:'#719ab2',
+                        width:3,
+                    },
+                },
+                splitLine:{
+                    show:true,
+                    lineStyle:{
+                        width:1,
+                        color:new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                            offset: 0,
+                            color: 'rgba(255, 255, 250, 0.3)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(255, 255, 255, 0)'
+                        }])
+                    }
+                },
+                data: ['10月','11月','12月','1月','2月','3月','4月']
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    show: false,
+                },
+                splitLine: {
+                    show: false,
+                },
+            },
+            series: [{
+                name:'交通',
+                type: 'line',
+                smooth:false,
+                symbolSize: 0,
+                z: 1,
+                lineStyle:{
+                    normal:{
+                        width:4,
+                        // color:'rgba(86,225,104,1)',
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(154,237,255,0.3)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(154,237,255, 0)'
+                        }])
+                    }
+                },
+                data: [8, 8, 10, 8, 12, 8,7,],
+            },
+                {
+                    name:'教育',
+                    type: 'line',
+                    smooth:false,
+                    symbolSize: 0,
+                    z: 2,
+                    lineStyle:{
+                        normal:{
+                            width:4,
+                            // color:'rgba(86,225,104,1)',
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgba(88 , 255, 84, 0.3)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(88 , 255, 84, 0)'
+                            }])
+                        }
+                    },
+                        data: [11, 10, 9, 12, 10, 12,8],
+                },
+                {
+                    name:'医疗',
+                    type: 'line',
+                    smooth:false,
+                    symbolSize: 0,
+                    z: 3,
+                    lineStyle:{
+                        normal:{
+                            width:4,
+                            // color:'rgba(86,225,104,1)',
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgba(246,76,88, 0.3)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(246,76,88, 0)'
+                            }])
+                        }
+                    },
+                    data: [9, 7, 8, 6, 7, 9,14],
+                },
+            ]
+        };
+        myChart3.setOption(option3);
+    }
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+    function comeIn() {
+        $('.index_title').addClass('comeIn');
+        $('.index_item').addClass('comeIn');
+        $('.index_btn').addClass('comeIn');
+        setTimeout(()=>{
+            let num = 0;
+            let imgAniBegin = setInterval(function () {
+                num++;
+                imgAnimate($('.index_image1'),num,'../../image/index/icon1/icon1_0000','../../image/index/icon1/icon1_000');
+                imgAnimate($('.index_image2'),num,'../../image/index/icon2/icon2_0000','../../image/index/icon2/icon2_000');
+                imgAnimate($('.index_image3'),num,'../../image/index/icon3/icon3_0000','../../image/index/icon3/icon3_000');
+                imgAnimate($('.index_image4'),num,'../../image/index/icon4/icon4_0000','../../image/index/icon4/icon4_000');
+                if(num >=30){
+                    clearInterval(imgAniBegin)
+                }
+            },50);
+        },600)
+    }
+	let timerbox = {}
+    $(".index_item").mouseenter(function () {
+        let num = 0;
+        let target = $(this).children('.index_top.flex_cen').children()[0];
+	    let classname = $(target).attr('class');
+	    let count = classname.slice(classname.length-1,classname.length);
+        clearInterval(timerbox[count])
+        timerbox[count] = setInterval(function () {
+            num++;
+            imgAnimate($(target),num,'../../image/index/icon'+count+'/icon'+count+'_0000','../../image/index/icon'+count+'/icon'+count+'_000');
+            if(num >=30){
+                clearInterval(timerbox[count])
+            }
+        },50);
+    })
+
+    function goOut(e) {
+        $('.index_title').removeClass('comeIn');
+        $('.index_item').removeClass('comeIn');
+        $('.index_btn').removeClass('comeIn');
+        setTimeout(()=>{
+            // window.event? window.event.cancelBubble = true : e.stopPropagation();
+            if('webmainindex' in window.ue.XBWeb){
+                window.ue.XBWeb.webmainindex()
+            }else{
+                window.ue.XBWeb.webmainindex()
+            }
+        },1000)
+    }
+</script>

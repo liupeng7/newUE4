@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>综合态势左</title>
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <style>
+        html{width: 660px;height: 900px;overflow: hidden;}
+        .index{width: 100%;height: 100%;}
+
+        .title{font-size: 36px;font-weight: bold;width:657px;height:80px;background:-webkit-linear-gradient(left,rgba(169,220,255,0.15),rgba(169,220,255,0));position: relative;
+            border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
+        .left_arrow{position: absolute;left: 10px; top: 0;}
+        .right_arrow{position: absolute;right:10px; top: 0;}
+        .index_img{height: 10px;width: 100%;background: url("../../image/index/white_line.png");background-size:100%;}
+        .box{padding:30px 0 30px 33px;}
+        .box_month{border:2px solid rgba(255, 255, 255, 0.75);width:70px;height:70px;background:rgba(255,255,255,0.15);text-align: center;line-height: 70px;font-size: 50px}
+        .box_month span{font-size: 20px}
+        .box .name{font-size:28px;}
+        .box .num{color:rgba(255,174,32,1);font-size:50px;}
+        .box_item{width:109px;height:119px;background:rgba(255,255,255,0.15);margin-right:10px;flex-direction: column;position: relative}
+        .box_item .name{font-size:18px;color:rgba(254,255,254,0.5);}
+        .box_item .val{font-size:32px;font-weight:bold;}
+        .spot_left_top{position: absolute;left: -2px;top:-2px;}
+        .spot_left_bot{position: absolute;left:-2px;bottom: -2px}
+        .title_small{font-size:28px;font-weight:bold;padding-left:14px;}
+        .index_card{padding-top:40px }
+        .flex_wrap{display: flex;flex-wrap:wrap }
+        .card_list{width: 280px;margin:40px 0 0 25px }
+        .block{margin-right: 5px;}
+        .card_list .font_block{width: 140px;margin-bottom: 16px}
+        .card_list .font_block .name{font-size:18px;color:rgba(254,255,254,0.75);}
+        .card_list .font_block .num{font-size:26px;margin-left:15px}
+        #radarChart{width: 352px;height: 240px;}
+        .tip{font-size: 20px;font-weight:bold;}
+        .tip .rect{width:30px;height:10px;background:rgba(238,238,238,0.5);margin-right:5px}
+        .tip span{font-size:18px;color:rgba(255,255,255,0.5);}
+
+
+        /*动画*/
+        .top{transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
+        .top.in{transform: translate(0,0);opacity: 1}
+        .center{transition: all 0.5s 0.1s;transform: translate(-660px,0);opacity: 0}
+        .center.in{transform: translate(0,0);opacity: 1}
+        .bottom{transition: all 0.5s 0.2s;transform: translate(-660px,0);opacity: 0}
+        .bottom.in{transform: translate(0,0);opacity: 1}
+
+
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false >
+<div class="index">
+    <div class="top">
+        <div class="title flex_cen">
+            <img class="left_arrow" src="../../image/index/decorate_2.png"/>综合态势评估
+            <img class="right_arrow" src="../../image/index/decorate_1.png"/>
+        </div>
+        <div class="box flex_bet">
+            <div class="box_month">9<span>月</span></div>
+            <div class="font_block">
+                <div class="name">治理指数</div>
+                <div class="num">98.1</div>
+            </div>
+            <div class="box_list flex_bet">
+                <div class="box_item flex_cen">
+                    <div class="name">治理状态</div>
+                    <div class="val font_green" >良好</div>
+                    <img class="spot_left_top" src="../../image/index/white_dot.png"/>
+                    <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
+                </div>
+                <div class="box_item flex_cen">
+                    <div class="name">上月指数</div>
+                    <div class="val">92.1</div>
+                    <img class="spot_left_top" src="../../image/index/white_dot.png"/>
+                    <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
+                </div>
+                <div class="box_item flex_cen">
+                    <div class="name">对比上月</div>
+                    <div class="val">11%</div>
+                    <img class="spot_left_top" src="../../image/index/white_dot.png"/>
+                    <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
+                </div>
+            </div>
+        </div>
+        <div class="index_img" ></div>
+    </div>
+    <div class="index_card center">
+        <div class="title_small">指数雷达图</div>
+        <div class="flex_bet">
+            <div class="flex_wrap card_list">
+                <div class="font_block">
+                    <div class="name"><div class="block" style="background:rgba(255, 97, 18, 1)"></div> 绩效指数</div>
+                    <div class="num">97.1</div>
+                </div>
+                <div class="font_block">
+                    <div class="name"><div class="block" style="background:rgba(255, 174, 32, 1)"></div> 服务指数</div>
+                    <div class="num">98.1</div>
+                </div>
+                <div class="font_block">
+                    <div class="name"><div class="block" style="background:rgba(132, 221, 97, 1)"></div>活力指数</div>
+                    <div class="num">98.5</div>
+                </div>
+                <div class="font_block">
+                    <div class="name"><div class="block" style="background:rgba(59, 211, 202, 1)"></div>先锋指数</div>
+                    <div class="num">90.5</div>
+                </div>
+                <div class="font_block">
+                    <div class="name"><div class="block" style="background:rgba(77, 101, 246, 1)"></div>平安指数</div>
+                    <div class="num">93.1</div>
+                </div>
+                <div class="font_block">
+                    <div class="name"><div class="block" style="background:rgba(239, 91, 223, 1)"></div>和谐指数</div>
+                    <div class="num">92.4</div>
+                </div>
+        </div>
+            <div id="radarChart"></div>
+        </div>
+    </div>
+    <div class="index_card bottom">
+        <div class="title_small flex_bet"><div>近半年指数走势</div><div class="tip flex"><div class="rect"></div>较差<span>（指数低于45）</span></div></div>
+        <div id="lineChart" style="height: 200px"></div>
+    </div>
+</div>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../plugin/echarts.min.js"></script>
+<script src="../../plugin/chart.js"></script>
+<script>
+
+    window.onload =function(){
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                radarChart();
+                lineChart();
+                if(window.innerWidth<600){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<600){
+            radarChart();
+            lineChart();
+            narrow();
+        }else if(window.innerWidth>600){
+            radarChart();
+            lineChart();
+        }
+    };
+
+
+    let begin ='';
+    function rechart() {
+        clearTimeout(begin);
+        begin = setTimeout(function () {
+            lineChart();
+        },200);
+    }
+
+    var throttle = function (fn, delay) {
+        var timer = null;
+        return function () {
+            var args = arguments; //参数集合
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                fn.apply(this, args);
+            }, delay);
+        }
+    };
+    // function postFun(name) {
+    //     lineChart();
+    // }
+    // var re = throttle(postFun, 200);
+    // var ejector = setInterval(() => {
+    //     console.log(11)
+    //     re();
+    // }, 100);
+
+
+
+
+
+
+    function radarChart(){
+        let myChart= echarts.init(document.getElementById('radarChart'));
+        let option ={
+            tooltip: {
+                trigger: 'axis',
+            },
+            radar: [
+                {
+                    name: {
+                        show:true,
+                        fontSize:16,
+                        color:'rgba(255, 255, 255, 1)'
+                    },
+                    shape:'circle',
+                    nameGap:10,
+                    splitNumber: 4,
+                    indicator: [
+                        {text: '绩效指数',index:0,value:'98.3', max: 100},
+                        {text: '活力指数',index:1,value:'98', max: 100},
+                        {text: '服务指数',index:2,value:'83', max: 100},
+                        {text: '先锋指数',index:3,value:'93.3', max: 100},
+                        {text: '和谐指数',index:4,value:'93.5', max: 100},
+                        {text: '平安指数',index:5,value:'71.9', max: 100}
+                    ],
+                    center:['50%','50%'],
+                    radius: '75%',
+                    splitLine: {
+                        lineStyle: {
+                            color: 'rgba(238,238,238,0.5)'
+                        }
+                    },
+                    splitArea: {
+                        show: false
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'rgba(238, 197, 102, 0.5)'
+                        }
+                    }
+                },
+
+            ],
+            series: [
+                {
+                    name:'',
+                    type: 'radar',
+                    symbol: 'none',
+                    lineStyle:{
+                        normal: {
+                            width: 1,
+                            opacity: 0.5
+                        }
+                    },
+                    itemStyle: {
+                        normal:{
+                            color: '#F9713C'
+                        }
+                    },
+                    areaStyle:{
+                        normal: {
+                            opacity: 0.1
+                        }
+                    },
+                    data: [
+                        {
+                            value:  [98.3, 98, 83, 93.3, 93.5, 71.9],
+                            name:['绩效指数','活力指数','服务指数','先锋指数','和谐指数','平安指数']
+                        },
+                        {
+                            value:  [86.3, 74, 93, 83.3, 77.5, 81.9],
+                            name:['绩效指数','活力指数','服务指数','先锋指数','和谐指数','平安指数']
+                        },
+                        {
+                            value:  [93.3, 89, 88, 76.3, 92.5, 61.9],
+                            name:['绩效指数','活力指数','服务指数','先锋指数','和谐指数','平安指数']
+                        },
+                        {
+                            value:  [77.3, 81, 82, 79.3, 68.5, 88.9],
+                            name:['绩效指数','活力指数','服务指数','先锋指数','和谐指数','平安指数']
+                        },
+                    ]
+                },
+            ]
+        };
+        myChart.setOption(option);
+    }
+    function lineChart() {
+        let myChart= echarts.init(document.getElementById('lineChart'));
+        let option ={
+            tooltip: {
+                trigger: 'axis',
+            },
+            grid:{
+                top:'15%',
+                left:'10%',
+                bottom:'15%',
+                right:'10%',
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap:false,
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    interval: 0,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 16,
+                        baseline: 'top',
+                    }
+                },
+                axisLine: {
+                    lineStyle:{
+                        color:'#81848b',
+                        width:2
+                    }
+                },
+                data: ['一月','二月','三月','四月','五月','六月',]
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    show: true,
+                    showMinLabel:false,
+                    textStyle: {
+                        color:'rgba(255,255,255,1)',
+                        fontSize: 18,
+                    }
+                },
+                splitLine: {
+                    show: false,
+                },
+            },
+            series: [{
+                name:'',
+                type: 'line',
+                symbolSize:'9',
+                showSymbol:false,
+                itemStyle:{},
+                lineStyle:{
+                    normal:{
+                        color:new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [
+                                {offset: 0, color: 'rgba(255, 67, 2, 1)'},
+                                {offset: 1, color: 'rgba(255, 196, 53, 1)'}
+                            ]
+                        ),
+                        width:2,
+                    }
+                },
+                data: ['75','65','70','60','80','70',],
+                markLine:{
+                    symbol:'rect',
+                    symbolSize:[10,30],
+                    label: {
+                        show:false
+                    },
+                    lineStyle: {
+                        type: 'dashed',
+                        color: 'rgba(255,255,255,0.3)',
+                        width: 2,
+                    },
+                    data: [
+                        {
+                            x: 80,
+                            yAxis: 50,
+                            symbol: 'none',
+                            itemStyle: {
+                                normal: {
+                                }
+                            }
+                        },
+                        // {
+                        //     x: 640,
+                        //     yAxis: 50,
+                        //     symbol: 'circle',
+                        // },
+                    ],
+
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(255, 67, 2,0.3)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(255, 67, 2, 0)'
+                        }])
+                    }
+                },
+
+            },]
+        };
+        myChart.clear();
+        myChart.setOption(option);
+
+    }
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+
+    function comeIn() {
+        $('.top').addClass('in');
+        $('.center').addClass('in');
+        $('.bottom').addClass('in');
+    }
+
+    function goOut() {
+        $('.top').removeClass('in');
+        $('.center').removeClass('in');
+        $('.bottom').removeClass('in');
+    }
+</script>
+</body>
+</html>

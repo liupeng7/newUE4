@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>重点街区-弹窗</title>
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <style>
+        html{width: 1000px;height: 540px;overflow: hidden;}
+        .title_street{margin-left:25px}
+        .title_area{display: flex;flex-direction: column;margin-left:20px;}
+        .title_street .name{font-size:32px;font-weight:bold;}
+        .title_street .location{font-size:24px;    margin-top: 14px;}
+        .title_area .title_area{display: flex}
+        .title_area .area{display: flex;align-items: center;font-size:20px;}
+        .title_area .number{font-size:40px;font-weight: bold;margin-left: 12px;}
+        .title_area .number span{font-size: 24px;font-weight: normal}
+        .border{width: 12px;height: 12px;background: rgba(0, 241, 255, 1);margin-right:5px;}
+        .center_right{margin-left:80px}
+        .info_list{display: flex;flex-direction: column;font-weight:bold;}
+        .info_list_item{display: flex;align-items: center;font-size: 24px;}
+        .info_list_item b{font-size: 34px;line-height: 34px}
+        .info_list_item span{font-size: 20px}
+        .center{display: flex;margin:40px 0}
+        .border_big div{;font-size:30px;font-weight:bold;height: 100%}
+        .border_big div span{font-weight:normal;font-size:24px;background: none}
+        .border_small div{background: none;font-size:20px;}
+        .bar_list{}
+        .bar_item{position:relative;display: flex;align-items: center;margin-bottom: 12px}
+        .bar_name{width: 110px;font-size: 20px;}
+        .bar_bg{width:264px;height:10px;background:rgba(255,255,255,0.15);border-radius:2px;margin-right:16px}
+        .bar_active{position: absolute;left:110px;}
+        .bar_green{background: rgba(0, 226, 79, 1);border-radius:2px;width:84px;height: 10px}
+        .bar_blue{background:rgba(149, 172, 179, 1);border-radius:2px;width:54px;height: 10px}
+        .main{display: flex;margin-top:40px;font-size:20px;line-height:30px;}
+        .main img{margin-right: 20px;    border-radius: 50%;}
+        .main_pho{line-height: 20px;margin-top:12px;}
+        .main_border{padding-right:10px;margin-right: 10px;border-right: 1px solid}
+        #ringChart{width: 100px;height: 100px}
+        .bottom{display: flex;position: relative }
+        .bottom_left,.bottom_right{padding-top: 40px;border-top:2px solid #2a3646}
+        .bottom_right{margin-left:80px;}
+        .bottom_right_title{font-size: 26px;font-weight: bold}
+    </style>
+</head>
+<script src="../../plugin/echarts.min.js"></script>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<body oncontextmenu=self.event.returnValue=false >
+<div class="index ">
+    <div class="top flex" >
+            <div class="top_title flex" >
+                <img src="../../image/index/icon_street_1.png" width="90px" height="100px">
+                <div class="title_street">
+                    <div class="name">王府井百货</div>
+                    <div class="location">地址：科华立交</div>
+                </div>
+            </div>
+        </div>
+    <div class="center">
+            <div class="center_left flex_cen">
+                <div id="ringChart"></div>
+                <div class="title_area">
+                    <div class="area"><div class="border"></div>核心面积</div>
+                    <div class="number">0.92<span>万㎡</span></div>
+                </div>
+                <div class="title_area">
+                    <div class="area"><div class="border"></div>总面积</div>
+                    <div class="number">3.6<span>万㎡</span></div>
+                </div>
+            </div>
+            <div class="center_right info">
+                <div class="info_list">
+                    <div class="info_list_item" style="margin-bottom: 27px;">
+                        <img src="../../image/index/icon_street_2.png" width="36px" height="32px">
+                        <p>商户：<b style="color: ">3274</b><span> 家</span></p>
+                    </div>
+                    <div class="info_list_item">
+                        <img src="../../image/index/icon_street_3.png" width="36px" height="32px">
+                        <p>日均人流量：<b>33</b><span> 万人次</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="bottom">
+            <div class="bottom_left">
+                <div class="bar">
+                    <div class="bar_list">
+                        <div class="bar_item">
+                            <div class="bar_name">执法队员</div><div class="bar_bg"></div><div class="bar_active bar_green"></div> <p>5人</p>
+                        </div>
+                        <div class="bar_item">
+                            <div class="bar_name">环卫人员</div><div class="bar_bg"></div><div class="bar_active bar_blue" ></div><p>4人</p>
+                        </div>
+                        <div class="bar_item">
+                            <div class="bar_name">网格巡查员</div><div class="bar_bg"></div><div class="bar_active bar_blue"></div><p>2人</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main">
+                    <img src="../../image/index/head_pic.jpg" width="63px" height="63px">
+                    <div class="main_info">
+                        <div class="main_peo">值班负责人：<b>王全明</b></div>
+                        <div class="flex_bet main_pho"><p class="main_border">3大队队长</p><p>182003212 </p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_right">
+                <div class="bottom_right_title">今日人流量统计图</div>
+                <div id="line_chart" style="width: 420px;height: 180px;"></div>
+            </div>
+        </div>
+</div>
+</body>
+</html>
+<script>
+
+    window.onload=function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                ringChart();
+                lineChart();
+                if(window.innerWidth<900){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<900){
+            ringChart();
+            lineChart();
+            narrow();
+        }else if(window.innerWidth>900){
+            ringChart();
+            lineChart();
+        }
+    };
+
+
+
+    function ringChart() {
+        let myChart= echarts.init(document.getElementById('ringChart'));
+        let option={
+            tooltip: {
+                show:false
+            },
+            legend: {
+                show:false
+            },
+            series: [
+                {
+                    name:'',
+                    type:'pie',
+                    roseType:'radius',
+                    hoverAnimation:false,
+                    radius: ['50%', '70%'],
+                    color:['rgba(181, 181, 181, 1)','rgba(0, 241, 255, 1)'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: false,
+                            textStyle: {
+                                fontSize: '12',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:[
+                        {value:70, name:'直接访问'},
+                        {value:30, name:'邮件营销'},
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+    function lineChart() {
+        let myChart = echarts.init(document.getElementById('line_chart'));
+        let option = {
+            legend:{
+                show:false,
+            },
+            tooltip: {
+                trigger:'axis',
+            },
+            grid: {
+                left:0 ,
+                right:0 ,
+                top:'10%',
+                bottom: 0,
+                containLabel: true
+            },
+            color:['#FFC36A'],
+            xAxis: {
+                type: 'category',
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    interval:function (index,value) {
+                        if(index%2 !=0){
+                            return value
+                        }
+                    },
+                    textStyle: {
+                        color: 'rgba(255,255,255,0.75)',
+                        fontSize: 20,
+                        inside: true,
+                    }
+                },
+                axisLine: {
+                    show:true,
+                    lineStyle:{
+                        color:'#88949E',
+                        width:3,
+                    },
+                },
+                boundaryGap:false,
+                data: ['0点','02点','04点','06点','08点','10点','12点','14点','16点','18点','20点']
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    show: false,
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle:{
+                        color:'rgba(255,255,255,0.15)',
+                        type:'dashed'
+                    }
+                },
+            },
+            series: [
+                {
+                    name:'今日人流数',
+                    type: 'line',
+                    showSymbol:false,
+                    itemStyle:{
+                        color:'#ffffff',
+                        borderColor:'#E25000FF',
+                        borderWidth:3,
+                        borderType:'solid'
+                    },
+                    smooth:false,
+                    z: 3,
+                    lineStyle:{
+                        normal:{
+                            width:4,
+                            color:'#FFBB39',
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgba(255, 195, 106, 0.3)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(255, 195, 106, 0.1)'
+                            }])
+                        }
+                    },
+                    markPoint:{
+                        name:'',
+                        data:[{
+                            type:'max',
+                            symbol:'circle',
+                            symbolSize:'15',
+                        }],
+
+                    },
+                    data: [18,16,12,14,19,15,9,6,8,12,14],
+                },
+            ]
+        };
+        myChart.setOption(option)
+    }
+    function narrow(){
+        let width = $('html').width()*0.25;
+        let height = $('html').height()*0.25;
+        $('html').css({
+            position: 'absolute',
+            transform:'scale(0.5)',
+            left:-width,
+            top:-height
+        });
+    }
+</script>
