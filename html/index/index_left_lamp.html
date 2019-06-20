@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>路灯</title>
+    <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <style>
+        html{width: 660px;height: 900px;background: #000}
+        body{height: 100%}
+        .title{font-size: 36px;font-weight: bold;width:100%;height:80px;background:-webkit-linear-gradient(left,rgba(169,220,255,0.15),rgba(169,220,255,0));
+            position: relative; border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
+        .cont{height:215px;display: flex;align-items: center;padding-left:36px;}
+        .ringChart{width: 200px;height: 200px;}
+        .cont_list{margin:0 60px 0 20px;width: 150px}
+        .cont_list_item{display: flex;align-items: center;}
+        .cont_list_block{width:8px;height:8px;background:rgba(191,251,255,1);margin-right: 8px;}
+        .cont_list_name{font-size:16px;color:rgba(255,255,255,0.75);margin-right: 23px;}
+        .cont__list_num{font-size:20px;}
+
+        .cont_info_name{font-size:24px;font-weight:bold;}
+        .cont_info_num{font-size:70px;color:rgba(215,59,23,1);}
+        .cont_info_num span{font-size:18px;background:rgba(255,255,255,0.4);border-radius:50%;color: #000}
+        .index_img{height: 10px;width: 90%;background: url("../../image/index/white_line.png");background-size:100%;margin:0 5%; }
+
+        .waning{width:660px;padding:33px 30px 0;}
+        .waning_title{font-size:28px;font-weight:bold;}
+
+        .waning_list{height: 410px;overflow-y: auto;padding-right: 20px;}
+        .waning_list::-webkit-scrollbar{width: 9px;height: 240px;position: absolute;}
+        .waning_list::-webkit-scrollbar-track {background:rgba(255,255,255,0.2);}
+        .waning_list::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.4);}
+
+        .waning_item{display: flex;align-items: center;justify-content: space-between;margin-top:30px;cursor: pointer}
+        .waning_name{font-size:24px;font-weight: bold;display: flex;align-items: center}
+        .waning_sta{margin-left:10px;width:70px;height:32px;background:rgba(255,74,18,0.2);border:2px solid rgba(255, 74, 18, 1);
+            border-radius:4px;font-size: 18px;font-weight: normal;text-align: center;}
+        .waning_sta.yellow{background:rgba(255,144,0,0.2);border:2px solid rgba(255, 200, 32, 1);}
+        .waning_location{font-size:18px;color:rgba(255,255,255,0.75);margin-top: 14px;}
+        .waning_blocks{display: flex}
+        .waning_block{width:9px;height:14px;border-radius:2px;margin-right: 3px;background:rgba(255,255,255,0.2);}
+        .waning_block.red{background:rgba(215,59,23,1);}
+        .waning_block.yellow{background:rgba(255, 171, 71, 1)}
+        .waning_time{margin-top: 16px;color:rgba(255,255,255,0.5);font-size: 20px}
+        /*动画*/
+        /*.index{border:3px solid rgba(255, 97, 18, 0.75);border-radius:4px; width: 100%;height: 100%;transition: all 0.5s;transform: translate(-660px,0);opacity: 0}*/
+        /*.index.in{transform: translate(0,0);opacity: 1}*/
+        /*.top{transition: all 0.5s;transform: translate(-660px,0);opacity: 0}*/
+        /*.top.in{transform: translate(0,0);opacity: 1}*/
+        /*.center{transition: all 0.5s 0.1s;transform: translate(-660px,0);opacity: 0}*/
+        /*.center.in{transform: translate(0,0);opacity: 1}*/
+        /*.bottom{transition: all 0.5s 0.2s;transform: translate(-660px,0);opacity: 0}*/
+        /*.bottom.in{transform: translate(0,0);opacity: 1}*/
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false >
+<script src="../../plugin/echarts.min.js"></script>
+<script src="../../plugin/echarts-liquidfill.min.js"></script>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<div class="index">
+    <div class="top">
+        <div class="title flex_cen"><img>路灯报警概况</div>
+    </div>
+    <div class="center">
+        <div class="cont">
+            <div class="ringChart"></div>
+            <div class="cont_list ">
+                <div class="cont_list_item">
+                    <div class="cont_list_block"></div>
+                    <div class="cont_list_name">路灯正常</div>
+                    <div class="cont__list_num ">85%</div>
+                </div>
+                <div class="cont_list_item">
+                    <div class="cont_list_block"></div>
+                    <div class="cont_list_name">路线老化</div>
+                    <div class="cont__list_num ">5%</div>
+                </div>
+                <div class="cont_list_item">
+                    <div class="cont_list_block"></div>
+                    <div class="cont_list_name">灯泡故障</div>
+                    <div class="cont__list_num ">4%</div>
+                </div>
+                <div class="cont_list_item">
+                    <div class="cont_list_block"></div>
+                    <div class="cont_list_name">灯罩损坏</div>
+                    <div class="cont__list_num ">3%</div>
+                </div>
+                <div class="cont_list_item">
+                    <div class="cont_list_block"></div>
+                    <div class="cont_list_name">灯罩损坏</div>
+                    <div class="cont__list_num ">2%</div>
+                </div>
+                <div class="cont_list_item">
+                    <div class="cont_list_block"></div>
+                    <div class="cont_list_name">灯杆倾斜</div>
+                    <div class="cont__list_num ">1%</div>
+                </div>
+                <div class="cont_list_item">
+                    <div class="cont_list_block"></div>
+                    <div class="cont_list_name">灯泡损坏</div>
+                    <div class="cont__list_num ">1%</div>
+                </div>
+            </div>
+            <div class="cont_info">
+                <img src=""  width="64" height="64">
+                <div class="cont_info_name">问题路灯</div>
+                <div class="cont_info_num">3<span>个</span></div>
+            </div>
+        </div>
+        <div class="index_img"></div>
+    </div>
+    <div class="bottom">
+        <div class="waning">
+            <div class="waning_title">报警列表详情</div>
+            <div class="waning_list">
+                <div class="waning_item" >
+                    <div class="waning_left">
+                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                        <div class="waning_location">地址：西环东42号路</div>
+                    </div>
+                    <div class="waning_right">
+                        <div class="waning_blocks">
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                        </div>
+                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                    </div>
+                </div>
+                <div class="waning_item" >
+                    <div class="waning_left">
+                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta yellow">处置中</div></div>
+                        <div class="waning_location">地址：西环东42号路</div>
+                    </div>
+                    <div class="waning_right">
+                        <div class="waning_blocks">
+                            <div class="waning_block yellow"></div>
+                            <div class="waning_block yellow"></div>
+                            <div class="waning_block yellow"></div>
+                            <div class="waning_block yellow"></div>
+                            <div class="waning_block yellow"></div>
+                            <div class="waning_block yellow"></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                        </div>
+                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                    </div>
+                </div>
+                <div class="waning_item" >
+                    <div class="waning_left">
+                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                        <div class="waning_location">地址：西环东42号路</div>
+                    </div>
+                    <div class="waning_right">
+                        <div class="waning_blocks">
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                        </div>
+                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                    </div>
+                </div>
+                <div class="waning_item" >
+                    <div class="waning_left">
+                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                        <div class="waning_location">地址：西环东42号路</div>
+                    </div>
+                    <div class="waning_right">
+                        <div class="waning_blocks">
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                        </div>
+                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                    </div>
+                </div>
+                <div class="waning_item" >
+                    <div class="waning_left">
+                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                        <div class="waning_location">地址：西环东42号路</div>
+                    </div>
+                    <div class="waning_right">
+                        <div class="waning_blocks">
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                        </div>
+                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                    </div>
+                </div>
+                <div class="waning_item" >
+                    <div class="waning_left">
+                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                        <div class="waning_location">地址：西环东42号路</div>
+                    </div>
+                    <div class="waning_right">
+                        <div class="waning_blocks">
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                        </div>
+                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                    </div>
+                </div>
+                <div class="waning_item" >
+                    <div class="waning_left">
+                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                        <div class="waning_location">地址：西环东42号路</div>
+                    </div>
+                    <div class="waning_right">
+                        <div class="waning_blocks">
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                        </div>
+                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../common/js/common.js"></script>
+<script>
+
+    window.onload=function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<600){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<600){
+            narrow();
+        }else if(window.innerWidth>600){
+        }
+    };
+
+
+
+
+    function comeIn() {
+        $('.index').addClass('in');
+        $('.top').addClass('in');
+        $('.center').addClass('in');
+        $('.bottom').addClass('in');
+    }
+    function goOut() {
+        $('.index').removeClass('in');
+        $('.top').removeClass('in');
+        $('.center').removeClass('in');
+        $('.bottom').removeClass('in');
+    }
+</script>

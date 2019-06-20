@@ -118,12 +118,15 @@
         if(window.innerWidth == 0){
             window.onresize = function () {
                 if(window.innerWidth<1800){
-                    narrow()
+                    narrow();
+                    lineChart()
                 }
             };
         }else if(window.innerWidth<1800){
             narrow();
+            lineChart()
         }else if(window.innerWidth>1800){
+            lineChart()
         }
     };
 
@@ -136,121 +139,31 @@
         console.log(width);
         for(let i =0;i<data.length;i++){
             html +=`<div class="barChart_item">
-<div class="barChart_item_name">${data[i].name}</div>
-<div class="barChart_item_bar">
-    <div class="barChart_item_ac" style=""></div>
-    <div class="barChart_item_bg" style=""></div>
-</div>
-<div class="barChart_item_num">${data[i].value}</div>
-</div>`
+        <div class="barChart_item_name">${data[i].name}</div>
+        <div class="barChart_item_bar">
+            <div class="barChart_item_ac" style=""></div>
+            <div class="barChart_item_bg" style=""></div>
+        </div>
+        <div class="barChart_item_num">${data[i].value}</div>
+    </div>`
         }
     }
-    
-    lineChart();
-    function lineChart() {
-        let myChart = echarts.init(document.getElementById('lineChart'));
-        let option = {
-            legend:{
-                show:false,
-            },
-            tooltip: {
-                trigger:'axis',
-            },
-            grid: {
-                left:'12%' ,
-                right:'10%' ,
-                top:'20%',
-                bottom: '20%',
-            },
-            color:['#FFC36A'],
-            xAxis: {
-                type: 'category',
-                axisTick: {
-                    show: false
-                },
-                axisLabel: {
-                    show: true,
-                    textStyle: {
-                        color: 'rgba(255,255,255,0.75)',
-                        fontSize: 18,
-                        inside: true,
-                    }
-                },
-                axisLine: {
-                    show:true,
-                    lineStyle:{
-                        color:'#88949E',
-                        width:3,
-                    },
-                },
-                boundaryGap:false,
-                data: ['1月','2月','3月','4月','5月','6月']
-            },
-            yAxis: {
-                min:20,
-                max:0,
-                type: 'value',
-                axisTick: {
-                    show: false
-                },
-                axisLine: {
-                    show: false,
-                },
-                axisLabel: {
-                    show: true,
-                    color:'rgba(255,255,255,0.5)',
-                    margin:16,
-                    fontSize:20,
-                },
-                splitLine: {
-                    show: false,
-                    lineStyle:{
-                        color:'rgba(255,255,255,0.15)',
-                        type:'dashed'
-                    }
-                },
-            },
-            series: [
-                {
-                    name:'今日人流数',
-                    type: 'line',
-                    showSymbol:false,
-                    smooth:true,
-                    z: 3,
-                    lineStyle:{
-                        normal:{
-                            width:4,
-                            color:'#2D94D8',
-                        }
-                    },
-                    areaStyle: {
-                        normal: {
-                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                offset: 0,
-                                color: 'rgba(190,148,255,0.5)'
-                            }, {
-                                offset: 1,
-                                color: 'rgba(140,65,255,0)'
-                            }])
-                        }
-                    },
-                    animationEasing: 'linear',
-                    animationDelay: function (idx) {
-                        return idx * 400;
-                    },
-                    data: [12,9,10,15,13,11],
-                },
-            ]
-        };
-        myChart.setOption(option)
+
+    function lineChart(){
+        Xchart.LineChart({
+            conId:"lineChart",
+            gridBottom:'12%',
+            isArea:true,
+            lineWidth:2,
+            lineColor:'#2D94D8',
+            areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
+                [{offset: 0, color: 'rgba(64,216,84,1)'},
+                    {offset: 1, color: 'rgba(79,242,240,0.3)'}]),
+            showSymbol:false,
+            dataArray:[{name:'1月',value:12},{name:'2月',value:10},{name:'3月',value:12},
+                {name:'4月',value:5},{name:'5月',value:8},{name:'6月',value:15}]
+        })
     }
-    // Xchart.LineChart({
-    //     conId:"lineChart",
-    //     isArea:true,
-    //     lineWidth:2,
-    //     lineColor:'#2D94D8',
-    //     dataArray:[{name:'1月',value:12},{name:'2月',value:10},{name:'3月',value:12},
-    //         {name:'4月',value:5},{name:'5月',value:8},{name:'6月',value:15}]
-    // })
+
 
 </script>
