@@ -1,4 +1,9 @@
 @charset "UTF-8";
+
+@font-face{
+    font-family:ABITARE ;
+    src:url("../../css/ABITARE SANS 500 WT.OTF");
+}
 *{padding:0;margin: 0;box-sizing: border-box;font-family:MicrosoftYaHei-Bold;color: #fff;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
 html{overflow: hidden}
 li{list-style:none;}
@@ -33,6 +38,7 @@ h2{font-size:84px;font-weight:bold;color:rgba(227,237,248,1);text-shadow:4px 9px
 .yellow_bg_border{background:rgba(255,144,0,0.15);border:2px solid rgba(255, 200, 32, 1);}
 .red_bg_border{background:rgba(255,74,18,0.15);border:2px solid rgba(255, 74, 18, 1)}
 
+.font_number{font-family: ABITARE}
 svg circle {
     transform: rotate(-90deg);
     transform-origin: 50% 50%;

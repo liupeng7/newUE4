@@ -16,6 +16,19 @@ function runAnimate(percent,dom){
     $circleAnimate[0].beginElement();
 }
 
+function runAnimations(percent,dom,circle,rect){
+    let $circleAnimate = dom.find(circle);
+    let $tailAnimate = dom.find(rect);
+    let per = percent/100;
+    let durTime = 3 * per;
+    console.log(durTime)
+
+    $circleAnimate[0].setAttribute('repeatDur', durTime + 's');
+    $tailAnimate[0].setAttribute('repeatDur', durTime + 's');
+    $circleAnimate[0].beginElement();
+    $tailAnimate[0].beginElement();
+}
+
 function numRunFun(num,maxNum,dom,speed){
     var numText = num;
     var golb; // 为了清除requestAnimationFrame

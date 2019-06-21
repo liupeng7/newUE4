@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
     <link rel="stylesheet" href="../../common/css/index.css">
     <style>
-        html{width: 660px;height: 900px;background: #000}
+        html{width: 660px;height: 900px;}
         body{height: 100%}
         .title{font-size: 36px;font-weight: bold;width:100%;height:80px;background:-webkit-linear-gradient(left,rgba(169,220,255,0.15),rgba(169,220,255,0));
             position: relative; border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
-        .cont{height:215px;display: flex;align-items: center;padding-left:36px;}
-        .ringChart{width: 200px;height: 200px;}
+        .center{margin-top: 32px}
+        .cont{height:215px;display: flex;align-items: center;padding-left:36px;padding-bottom: 27px;}
+        .donuts{width: 200px;height: 200px;}
         .cont_list{margin:0 60px 0 20px;width: 150px}
         .cont_list_item{display: flex;align-items: center;}
         .cont_list_block{width:8px;height:8px;background:rgba(191,251,255,1);margin-right: 8px;}
@@ -19,8 +20,9 @@
         .cont__list_num{font-size:20px;}
 
         .cont_info_name{font-size:24px;font-weight:bold;}
-        .cont_info_num{font-size:70px;color:rgba(215,59,23,1);}
-        .cont_info_num span{font-size:18px;background:rgba(255,255,255,0.4);border-radius:50%;color: #000}
+        .cont_info_num{font-size:70px;color:rgba(215,59,23,1);display:flex;align-items: flex-end;line-height: 56px;margin-top: 10px;}
+        .cont_info_num div{font-size:18px;background:rgba(255,255,255,0.4);border-radius:50%;color: #000;width: 26px;height: 26px;
+        line-height: 26px;text-align: center}
         .index_img{height: 10px;width: 90%;background: url("../../image/index/white_line.png");background-size:100%;margin:0 5%; }
 
         .waning{width:660px;padding:33px 30px 0;}
@@ -63,7 +65,51 @@
     </div>
     <div class="center">
         <div class="cont">
-            <div class="ringChart"></div>
+            <div class="donuts" id="donut">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 360 360">
+                    <path id="circlePath" d="M 180 10 a 170 170 0 0 1 0 340 a 170 170 0 0 1 0 -340 Z" fill="none" stroke="rgba(191, 251, 255, 1)" stroke-width="12" stroke-linecap="round" stroke-dasharray="1068.141484">
+                        <animate id="circleAnimate" attributeName="stroke-dashoffset" from="1068.141484" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                    <path id="circlePath2" d="M 180 30 a 150 150 0 0 1 0 300 a 150 150 0 0 1 0 -300 Z" fill="none" stroke="rgba(255, 126, 32, 1)" stroke-width="12" stroke-linecap="round" stroke-dasharray="942.4578">
+                        <animate id="circleAnimate2" attributeName="stroke-dashoffset" from="942.4578" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                    <path id="circlePath3" d="M 180 50 a 130 130 0 0 1 0 260 a 130 130 0 0 1 0 -260 Z" fill="none" stroke="rgba(237, 71, 20, 1)" stroke-width="12" stroke-linecap="round" stroke-dasharray="816.8140">
+                        <animate id="circleAnimate3" attributeName="stroke-dashoffset" from="816.8140" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                    <path id="circlePath4" d="M 180 70 a 110 110 0 0 1 0 220 a 110 110 0 0 1 0 -220 Z" fill="none" stroke="rgba(189, 152, 119, 1)" stroke-width="12" stroke-linecap="round" stroke-dasharray="691.150372">
+                        <animate id="circleAnimate4" attributeName="stroke-dashoffset" from="691.150372" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                    <path id="circlePath5" d="M 180 90 a 90 90 0 0 1 0 180 a 90 90 0 0 1 0 -180 Z" fill="none" stroke="rgba(189, 152, 119, 1)" stroke-width="12" stroke-linecap="round" stroke-dasharray="565.48668">
+                        <animate id="circleAnimate5" attributeName="stroke-dashoffset" from="565.48668" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                    <g>
+                        <rect x="-15" y="-15" width="30" height="30" fill="url(#tail_1)">
+                            <animateMotion id="tailAnimate"  path="M 180 10 a 170 170 0 0 1 0 340 a 170 170 0 0 1 0 -340 Z" dur="3s" repeatDur="" fill="freeze" rotate="auto" begin="indefinite" restart="whenNotActive"></animateMotion>
+                        </rect>
+                        <rect x="-15" y="-15" width="30" height="30" fill="url(#tail_1)">
+                            <animateMotion id="tailAnimate2"  path="M 180 30 a 150 150 0 0 1 0 300 a 150 150 0 0 1 0 -300 Z" dur="3s" repeatDur="" fill="freeze" rotate="auto" begin="indefinite" restart="whenNotActive"></animateMotion>
+                        </rect>
+                        <rect x="-15" y="-15" width="30" height="30" fill="url(#tail_1)">
+                            <animateMotion id="tailAnimate3"  path="M 180 50 a 130 130 0 0 1 0 260 a 130 130 0 0 1 0 -260 Z" dur="3s" repeatDur="" fill="freeze" rotate="auto" begin="indefinite" restart="whenNotActive"></animateMotion>
+                        </rect>
+                        <rect x="-15" y="-15" width="30" height="30" fill="url(#tail_1)">
+                            <animateMotion id="tailAnimate4"  path="M 180 70 a 110 110 0 0 1 0 220 a 110 110 0 0 1 0 -220 Z" dur="3s" repeatDur="" fill="freeze" rotate="auto" begin="indefinite" restart="whenNotActive"></animateMotion>
+                        </rect>
+                        <rect x="-15" y="-15" width="30" height="30" fill="url(#tail_1)">
+                            <animateMotion id="tailAnimate5"  path="M 180 90 a 90 90 0 0 1 0 180 a 90 90 0 0 1 0 -180 Z" dur="3s" repeatDur="" fill="freeze" rotate="auto" begin="indefinite" restart="whenNotActive"></animateMotion>
+                        </rect>
+                    </g>
+
+                    <defs>
+                        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="60%" id="tail_1">
+                            <stop stop-opacity="1" stop-color="#fff" offset="30%"/>
+                            <stop stop-opacity="0.5" stop-color="#fff" offset="40%"/>
+                            <stop stop-opacity="0" stop-color="#fff" offset="80%"/>
+                        </radialGradient>
+
+                    </defs>
+                </svg>
+            </div>
             <div class="cont_list ">
                 <div class="cont_list_item">
                     <div class="cont_list_block"></div>
@@ -87,13 +133,8 @@
                 </div>
                 <div class="cont_list_item">
                     <div class="cont_list_block"></div>
-                    <div class="cont_list_name">灯罩损坏</div>
-                    <div class="cont__list_num ">2%</div>
-                </div>
-                <div class="cont_list_item">
-                    <div class="cont_list_block"></div>
                     <div class="cont_list_name">灯杆倾斜</div>
-                    <div class="cont__list_num ">1%</div>
+                    <div class="cont__list_num ">2%</div>
                 </div>
                 <div class="cont_list_item">
                     <div class="cont_list_block"></div>
@@ -104,7 +145,7 @@
             <div class="cont_info">
                 <img src=""  width="64" height="64">
                 <div class="cont_info_name">问题路灯</div>
-                <div class="cont_info_num">3<span>个</span></div>
+                <div class="cont_info_num font_number">3<div>个</div></div>
             </div>
         </div>
         <div class="index_img"></div>
@@ -135,12 +176,12 @@
                             <div class="waning_block "></div>
                             <div class="waning_block "></div>
                         </div>
-                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                        <div class="waning_time font_number">19-03-27 · 19:23:90</div>
                     </div>
                 </div>
                 <div class="waning_item" >
                     <div class="waning_left">
-                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta yellow">处置中</div></div>
+                        <div class="waning_name">中杆路灯 - <span class="font_yellow">线路老化</span> <div class="waning_sta yellow">处置中</div></div>
                         <div class="waning_location">地址：西环东42号路</div>
                     </div>
                     <div class="waning_right">
@@ -160,32 +201,7 @@
                             <div class="waning_block "></div>
                             <div class="waning_block "></div>
                         </div>
-                        <div class="waning_time">19-03-27 · 19:23:90</div>
-                    </div>
-                </div>
-                <div class="waning_item" >
-                    <div class="waning_left">
-                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
-                        <div class="waning_location">地址：西环东42号路</div>
-                    </div>
-                    <div class="waning_right">
-                        <div class="waning_blocks">
-                            <div class="waning_block red"></div>
-                            <div class="waning_block red"></div>
-                            <div class="waning_block red"></div>
-                            <div class="waning_block red"></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                            <div class="waning_block "></div>
-                        </div>
-                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                        <div class="waning_time font_number">19-03-27 · 19:23:90</div>
                     </div>
                 </div>
                 <div class="waning_item" >
@@ -210,7 +226,7 @@
                             <div class="waning_block "></div>
                             <div class="waning_block "></div>
                         </div>
-                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                        <div class="waning_time font_number">19-03-27 · 19:23:90</div>
                     </div>
                 </div>
                 <div class="waning_item" >
@@ -235,7 +251,7 @@
                             <div class="waning_block "></div>
                             <div class="waning_block "></div>
                         </div>
-                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                        <div class="waning_time font_number">19-03-27 · 19:23:90</div>
                     </div>
                 </div>
                 <div class="waning_item" >
@@ -260,7 +276,7 @@
                             <div class="waning_block "></div>
                             <div class="waning_block "></div>
                         </div>
-                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                        <div class="waning_time font_number">19-03-27 · 19:23:90</div>
                     </div>
                 </div>
                 <div class="waning_item" >
@@ -285,7 +301,32 @@
                             <div class="waning_block "></div>
                             <div class="waning_block "></div>
                         </div>
-                        <div class="waning_time">19-03-27 · 19:23:90</div>
+                        <div class="waning_time font_number">19-03-27 · 19:23:90</div>
+                    </div>
+                </div>
+                <div class="waning_item" >
+                    <div class="waning_left">
+                        <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                        <div class="waning_location">地址：西环东42号路</div>
+                    </div>
+                    <div class="waning_right">
+                        <div class="waning_blocks">
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block red"></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                            <div class="waning_block "></div>
+                        </div>
+                        <div class="waning_time font_number">19-03-27 · 19:23:90</div>
                     </div>
                 </div>
             </div>
@@ -296,6 +337,7 @@
 </body>
 </html>
 <script src="../../common/js/common.js"></script>
+<script src="../../common/js/svg.js"></script>
 <script>
 
     window.onload=function () {
@@ -312,7 +354,11 @@
     };
 
 
-
+    runAnimations(85,$('.donuts'),'#circleAnimate','#tailAnimate',);
+    runAnimations(15,$('.donuts'),'#circleAnimate2','#tailAnimate2',);
+    runAnimations(14,$('.donuts'),'#circleAnimate3','#tailAnimate3',);
+    runAnimations(13,$('.donuts'),'#circleAnimate4','#tailAnimate4',);
+    runAnimations(12,$('.donuts'),'#circleAnimate5','#tailAnimate5',);
 
     function comeIn() {
         $('.index').addClass('in');
