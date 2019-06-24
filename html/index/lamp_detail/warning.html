@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报警</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width: 400px;height: 500px;}
+
+        .index_title{height:118px;display: flex;align-items: center;justify-content: center;
+            font-size:40px;font-weight:bold;color:rgba(235,247,255,1);;background:rgba(0,0,0,0.3);
+            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;border-bottom:2px solid rgba(255,51,18,1);;}
+        .index_border{width:137px;height:49px;background:rgba(255,51,18,0.5);border:6px solid rgba(255, 51, 18, 1);
+        font-size: 22px;display: flex;align-items: center;justify-content: center;text-shadow:none;margin-left: 45px;}
+
+
+        .spot{width:9px;height:9px;background:rgba(236,236,236,1);}
+        .cont_center{padding:20px 0 0 15px;}
+        .cont_bottom{padding:20px 0 0 15px;}
+
+        .cont_info{font-size:22px;display: flex;align-items: center;line-height:50px}
+        .cont_info span{color:rgba(153,153,153,1);}
+        .cont_blocks{display: flex}
+        .cont_block.red{background:rgba(255,75,33,1);}
+        .cont_block{width:12px;height:31px;background:rgba(255,255,255,0.2);margin-right:4px;border-radius:2px;}
+
+        .cont_tip{margin-top: 40px;display: flex;justify-content: space-between}
+        .cont_tip_item{display: flex;align-items: center}
+        .cont_tip_block{width:8px;height:64px;background:rgba(255,255,255,0.2);border-radius:1px;margin-right: 15px;}
+        .cont_tip_nam{font-size:22px;color:rgba(255,255,255,0.5);}
+        .cont_tip_value{font-size:34px;}
+        .cont_tip_value span{font-size: 22px;}
+
+
+        /*.index{transition: all  0.5s;transform: scale(0)}*/
+        /*.index.in{transition: all  0.5s;transform: scale(1)}*/
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false>
+<div class="index">
+    <div class="index_title">灯泡损坏<div class="index_border"><div class="spot"></div> 紧急报警</div> </div>
+    <div class="index_cont">
+        <div class="cont_center">
+            <div class="cont_info"><span>报警设备 ：</span>光线传感器</div>
+            <div class="cont_info"><span>报警时间 ：</span>2019/06/11  23:30:50 </div>
+            <div class="cont_info"><span>处置时限 ：</span>7个工作日</div>
+            <div class="cont_info"><span>当前状态 ：</span>待处置</div>
+        </div>
+        <div class="cont_bottom">
+            <div class="cont_blocks">
+                <div class="cont_block red"></div>
+                <div class="cont_block red"></div>
+                <div class="cont_block red"></div>
+                <div class="cont_block red"></div>
+                <div class="cont_block red"></div>
+                <div class="cont_block red"></div>
+                <div class="cont_block red"></div>
+                <div class="cont_block red"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+                <div class="cont_block"></div>
+            </div>
+            <div class="cont_tip">
+                <div class="cont_tip_item">
+                    <div class="cont_tip_block"></div>
+                    <div>
+                        <div class="cont_tip_nam">已用时</div>
+                        <div class="cont_tip_value font_number">4 <span>天 </span>12 <span>小时</span></div>
+                    </div>
+
+                </div>
+                <div class="cont_tip_item">
+                    <div class="cont_tip_block"></div>
+                    <div>
+                        <div class="cont_tip_nam">已用时</div>
+                        <div class="cont_tip_value font_number">4 <span>天 </span>12 <span>小时</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script>
+
+    window.onload = function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<400){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<400){
+            narrow();
+        }else if(window.innerWidth>400){
+        }
+    }
+
+
+</script>

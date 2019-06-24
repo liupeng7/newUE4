@@ -20,6 +20,9 @@
 
         .cont_center{border-bottom:1px dashed rgba(146,195,255,1);height: 200px;padding:20px 0 0 15px;}
         .cont_bottom{padding:20px 0 0 15px;}
+
+
+
     </style>
 </head>
 <body oncontextmenu=self.event.returnValue=false>
@@ -43,19 +46,24 @@
 </div>
 </body>
 </html>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
 <script src="../../../common/js/common.js"></script>
 <script>
 
     window.onload = function () {
         if(window.innerWidth == 0){
             window.onresize = function () {
-                if(window.innerWidth<1800){
+                if(window.innerWidth<500){
                     narrow()
                 }
             };
-        }else if(window.innerWidth<1800){
+        }else if(window.innerWidth<500){
             narrow();
-        }else if(window.innerWidth>1800){
+        }else if(window.innerWidth>500){
         }
     }
+
+    // function comeIn() {
+    //     $('.index').addClass('in');
+    // }
 </script>
