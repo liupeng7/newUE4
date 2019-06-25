@@ -303,19 +303,34 @@
     function BarChart(options) {
         let defaultOption={
             conId:'', //内容id
-            zdyLable:{},
-            name:'', //横坐标名称
-            left:0, //左边距
+
+            text:'',
+
             fontSize:18,
+            fontWeight:'',
+            gridTop:'10%',
+            gridLeft:'10%', //左边距
+            gridRight:'10%',
+            gridBottom:'10%',
+
+            name:'', //横坐标名称
+            max:'',
+            nameGap:15,
+
+
+            axisLabelFontSize:14,
+            YaxisLabelShow:false,
+            showMinLabel:true,
+            YaxisLabelMargin:8,
+
+
             xArray:[], //X轴
             colorArray:BarColorArr, //颜色
-            isShowText:true,
-            isshowhover_perc:false,
+            itemStyleLabelShow:true,
+            itemStyleColor:'',
+
             axisLine:true, //Y轴
-            fontWeight:'',
             barWidth:'45%', //宽度
-            unit:'',   //单位
-            stack:'',   //叠加效果
             dataArray:[], //series数据
         };
 
@@ -324,28 +339,35 @@
 
 
         var option={
-            grid: {
-                left: options.left,
-                top:'15%',
-                right:'1%',
-                bottom:'5%',
-                containLabel: true
-            },
-            tooltip : {
-                formatter:function (params) {
-                    if(options.unit){
-                        return params.name + ': ' + params.data + options.unit;
-                    }
-                    //var unit = options.hover_unit ? options.hover_unit : '';
-                    if(options.isshowhover_perc == true){
-                        return '● ' + params.name + ': ' +  params.data + '%';
-                    }else{
-                        return '● ' + params.name + ': ' + params.data ;
-                    }
+            title:{
+                show:options.titleShow,
+                text:options.text,
+                textStyle:{
+                    fontSize:25,
+                    fontWeight:'bold',
+                    color:'#fff'
                 }
             },
+            grid: {
+                left: options.gridLeft,
+                top:options.gridTop,
+                right:options.gridRight,
+                bottom:options.gridBottom,
+            },
+            tooltip : {
+                // formatter:function (params) {
+                    // if(options.unit){
+                    //     return params.name + ': ' + params.data + options.unit;
+                    // }
+                    // //var unit = options.hover_unit ? options.hover_unit : '';
+                    // if(options.isshowhover_perc == true){
+                    //     return '● ' + params.name + ': ' +  params.data + '%';
+                    // }else{
+                    //     return '● ' + params.name + ': ' + params.data ;
+                    // }
+                // }
+            },
             xAxis: {
-
                 axisTick: {
                     show:false
                 },
@@ -361,41 +383,22 @@
                 },
                 axisLabel: {
                     show: true,
-                    interval: 0,
-                    margin:18,
                     textStyle: {
-                        color: "#fff",
-                        fontSize: options.fontSize,
+                        color: "rgba(255,255,255,0.5)",
+                        fontSize: options.axisLabelFontSize,
                         fontWeight:options.fontWeight,
                     },
-                    formatter:function (val) {
-                        var ParamsName = "";// 最终拼接成的字符串
-                        var paramsNameNumber = val.length;// 实际标签的个数
-
-                        if (paramsNameNumber > 5) {
-                            ParamsName = val.substring(0, 4) + '...';
-                        } else {
-                            // 将旧标签的值赋给新标签
-                            ParamsName = val;
-                        }
-
-                        //将最终的字符串返回
-                        return ParamsName
-                    }
                 },
+                boundaryGap:true,
                 data: options.xArray
             },
             yAxis: [
                 {
-                    name:options.name,
-                    nameLocation:'start',
-                    nameTextStyle:{
-                        color: "#fff",
-                        fontSize:20,
-                        fontWeight:'bold',
-                        padding: [5,0,0,70],
-                    },
                     type: 'value',
+                    name:options.name,
+                    max:options.max,
+                    nameGap:options.nameGap,
+                    splitNumber:5,
                     axisTick: {
                         show:false
                     },
@@ -410,8 +413,15 @@
                         show: false
                     },
                     axisLabel: {
-                        show: false
-                    }
+                        show: options.YaxisLabelShow,
+                        showMinLabel:options.showMinLabel,
+                        margin:options.YaxisLabelMargin,
+                        textStyle: {
+                            color:'rgba(255,255,255,0.5)',
+                            fontSize: options.fontSize,
+                            baseline: 'top'
+                        }
+                    },
 
                 }
             ],
@@ -422,33 +432,20 @@
                     itemStyle: {
                         normal:{
                             label:{
-                                show:options.isShowText,
+                                show:options.itemStyleLabelShow,
                                 position: 'top',
-                                padding:[0,0,5,0],
                                 textStyle:{
                                     color:'#fff',
                                     fontSize:options.fontSize,
-                                    fontWeight:'bold'
+                                    fontWeight:'normal'
                                 },
                                 formatter:function (params){
-                                    if(options.unit){
-                                        return params.value+options.unit
-                                    }else{
-                                        return params.value
-                                    }
+                                    return params.value
                                 },
                             },
                             barBorderRadius:[3, 3, 0, 0],
-                            color:function(params){
-                                if(options.colorArray.length==1){
-                                    return options.colorArray[0]
-                                }else{
-                                    return options.colorArray[params.dataIndex]
-                                }
-                            }
+                            color:options.itemStyleColor,
                         }
-
-
                     },
                     barWidth: options.barWidth,
                     data: options.dataArray
@@ -684,6 +681,7 @@
             conId:'', //内容id
             fontSize:18,
             titleShow:false,
+            text:'',
             colorArray:['#01dafe','#58e569','#f0a54a'],//颜色
 
             showLegend:false,
@@ -707,7 +705,9 @@
 
             showY:false,
             splitLine:false,
-            YaxisLabel:true,
+            YaxisLabelShow:true,
+            showMinLabel:true,
+            YaxisLabelMargin:8,
             markLine:true, //是否显示平均值线
             markLine_custom:{},//自定义标注线
             markPoint:false, //是否显示最大最小值点
@@ -716,12 +716,13 @@
             lineColor:'',     //折线颜色
             max:null,  //y轴最大刻度
             showSymbol:true, //拐点是否显示
+            symbolSize:4,
             areaStyleShow:true,
             areaStyleColor:[
                 {areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
-                        [{offset: 0, color: 'rgba(61, 212, 217, 0.6)'}, {offset: 1, color: 'rgba(61, 212, 217, 0.1)'}])},
+                        [{offset: 0, color: 'rgba(61, 212, 217, 0.3)'}, {offset: 1, color: 'rgba(61, 212, 217, 0.1)'}])},
                 {areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
-                        [{offset: 0, color: 'rgba(64,216,84,0.6)'}, {offset: 1, color: 'rgba(64,216,84,0.1)'}])},
+                        [{offset: 0, color: 'rgba(64,216,84,0.3)'}, {offset: 1, color: 'rgba(64,216,84,0.1)'}])},
                 ],
 
             txtColor:'#fff',
@@ -786,7 +787,7 @@
                 },
                 markPoint:markPoint,
                 markLine:markLine,
-                symbolSize: 15,
+                symbolSize: options.symbolSize,
                 data: options.dataArray[i].value,
             })
         }
@@ -794,14 +795,13 @@
             color:options.colorArray,
             title:{
                 show:options.titleShow,
-                text:'车位资源占用走势',
+                text:options.text,
                 textStyle:{
                     fontSize:25,
                     fontWeight:'bold',
                     color:'#fff'
                 }
-            }
-            ,
+            },
             legend:{
                 show:options.showLegend,
                 left:options.legendLeft,
@@ -864,8 +864,9 @@
                     }
                 },
                 axisLabel: {
-                    show: options.YaxisLabel,
-                    showMinLabel:false,
+                    show: options.YaxisLabelShow,
+                    showMinLabel:options.showMinLabel,
+                    margin:options.YaxisLabelMargin,
                     textStyle: {
                         color:options.txtColor,
                         fontSize: options.fontSize,
