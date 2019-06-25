@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
     <link rel="stylesheet" href="../../common/css/index.css">
     <style>
-        html{width: 660px;height: 900px;overflow: hidden}
-        body{height: 100%}
+        html{width: 760px;height: 1080px;}
+
         .title{font-size: 36px;font-weight: bold;width:100%;height:80px;background:-webkit-linear-gradient(left,rgba(169,220,255,0.15),rgba(169,220,255,0));
             border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
         .cont{display: flex;justify-content: space-between;padding:50px}
@@ -24,25 +24,16 @@
         .right_bar{position: relative;height: 10px;width: 154px;margin-top:9px;}
         .right_barBg{background:rgba(255,255,255,0.1);width: 154px;height: 10px;border-radius:2px;position: absolute;}
         .right_barAc{background:rgba(80,252,246,1);;border-radius:2px;height: 10px;position: absolute}
-        .index_img{height: 10px;width: 90%;background: url("../../image/index/white_line.png");background-size:100%;margin:0 5%; }
-        .list{padding:30px 0 0 27px;}
-        .list_title{font-size: 28px;font-weight: bold;}
-        .list_item{margin-top: 42px;cursor: pointer}
-        .list_item .list_img{width: 40px;height: 50px;font-size: 18px;line-height: 40px;text-align: center;font-weight: bold}
-        .list_item .img_green{background: url("../../image/index/marker_green_bg.png");color:rgba(1, 215, 76, 1)}
-        .list_item .img_yellow{background: url("../../image/index/marker_yellow_bg.png");color:rgba(255, 200, 32, 1)}
-        .list_item .img_red{background: url("../../image/index/marker_red_bg.png");color:rgba(255, 74, 18, 1)}
-        .list_info{padding-left: 19px;width: 230px;}
-        .list_info .name{font-size: 26px;font-weight: bold}
-        .list_info .location{font-size: 20px; color:rgba(255,255,255,0.5);}
-        .list_item .time{font-size:22px;color:rgba(255,255,255,0.5);margin-left:55px;}
-        .list_item .status{width:100px;height:36px;margin-left:117px;font-weight: bold}
-        .list_item .status div{width:8px;height:8px;margin-right: 9px;}
 
-
+        .bottom_chart{display: flex}
+        #circleChart{width: 420px;height: 430px;}
+        #gaugeChart,#gaugeChart2,#gaugeChart3{width: 200px;height: 140px;}
 
         /*动画*/
-        .index{border:2px solid #A9DCFF;border-radius:4px; width: 100%;height: 100%;transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
+        .bg{width:760px;height: 1080px; transition: all  0.6s;transform: translate(-760px,0);opacity: 0;padding: 142px 0 0 30px;
+            background: -webkit-linear-gradient(left,rgba(0,0,0,0.9), rgba(0,0,0,0.7),rgba(0,0,0,0.6),rgba(0,0,0,0.4), rgba(0,0,0,0));}
+        .bg.in{transform: translate(0,0);opacity: 1}
+        .index{border:2px solid #A9DCFF;border-radius:4px; width: 660px;height:900px;transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
         .index.in{transform: translate(0,0);opacity: 1}
         .top{transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
         .top.in{transform: translate(0,0);opacity: 1}
@@ -53,128 +44,102 @@
     </style>
 </head>
 <body oncontextmenu=self.event.returnValue=false >
-<div class="index">
-    <div class="top">
-        <div class="title flex_cen">停车位状态</div>
-    </div>
-    <div class="center">
-        <div class="cont ">
-            <div class="cont_left">
-                <div class="cont_item">
-                    <div class="name">总车位</div>
-                    <div class="num">1246</div>
+<div class="bg">
+    <div class="index">
+        <div class="top">
+            <div class="title flex_cen">停车位状态</div>
+        </div>
+        <div class="center">
+            <div class="cont ">
+                <div class="cont_left">
+                    <div class="cont_item">
+                        <div class="name">总车位</div>
+                        <div class="num">1246</div>
+                    </div>
+                    <img class="cont_img" src="../../image/index/car_line.png">
                 </div>
-                <img class="cont_img" src="../../image/index/car_line.png">
-            </div>
-            <div class="cont_cent flex">
-                <div class="cent_list flex">
-                    <div class="box_list flex">
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                    </div>
-                    <div class="cent_list_item">
-                        <div class="name">空闲<span>（29.1%）</span></div>
-                        <div class="num">373</div>
-                    </div>
-                </div>
-                <div class="cent_list flex">
-                    <div class="box_list flex">
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                    </div>
-                    <div class="cent_list_item">
-                        <div class="name">已停<span>（15.2%）</span></div>
-                        <div class="num">189</div>
-                    </div>
-                </div>
-                <div class="cent_list flex">
-                    <div class="box_list flex">
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                        <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
-                    </div>
-                    <div class="cent_list_item">
-                        <div class="name">预定<span>（17.2%）</span></div>
-                        <div class="num">339</div>
-                    </div>
-                </div>
-            </div>
-            <div class="cont_right">
-                <div class="right_title">预定来源</div>
-                <div class="right_list">
-                    <div class="right_list_item ">
-                        <div class="name">微信程序</div>
-                        <div class="right_bar">
-                            <div class="right_barBg"></div>
-                            <div class="right_barAc" style="width: 121px"></div>
+                <div class="cont_cent flex">
+                    <div class="cent_list flex">
+                        <div class="box_list flex">
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        </div>
+                        <div class="cent_list_item">
+                            <div class="name">空闲<span>（29.1%）</span></div>
+                            <div class="num">373</div>
                         </div>
                     </div>
-                    <div class="right_list_item ">
-                        <div class="name">电话服务</div>
-                        <div class="right_bar">
-                            <div class="right_barBg"></div>
-                            <div class="right_barAc" style="width: 91px"></div>
+                    <div class="cent_list flex">
+                        <div class="box_list flex">
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        </div>
+                        <div class="cent_list_item">
+                            <div class="name">已停<span>（15.2%）</span></div>
+                            <div class="num">189</div>
                         </div>
                     </div>
-                    <div class="right_list_item ">
-                        <div class="name">APP</div>
-                        <div class="right_bar">
-                            <div class="right_barBg"></div>
-                            <div class="right_barAc" style="width: 52px"   ></div>
+                    <div class="cent_list flex">
+                        <div class="box_list flex">
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                            <div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div><div class="box_item"></div>
+                        </div>
+                        <div class="cent_list_item">
+                            <div class="name">预定<span>（17.2%）</span></div>
+                            <div class="num">339</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont_right">
+                    <div class="right_title">预定来源</div>
+                    <div class="right_list">
+                        <div class="right_list_item ">
+                            <div class="name">微信程序</div>
+                            <div class="right_bar">
+                                <div class="right_barBg"></div>
+                                <div class="right_barAc" style="width: 121px"></div>
+                            </div>
+                        </div>
+                        <div class="right_list_item ">
+                            <div class="name">电话服务</div>
+                            <div class="right_bar">
+                                <div class="right_barBg"></div>
+                                <div class="right_barAc" style="width: 91px"></div>
+                            </div>
+                        </div>
+                        <div class="right_list_item ">
+                            <div class="name">APP</div>
+                            <div class="right_bar">
+                                <div class="right_barBg"></div>
+                                <div class="right_barAc" style="width: 52px"   ></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="index_img" ></div>
-    </div>
-    <div class="bottom">
-        <div class="list">
-            <div class="list_title">停车场列表</div>
-            <div class="list_item flex" onclick="car1()">
-                <div class="list_img img_green">P</div>
-                <div class="list_info">
-                    <div class="name">华阳大厦停车场</div>
-                    <div class="location">吴庆路东三段</div>
+        <div class="bottom">
+            <div class="title flex_cen">停车位状态</div>
+            <div class="bottom_chart">
+                <div class="bottom_chart_left">
+                    <div id="circleChart"></div>
                 </div>
-                <div class="time">13:34</div>
-                <div class="status flex_cen green_bg_border" ><div class="green_bg"></div>正常</div>
-            </div>
-            <div class="list_item flex" onclick="car2()">
-                <div class="list_img img_red">P</div>
-                <div class="list_info">
-                    <div class="name">凤翔路停车场</div>
-                    <div class="location">吴庆路东三段</div>
+                <div class="">
+                    <div id="gaugeChart"></div>
+                    <div id="gaugeChart2"></div>
+                    <div id="gaugeChart3"></div>
                 </div>
-                <div class="time">12:44</div>
-                <div class="status flex_cen red_bg_border" ><div class="red_bg"></div>已满</div>
             </div>
-            <div class="list_item flex" onclick="car3()">
-                <div class="list_img img_yellow">P</div>
-                <div class="list_info">
-                    <div class="name">金融城停车场</div>
-                    <div class="location">吴庆路东三段</div>
-                </div>
-                <div class="time">11:44</div>
-                <div class="status flex_cen yellow_bg_border"><div class="yellow_bg"></div>紧张</div>
-            </div>
-            <div class="list_item flex" onclick="car4()">
-                <div class="list_img img_green">P</div>
-                <div class="list_info">
-                    <div class="name">华阳大厦停车场</div>
-                    <div class="location"><div></div>吴庆路东三段</div>
-                </div>
-                <div class="time">12:12</div>
-                <div class="status flex_cen green_bg_border"><div class="green_bg"></div>正常</div>
-            </div>
+
         </div>
     </div>
 </div>
@@ -197,12 +162,276 @@
         }else if(window.innerWidth>600){
         }
     };
+    function circleChart() {
+        let myChart= echarts.init(document.getElementById('circleChart'));
+        let option = {
+            backgroundColor:'#000',
+            color: ['rgba(0, 54, 66, 1)',  'rgba(183, 96, 0, 1)','rgba(153, 38, 0, 1)',],
+            title: {
+                text: '总数\n260',
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 20,
+                },
+                subtextStyle: {
+                    fontSize: 18,
+                    color: ['#ff9d19']
+                },
+                x: 'center',
+                y: 'center',
+            },
+            // tooltip: {
+            //     trigger: 'item',
+            //     formatter: "{a} <br/>{b}: {c} ({d}%)"
+            // },
+            series: [
+                {
+                    type: "gauge",
+                    radius: "75 %",
+                    startAngle: 0,
+                    endAngle: 359.9,
+                    splitNumber: 48,
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        length: 16,
+                        lineStyle: {
+                            width: 2,
+                            color: "rgba(255,255,255,0.5)"
+                        }
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    pointer: {
+                        show: false
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            opacity: 0
+                        }
+                    },
+                    detail: {
+                        show: false
+                    },
+                    data: [{
+                        value: 0,
+                        name: ""
+                    }]
+                },
+                {
+                    type: "gauge",
+                    radius: "60%",
+                    startAngle: 0,
+                    endAngle: 359.9,
+                    splitNumber: 24,
+                    z:1,
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        length: 42,
+                        lineStyle: {
+                            width: 6,
+                            color: "#000"
+                        }
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    pointer: {
+                        show: false
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            opacity: 0
+                        }
+                    },
+                    detail: {
+                        show: false
+                    },
+                    data: [{
+                        value: 0,
+                        name: ""
+                    }]
+                },
+                {
+                    type: 'pie',
+                    radius: ['40%', '60%'],
+                    silent: true,
+                    z: 0,
+                    label: {
+                        normal: {
+                            formatter: '{b|{b}:}{c|{c}}'+'个',
+                            position:"top",
+                            color: '#fff',
+                            fontSize:18,
+                            rich: {
+                                b: {
+                                    fontSize: 18,
+                                    color: '#fff',
+                                    x:20
+                                },
+                                c: {
+                                    fontSize: 28,
+                                    color: '#fff',
+                                    align: 'left',
+                                },
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: true,
+                            length: 20,
+                            length2: 0,
+                            lineStyle: {
+                                color:'#fff',
+                                type: 'solid',
+                                width: 1
+                            }
+                        }
+                    },
+                    data: [{
+                        value: 11,
+                        name: '正常'
+                        },
+                        {
+                            value: 4,
+                            name: '紧张'
+                        },
+                        {
+                            value: 2,
+                            name: '告急'
+                        }
 
+                    ]
+                },
+            ]
+        };
+        myChart.setOption(option);
+    }
 
+    let data= [{value:'97', name: '公共停车场使用率 '}];
+    let data2=[{value:'97', name: '公共停车场使用率 '}];
+    let data3=[{value:'97', name: '公共停车场使用率 '}];
+    gaugeChart('gaugeChart',data);
+    gaugeChart('gaugeChart2',data2);
+    gaugeChart('gaugeChart3',data3);
+    circleChart();
 
-
-
-
+    function gaugeChart(dom,data) {
+        let myChart= echarts.init(document.getElementById(dom));
+        let option ={
+            tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            series: [
+                {
+                    type: 'gauge',
+                    radius: '80%',
+                    center:['50%','55%'],
+                    axisLine: {
+                        lineStyle: {
+                            color: [
+                                [
+                                    1, new echarts.graphic.LinearGradient(
+                                    0, 0, 1, 0, [{
+                                        offset: 0,
+                                        color: 'rgba(147, 234, 34, 1)'
+                                    },
+                                        {
+                                            offset: 0.5,
+                                            color: 'rgba(255, 196, 53, 1)'
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: 'rgba(255, 67, 2, 1)'
+                                        }
+                                    ]
+                                )
+                                ],
+                            ],
+                            width: 4,
+                        }
+                    },
+                    axisLabel: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    splitLine: {           // 分隔线
+                        show:false,
+                    },
+                    pointer: {           // 分隔线
+                        show:false
+                    },
+                    title:{
+                        offsetCenter: [0, '100%'],
+                        color:'#fff',
+                        fontSize:14,
+                    },
+                    detail: {
+                        show:true,
+                        offsetCenter: [0, 0],
+                        borderColor:'rgba(165, 165, 165, 1)',
+                        borderWidth:2,
+                        borderRadius:50,
+                        width:40,
+                        height:50,
+                        formatter:function (pam) {
+                           return  '{a|'+pam+'}{b|%}'
+                        },
+                        rich:{
+                            a:{
+                                fontSize:28,
+                                color:'#fff',
+                                lineHeight:50
+                            },
+                            b:{
+                                fontSize:14,
+                                color:'#fff',
+                                lineHeight:50
+                            },
+                        }
+                    },
+                    data:data
+                },
+                {
+                    type: 'gauge',
+                    radius:'65%',
+                    center:['50%','55%'],
+                    splitNumber:16,
+                    axisLine: {            // 坐标轴线
+                        show:false,
+                        lineStyle: {
+                            opacity: 0
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    splitLine: {
+                        length:8,
+                        color:'#fff'
+                    },
+                    axisLabel:{
+                        show:false
+                    },
+                    detail:{
+                        show:false
+                    },
+                    pointer: {           // 分隔线
+                        show:false,
+                    },
+                    data: [{value:'', name: ' '}]
+                },
+            ]
+        };
+        myChart.setOption(option);
+    }
     function car1() {
         window.ue.XBWeb.webmainleftcar1()
     }
@@ -230,13 +459,15 @@
     }
 
     function comeIn() {
+        $('.bg').addClass('in');
         $('.index').addClass('in');
         $('.top').addClass('in');
         $('.center').addClass('in');
         $('.bottom').addClass('in');
     }
-
+    comeIn()
     function goOut() {
+        $('.bg').removeClass('in');
         $('.index').removeClass('in');
         $('.top').removeClass('in');
         $('.center').removeClass('in');

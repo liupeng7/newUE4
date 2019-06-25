@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>停车场下面图表</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{background: #000}
+        #linesChart{width: 800px;height: 200px;}
+    </style>
+</head>
+<body>
+<div class="index">
+    <div id="linesChart"></div>
+    <div id="barChart"></div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+
+<script>
+    let data=[{
+        chartName:'近期车位占用数',
+        value:['202','403','450','510','483','461','451','428','395','377','350','312',
+            '266','269','289','295','311','325','356','378','355','364','369','351','356',]
+    },{
+        chartName:'今日车位占用数',
+        value:['100','200','200','200','200','200','200','200','200','200','200','200',
+            '200','100','200','100','200',],
+    }
+    ];
+    Xchart.LineCharts({
+        conId:'linesChart',
+        titleShow:true,
+        showLegend:true,
+        legendTextStyle:{
+            fontSize:14,
+            color:'#fff'
+        },
+        legendLeft:'60%',
+
+        gridTop:'20%',
+        gridBottom:'20%',
+
+        max:800,
+        smooth:false,
+        showSymbol:false,
+        nameArr:['00','01','02','03','04','05','06','07','08','06','10','11',
+           '12','13','14','15','16','17','18','19','20','21', '22','23','24'],
+        dataArray:data
+
+    })
+
+</script>

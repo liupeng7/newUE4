@@ -5,8 +5,8 @@
     <title>综合态势左</title>
     <link rel="stylesheet" href="../../common/css/index.css">
     <style>
-        html{width: 660px;height: 900px;overflow: hidden;}
-        .index{width: 100%;height: 100%;}
+        html{width: 760px;height: 1080px;}
+        .index{width: 660px;height: 900px;}
 
         .title{font-size: 36px;font-weight: bold;width:657px;height:80px;background:-webkit-linear-gradient(left,rgba(169,220,255,0.15),rgba(169,220,255,0));position: relative;
             border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
@@ -38,6 +38,9 @@
 
 
         /*动画*/
+        .bg{width:750px;height: 1080px; transition: all  0.6s;transform: translate(-760px,0);opacity: 0;padding: 142px 0 0 30px;
+            background: -webkit-linear-gradient(left,rgba(0,0,0,0.9), rgba(0,0,0,0.7),rgba(0,0,0,0.6),rgba(0,0,0,0.4), rgba(0,0,0,0));}
+        .bg.in{transform: translate(0,0);opacity: 1}
         .top{transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
         .top.in{transform: translate(0,0);opacity: 1}
         .center{transition: all 0.5s 0.1s;transform: translate(-660px,0);opacity: 0}
@@ -49,78 +52,81 @@
     </style>
 </head>
 <body oncontextmenu=self.event.returnValue=false >
-<div class="index">
-    <div class="top">
-        <div class="title flex_cen">
-            <img class="left_arrow" src="../../image/index/decorate_2.png"/>综合态势评估
-            <img class="right_arrow" src="../../image/index/decorate_1.png"/>
-        </div>
-        <div class="box flex_bet">
-            <div class="box_month">9<span>月</span></div>
-            <div class="font_block">
-                <div class="name">治理指数</div>
-                <div class="num">98.1</div>
+<div class="bg">
+    <div class="index">
+        <div class="top">
+            <div class="title flex_cen">
+                <img class="left_arrow" src="../../image/index/decorate_2.png"/>综合态势评估
+                <img class="right_arrow" src="../../image/index/decorate_1.png"/>
             </div>
-            <div class="box_list flex_bet">
-                <div class="box_item flex_cen">
-                    <div class="name">治理状态</div>
-                    <div class="val font_green" >良好</div>
-                    <img class="spot_left_top" src="../../image/index/white_dot.png"/>
-                    <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
-                </div>
-                <div class="box_item flex_cen">
-                    <div class="name">上月指数</div>
-                    <div class="val">92.1</div>
-                    <img class="spot_left_top" src="../../image/index/white_dot.png"/>
-                    <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
-                </div>
-                <div class="box_item flex_cen">
-                    <div class="name">对比上月</div>
-                    <div class="val">11%</div>
-                    <img class="spot_left_top" src="../../image/index/white_dot.png"/>
-                    <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
-                </div>
-            </div>
-        </div>
-        <div class="index_img" ></div>
-    </div>
-    <div class="index_card center">
-        <div class="title_small">指数雷达图</div>
-        <div class="flex_bet">
-            <div class="flex_wrap card_list">
+            <div class="box flex_bet">
+                <div class="box_month">9<span>月</span></div>
                 <div class="font_block">
-                    <div class="name"><div class="block" style="background:rgba(255, 97, 18, 1)"></div> 绩效指数</div>
-                    <div class="num">97.1</div>
-                </div>
-                <div class="font_block">
-                    <div class="name"><div class="block" style="background:rgba(255, 174, 32, 1)"></div> 服务指数</div>
+                    <div class="name">治理指数</div>
                     <div class="num">98.1</div>
                 </div>
-                <div class="font_block">
-                    <div class="name"><div class="block" style="background:rgba(132, 221, 97, 1)"></div>活力指数</div>
-                    <div class="num">98.5</div>
+                <div class="box_list flex_bet">
+                    <div class="box_item flex_cen">
+                        <div class="name">治理状态</div>
+                        <div class="val font_green" >良好</div>
+                        <img class="spot_left_top" src="../../image/index/white_dot.png"/>
+                        <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
+                    </div>
+                    <div class="box_item flex_cen">
+                        <div class="name">上月指数</div>
+                        <div class="val">92.1</div>
+                        <img class="spot_left_top" src="../../image/index/white_dot.png"/>
+                        <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
+                    </div>
+                    <div class="box_item flex_cen">
+                        <div class="name">对比上月</div>
+                        <div class="val">11%</div>
+                        <img class="spot_left_top" src="../../image/index/white_dot.png"/>
+                        <img class="spot_left_bot" src="../../image/index/white_dot.png"/>
+                    </div>
                 </div>
-                <div class="font_block">
-                    <div class="name"><div class="block" style="background:rgba(59, 211, 202, 1)"></div>先锋指数</div>
-                    <div class="num">90.5</div>
-                </div>
-                <div class="font_block">
-                    <div class="name"><div class="block" style="background:rgba(77, 101, 246, 1)"></div>平安指数</div>
-                    <div class="num">93.1</div>
-                </div>
-                <div class="font_block">
-                    <div class="name"><div class="block" style="background:rgba(239, 91, 223, 1)"></div>和谐指数</div>
-                    <div class="num">92.4</div>
-                </div>
+            </div>
+            <div class="index_img" ></div>
         </div>
-            <div id="radarChart"></div>
+        <div class="index_card center">
+            <div class="title_small">指数雷达图</div>
+            <div class="flex_bet">
+                <div class="flex_wrap card_list">
+                    <div class="font_block">
+                        <div class="name"><div class="block" style="background:rgba(255, 97, 18, 1)"></div> 绩效指数</div>
+                        <div class="num">97.1</div>
+                    </div>
+                    <div class="font_block">
+                        <div class="name"><div class="block" style="background:rgba(255, 174, 32, 1)"></div> 服务指数</div>
+                        <div class="num">98.1</div>
+                    </div>
+                    <div class="font_block">
+                        <div class="name"><div class="block" style="background:rgba(132, 221, 97, 1)"></div>活力指数</div>
+                        <div class="num">98.5</div>
+                    </div>
+                    <div class="font_block">
+                        <div class="name"><div class="block" style="background:rgba(59, 211, 202, 1)"></div>先锋指数</div>
+                        <div class="num">90.5</div>
+                    </div>
+                    <div class="font_block">
+                        <div class="name"><div class="block" style="background:rgba(77, 101, 246, 1)"></div>平安指数</div>
+                        <div class="num">93.1</div>
+                    </div>
+                    <div class="font_block">
+                        <div class="name"><div class="block" style="background:rgba(239, 91, 223, 1)"></div>和谐指数</div>
+                        <div class="num">92.4</div>
+                    </div>
+                </div>
+                <div id="radarChart"></div>
+            </div>
         </div>
-    </div>
-    <div class="index_card bottom">
-        <div class="title_small flex_bet"><div>近半年指数走势</div><div class="tip flex"><div class="rect"></div>较差<span>（指数低于45）</span></div></div>
-        <div id="lineChart" style="height: 200px"></div>
+        <div class="index_card bottom">
+            <div class="title_small flex_bet"><div>近半年指数走势</div><div class="tip flex"><div class="rect"></div>较差<span>（指数低于45）</span></div></div>
+            <div id="lineChart" style="height: 200px"></div>
+        </div>
     </div>
 </div>
+
 <script src="../../plugin/jquery-3.1.1.min.js"></script>
 <script src="../../plugin/echarts.min.js"></script>
 <script src="../../plugin/chart.js"></script>
@@ -145,14 +151,6 @@
         }
     };
 
-
-    let begin ='';
-    function rechart() {
-        clearTimeout(begin);
-        begin = setTimeout(function () {
-            lineChart();
-        },200);
-    }
 
     var throttle = function (fn, delay) {
         var timer = null;
@@ -397,12 +395,14 @@
     }
 
     function comeIn() {
+        $('.bg').addClass('in');
         $('.top').addClass('in');
         $('.center').addClass('in');
         $('.bottom').addClass('in');
     }
-
+    comeIn()
     function goOut() {
+        $('.bg').removeClass('in');
         $('.top').removeClass('in');
         $('.center').removeClass('in');
         $('.bottom').removeClass('in');

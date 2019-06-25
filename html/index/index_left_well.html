@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>路灯</title>
+    <title>井盖</title>
     <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
     <link rel="stylesheet" href="../../common/css/index.css">
     <style>
@@ -66,7 +66,7 @@
 <div class="bg">
     <div class="index">
         <div class="top">
-            <div class="title flex_cen"><img>路灯报警概况</div>
+            <div class="title flex_cen"><img>井盖报警概况</div>
         </div>
         <div class="center">
             <div class="cont">
@@ -118,38 +118,38 @@
                 <div class="cont_list ">
                     <div class="cont_list_item">
                         <div class="cont_list_block"></div>
-                        <div class="cont_list_name">路灯正常</div>
+                        <div class="cont_list_name">井盖正常</div>
                         <div class="cont__list_num ">85%</div>
                     </div>
                     <div class="cont_list_item">
                         <div class="cont_list_block"></div>
-                        <div class="cont_list_name">路线老化</div>
+                        <div class="cont_list_name">井盖位移</div>
                         <div class="cont__list_num ">5%</div>
                     </div>
                     <div class="cont_list_item">
                         <div class="cont_list_block"></div>
-                        <div class="cont_list_name">灯泡故障</div>
+                        <div class="cont_list_name">井盖倾斜</div>
                         <div class="cont__list_num ">4%</div>
                     </div>
                     <div class="cont_list_item">
                         <div class="cont_list_block"></div>
-                        <div class="cont_list_name">灯罩损坏</div>
+                        <div class="cont_list_name">终端连接失败</div>
                         <div class="cont__list_num ">3%</div>
                     </div>
                     <div class="cont_list_item">
                         <div class="cont_list_block"></div>
-                        <div class="cont_list_name">灯杆倾斜</div>
+                        <div class="cont_list_name">井盖缺失</div>
                         <div class="cont__list_num ">2%</div>
                     </div>
                     <div class="cont_list_item">
                         <div class="cont_list_block"></div>
-                        <div class="cont_list_name">灯泡损坏</div>
+                        <div class="cont_list_name">井盖沉降</div>
                         <div class="cont__list_num ">1%</div>
                     </div>
                 </div>
                 <div class="cont_info">
                     <img src=""  width="64" height="64">
-                    <div class="cont_info_name">问题路灯</div>
+                    <div class="cont_info_name">问题井盖</div>
                     <div class="cont_info_num font_number">3<div>个</div></div>
                 </div>
             </div>
@@ -161,7 +161,7 @@
                 <div class="waning_list">
                     <div class="waning_item" >
                         <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                            <div class="waning_name">雨水井盖 - <span class="font_red">井盖倾斜</span> <div class="waning_sta">待处置</div></div>
                             <div class="waning_location">地址：西环东42号路</div>
                         </div>
                         <div class="waning_right">
@@ -186,7 +186,7 @@
                     </div>
                     <div class="waning_item" >
                         <div class="waning_left">
-                            <div class="waning_name">中杆路灯 - <span class="font_yellow">线路老化</span> <div class="waning_sta yellow">处置中</div></div>
+                            <div class="waning_name">电力井盖 - <span class="font_yellow">井盖倾斜</span> <div class="waning_sta yellow">处置中</div></div>
                             <div class="waning_location">地址：西环东42号路</div>
                         </div>
                         <div class="waning_right">
@@ -211,7 +211,7 @@
                     </div>
                     <div class="waning_item" >
                         <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                            <div class="waning_name">污水井盖 - <span class="font_red">井盖倾斜</span> <div class="waning_sta">待处置</div></div>
                             <div class="waning_location">地址：西环东42号路</div>
                         </div>
                         <div class="waning_right">
@@ -236,7 +236,7 @@
                     </div>
                     <div class="waning_item" >
                         <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                            <div class="waning_name">煤气井盖 - <span class="font_red">井盖倾斜</span> <div class="waning_sta">待处置</div></div>
                             <div class="waning_location">地址：西环东42号路</div>
                         </div>
                         <div class="waning_right">
@@ -261,7 +261,7 @@
                     </div>
                     <div class="waning_item" >
                         <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
+                            <div class="waning_name">网络井盖 - <span class="font_red">井盖倾斜</span> <div class="waning_sta">待处置</div></div>
                             <div class="waning_location">地址：西环东42号路</div>
                         </div>
                         <div class="waning_right">
@@ -374,6 +374,7 @@
         $('.center').addClass('in');
         $('.bottom').addClass('in');
     }
+    comeIn()
     function goOut() {
         $('.bg').removeClass('in');
         $('.index').removeClass('in');

@@ -679,6 +679,225 @@
     }
 
 
+    function LineCharts(options) {
+        var defaultOption={
+            conId:'', //内容id
+            fontSize:18,
+            titleShow:false,
+            colorArray:['#01dafe','#58e569','#f0a54a'],//颜色
+
+            showLegend:false,
+            legendTextStyle:{
+                color:options.colorArray,
+                fontSize:options.legendSize
+            },
+            legendSize:12,  //图例字大小
+            legendLeft:0,
+            itemWidth:10, //图例大小
+            itemHeight:10,
+            itemGap:10,  //图例块之间距离
+
+            gridBottom:'10%',
+            gridLeft:'10%',
+            gridRight:'10%',
+            gridTop:'10%',
+
+            XaxisLabelFontSize:18,
+            boundaryGap:false, //图表是否顶头
+
+            showY:false,
+            splitLine:false,
+            YaxisLabel:true,
+            markLine:true, //是否显示平均值线
+            markLine_custom:{},//自定义标注线
+            markPoint:false, //是否显示最大最小值点
+            smooth:true, //是否是光滑曲线
+            lineWidth:2,  //折线宽度
+            lineColor:'',     //折线颜色
+            max:null,  //y轴最大刻度
+            showSymbol:true, //拐点是否显示
+            areaStyleShow:true,
+            areaStyleColor:[
+                {areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
+                        [{offset: 0, color: 'rgba(61, 212, 217, 0.6)'}, {offset: 1, color: 'rgba(61, 212, 217, 0.1)'}])},
+                {areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
+                        [{offset: 0, color: 'rgba(64,216,84,0.6)'}, {offset: 1, color: 'rgba(64,216,84,0.1)'}])},
+                ],
+
+            txtColor:'#fff',
+            markLinecolor:'',
+
+            nameArr:[], //x轴数据
+            dataArray:[],//数据
+        };
+        options = $.extend(false,defaultOption,options);
+        let series = [];
+        let markPoint='',markLine='';
+        if(options.markPoint){
+            markPoint={
+                data: [
+                    {
+                        type: 'max',
+                        name: '最大值',
+                        label:{
+                            show:true
+                        }
+                    },
+                    {type: 'min', name: '最小值'}
+                ]
+            }
+        }
+        if(options.markLine){
+            markLine={
+                data: [
+                    {
+                        type: 'average',
+                        name: '平均值',
+                        itemStyle :{
+                            normal: {
+                                fontSize:18,
+                                color: options.markLinecolor,
+                            },
+                        }
+                    }
+                ]
+            }
+        }
+        if(options.markLine_custom){
+            markLine=options.markLine_custom
+        }
+
+        for(let i=0;i<options.dataArray.length;i++){
+            series.push({
+                name:options.dataArray[i].chartName,
+                type: 'line',
+                smooth: options.smooth,
+                showSymbol:options.showSymbol,
+                lineStyle:{
+                    normal: {
+                        width:options.lineWidth,
+                    }
+                },
+                areaStyle: {
+                    show:options.areaStyleShow,
+                    normal: {
+                        color:options.areaStyleColor[i].areaStyleColor
+                    }
+                },
+                markPoint:markPoint,
+                markLine:markLine,
+                symbolSize: 15,
+                data: options.dataArray[i].value,
+            })
+        }
+        var option = {
+            color:options.colorArray,
+            title:{
+                show:options.titleShow,
+                text:'车位资源占用走势',
+                textStyle:{
+                    fontSize:25,
+                    fontWeight:'bold',
+                    color:'#fff'
+                }
+            }
+            ,
+            legend:{
+                show:options.showLegend,
+                left:options.legendLeft,
+                top:options.legendTop,
+                orient:'horizontal',
+                icon:'rect',
+                itemWidth:options.itemWidth,
+                itemHeight:options.itemHeight,
+                textStyle:options.legendTextStyle,
+                itemGap:options.itemGap,
+            },
+            tooltip: {
+                trigger:'axis',
+            },
+            grid: {
+                left: options.gridLeft,
+                right: options.gridRight,
+                top: options.gridTop,
+                bottom: options.gridBottom,
+            },
+            dataZoom:{
+                type:'inside',
+                start:0,
+                end:100
+            },
+            xAxis: {
+                type: 'category',
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        color: '#b2b2b2',
+                        fontSize: options.XaxisLabelFontSize,
+                        baseline: 'top',
+                    }
+                },
+                axisLine: {
+                    show:true,
+                    lineStyle:{
+                        color:'#81848b',
+                        width:2
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine:{
+                    show:false
+                },
+                boundaryGap:options.boundaryGap,
+                data: options.nameArr
+            },
+            yAxis: {
+                type: 'value',
+                max:options.max,
+                axisLine: {
+                    show: options.showY,
+                    lineStyle:{
+                        color:'#81848b',
+                        width:2
+                    }
+                },
+                axisLabel: {
+                    show: options.YaxisLabel,
+                    showMinLabel:false,
+                    textStyle: {
+                        color:options.txtColor,
+                        fontSize: options.fontSize,
+                        baseline: 'top'
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: {
+                    show: options.splitLine,
+                    lineStyle:{
+                        color:"#334050",
+                        type:'dotted'
+                    }
+                },
+            },
+            series: series
+        };
+        var dom = null;
+        if(typeof options.conId === 'string'){
+            dom = document.getElementById(options.conId);
+        }else{
+            dom = $(options.conId)[0];
+        }
+
+        var myChart = echarts.init(dom);// 图表初始化的地方，在页面中要有一个地方来显示图表
+        myChart.clear();
+        myChart.setOption(option); //显示图形
+    }
+
+
 
     function RadarChart(options){
         let defaultOption =  {
@@ -1051,7 +1270,7 @@
 
     window.Xchart = {
         PieChart:PieChart,
-        // TiaoChart:TiaoChart,
+        LineCharts:LineCharts,
         RingChart:RingChart,
         BarChart:BarChart,
         LineChart:LineChart,
