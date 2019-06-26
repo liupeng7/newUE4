@@ -5,24 +5,47 @@
     <title>停车场下面图表</title>
     <link rel="stylesheet" href="../../../common/css/index.css">
     <style>
-        html{background: #000}
-        .index{display: flex}
+        html{width:3840px;height:200px;padding:0;}
+        .index{}
         #linesChart{width: 800px;height: 200px;}
         #barChart{width: 800px;height: 200px;}
+
+        .bg{width:100%;height:200px;background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.5),rgba(0,0,0,0));
+            transition: all  0.5s;transform: translate(0,200px);opacity: 0;}
+        .bg.in{transform: translate(0,0);opacity: 1}
+        .index{transition: all  0.5s;transform: translate(0,200px);opacity: 0;display: flex;justify-content: center}
+        .index.in{transform: translate(0,0);opacity: 1}
     </style>
 </head>
 <body>
-<div class="index">
-    <div id="linesChart"></div>
-    <div id="barChart"></div>
+<div class="bg">
+    <div class="index">
+        <div id="linesChart"></div>
+        <div id="barChart"></div>
+    </div>
 </div>
+
 </body>
 </html>
 <script src="../../../plugin/echarts.min.js"></script>
 <script src="../../../plugin/jquery-3.1.1.min.js"></script>
 <script src="../../../common/js/chart.js"></script>
-
+<script src="../../../common/js/common.js"></script>
 <script>
+
+    window.onload = function(){
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<3000){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<3000){
+            narrow();
+        }else if(window.innerWidth>3000){
+        }
+    };
+
     let data=[{
         chartName:'近期车位占用数',
         value:['202','403','450','510','483','461','451','428','395','377','350','312',
@@ -69,6 +92,14 @@
         barWidth:20,
         xArray:['0-2小时','2-4小时','4-6小时','6-8小时','8-12小时','>12小时','华南'],
         dataArray:[691,480,562,387,226,369,181],
-    })
+    });
 
+    function comeIn() {
+        $('.bg').addClass('in');
+        $('.index').addClass('in');
+    }
+    function goOut() {
+        $('.index').removeClass('in');
+        $('.bg').removeClass('in');
+    }
 </script>

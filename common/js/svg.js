@@ -17,16 +17,17 @@ function runAnimate(percent,dom){
 }
 
 function runAnimations(percent,dom,circle,rect){
+
     let $circleAnimate = dom.find(circle);
     let $tailAnimate = dom.find(rect);
     let per = percent/100;
     let durTime = 3 * per;
-    console.log(durTime)
-
+    if(rect){
+        $tailAnimate[0].setAttribute('repeatDur', durTime + 's');
+        $tailAnimate[0].beginElement();
+    }
     $circleAnimate[0].setAttribute('repeatDur', durTime + 's');
-    $tailAnimate[0].setAttribute('repeatDur', durTime + 's');
     $circleAnimate[0].beginElement();
-    $tailAnimate[0].beginElement();
 }
 
 function numRunFun(num,maxNum,dom,speed){

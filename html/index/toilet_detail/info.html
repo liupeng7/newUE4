@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>公厕</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width: 680px;height: 700px;}
+        .index{background:rgba(2,15,29,0.2);border:2px solid rgba(231, 251, 255, 0.75);border-radius:5px;}
+        .index_title{height:118px;line-height:118px;text-align: center;font-size:40px;font-weight:bold;color:rgba(235,247,255,1);
+            background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;
+            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;}
+        .index_cont{padding: 0 50px}
+
+        .cont_top{border-bottom:1px dashed rgba(146,195,255,1);flex-wrap: wrap;padding: 10px 0}
+        .cont_center{border-bottom:1px dashed rgba(146,195,255,1);flex-wrap: wrap;padding: 10px 0}
+        .cont_bottom{padding: 10px 0}
+        .cont_bottom .cont_info{width: 500px;}
+
+        .cont_info{font-size:22px;display: flex;align-items: center;line-height:50px;width: 280px}
+        .cont_info span{color:rgba(153,153,153,1);margin-right: 30px}
+
+
+
+
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false>
+<div class="index">
+    <div class="index_title">武侯区武科东路公厕</div>
+    <div class="index_cont">
+        <div class="cont_top flex">
+            <div class="cont_info"><span>建筑面积</span>70m²</div>
+            <div class="cont_info"><span>建筑结构</span>砖混结构  </div>
+            <div class="cont_info"><span>公厕类型</span>9m²</div>
+            <div class="cont_info"><span>冲洗方式</span>水冲式</div>
+            <div class="cont_info"><span>公厕类型</span>独立式公厕</div>
+            <div class="cont_info"><span>公厕类别</span>一类</div>
+        </div>
+        <div class="cont_center flex">
+            <div class="cont_info"><span>无障碍卫生间</span>1</div>
+            <div class="cont_info"><span>洗手池</span>2</div>
+            <div class="cont_info"><span>男蹲位数</span>15</div>
+            <div class="cont_info"><span>男站位数</span>5</div>
+            <div class="cont_info"><span>女蹲位数</span>15</div>
+            <div class="cont_info"><span>工作人员</span>2</div>
+        </div>
+        <div class="cont_bottom ">
+            <div class="cont_info"><span>所在位置 ：</span>四川省成都市武侯区武科东路     </div>
+            <div class="cont_info"><span>资产归属 ：</span>成都市武侯区环卫局</div>
+            <div class="cont_info"><span>运营单位 ：</span>成都市武侯区环卫所</div>
+            <div class="cont_info"><span>服务时间 ：</span> 06:30 —— 22:00</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script>
+
+    window.onload = function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<500){
+                    narrow()
+                }
+            };
+        }else if(window.innerWidth<500){
+            narrow();
+        }else if(window.innerWidth>500){
+        }
+    }
+
+</script>

@@ -314,12 +314,13 @@
             gridBottom:'10%',
 
             name:'', //横坐标名称
-            max:'',
+            max:800,
             nameGap:15,
 
 
             axisLabelFontSize:14,
             YaxisLabelShow:false,
+            yAxisAxisLineShow:true, //Y轴
             showMinLabel:true,
             YaxisLabelMargin:8,
 
@@ -329,7 +330,6 @@
             itemStyleLabelShow:true,
             itemStyleColor:'',
 
-            axisLine:true, //Y轴
             barWidth:'45%', //宽度
             dataArray:[], //series数据
         };
@@ -403,7 +403,7 @@
                         show:false
                     },
                     axisLine: {
-                        show:options.axisLine,
+                        show:options.yAxisAxisLineShow,
                         lineStyle:{
                             width:2,
                             color:'#828e96'
@@ -1266,7 +1266,73 @@
 
 
 
+    function LiquidChart(options){
+        let defaultOption={
+            conId:'',
+            itemStyleColor:'rgba(248, 53, 0, 1)',
+            borderColor:new echarts.graphic.LinearGradient(1,0,0,0,[
+                {offset: 0.0,color:'rgba(230, 66, 8, 1)'},
+                {offset: 0.6, color: 'rgba(239, 182, 60, 1)'},
+                {offset: 0.9, color: 'rgba(255, 255, 255, 1)'},
+            ]),
+            borderWidth:4,
+            labelFunction:function(pma){
+                return pma.value*100 + '%'
+            },
+            colorArray:[],
+            dataArray:[0.75],
+        };
 
+        options = $.extend(false,defaultOption,options);
+
+        var option = {
+            series: [{
+                type: 'liquidFill',
+                data: options.dataArray,
+                radius: '80%',
+                outline: {
+                    show: true,
+                    borderDistance: 8,
+                    itemStyle: {
+                        color: 'none',
+                        borderColor:options.borderColor,
+                        borderWidth: options.borderWidth,
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color:options.itemStyleColor
+                    }
+                },
+                label: {
+                    show: true,
+                    formatter:options.labelFunction,
+                    color: '#fff',
+                    insideColor: '#fff',
+                    fontSize: 30,
+                    fontWeight: 'bold',
+                    align: 'center',
+                    baseline: 'middle',
+                    position: 'inside'
+                },
+                backgroundStyle:{
+                    opacity:0
+                }
+
+            }]
+        };
+
+        var dom = null;
+        if(typeof options.conId === 'string'){
+            dom = document.getElementById(options.conId);
+        }else{
+            dom = $(options.conId)[0];
+        }
+
+        var myChart = echarts.init(dom);
+        myChart.clear();
+        myChart.setOption(option);
+    }
 
 
     window.Xchart = {
@@ -1275,6 +1341,7 @@
         RingChart:RingChart,
         BarChart:BarChart,
         LineChart:LineChart,
+        LiquidChart:LiquidChart,
         // ScatterChart:ScatterChart,
         // FunnelChart:FunnelChart,
         // NestRingChart:NestRingChart,

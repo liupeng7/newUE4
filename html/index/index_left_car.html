@@ -165,7 +165,6 @@
     function circleChart() {
         let myChart= echarts.init(document.getElementById('circleChart'));
         let option = {
-            backgroundColor:'#000',
             color: ['rgba(0, 54, 66, 1)',  'rgba(183, 96, 0, 1)','rgba(153, 38, 0, 1)',],
             title: {
                 text: '总数\n260',
@@ -432,21 +431,7 @@
         };
         myChart.setOption(option);
     }
-    function car1() {
-        window.ue.XBWeb.webmainleftcar1()
-    }
-    function car2() {
-        window.ue.XBWeb.webmainleftcar2()
-    }
-    function car3() {
-        window.ue.XBWeb.webmainleftcar3()
-    }
-    function car4() {
-        window.ue.XBWeb.webmainleftcar4()
-    }
-    function car5() {
-        window.ue.XBWeb.webmainleftcar5()
-    }
+
     function narrow(){
         let width = $('html').width()*0.25;
         let height = $('html').height()*0.25;
@@ -457,7 +442,6 @@
             top:-height
         });
     }
-
     function comeIn() {
         $('.bg').addClass('in');
         $('.index').addClass('in');
@@ -465,7 +449,6 @@
         $('.center').addClass('in');
         $('.bottom').addClass('in');
     }
-    comeIn()
     function goOut() {
         $('.bg').removeClass('in');
         $('.index').removeClass('in');

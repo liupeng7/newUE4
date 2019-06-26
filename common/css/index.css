@@ -48,3 +48,17 @@ svg circle {
 ::-webkit-scrollbar{width: 9px;height: 240px;position: absolute;}
 ::-webkit-scrollbar-track {background:rgba(255,255,255,0.2);}
 ::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.4);}
+/*带横杠的柱图*/
+.barChart_item{display: flex;align-items: center;line-height: 36px;}
+.barChart_item_name{font-size:18px;color:rgba(255,255,255,0.75);}
+.barChart_item_bar{display: flex;align-items: center;margin-left: 20px;margin-right: 13px;}
+.barChart_item_ac{height:17px;}
+.barChart_item_bg{height:2px;background:rgba(255,255,255,0.15)}
+.barChart_item_num{font-size:26px;}
+
+
+.info_item{display: flex;align-items: center}
+.info_left{margin-right: 20px;}
+.info_name{font-size:50px;color:rgba(255,255,255,1);}
+.info_value{font-size:20px;color:rgba(255,255,255,0.75)}
+

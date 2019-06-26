@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>公厕</title>
+    <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
+    <link rel="stylesheet" href="../../common/css/index.css">
+    <style>
+        html{width: 760px;height: 1080px;}
+
+
+        .title{font-size: 36px;font-weight: bold;width:100%;height:80px;background:-webkit-linear-gradient(left,rgba(169,220,255,0.15),rgba(169,220,255,0));
+            border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
+        .info{padding: 0 90px;height: 160px;}
+
+        .center{padding: 0 40px;}
+        .title_small{font-size:28px;font-weight: bold}
+        .title_small span{font-size: 20px;font-weight: normal}
+        .barChart{margin-top: 20px;}
+        .center_left{display: flex;justify-content: space-between;width: 260px;}
+        .center_cont{margin-top: 30px;display: flex;align-items: center}
+        .donut1,.donut2{position: relative;width: 120px;height: 120px;}
+        .ring_num{font-size:34px;position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);
+        border: 8px solid rgba(255,255,255,1);border-radius: 50%;width: 80px;height: 80px;line-height: 60px;}
+        .ring_name{font-size:20px;color:rgba(255,255,255,0.75);text-align: center}
+        .center_right{margin-left: 30px;}
+        .center_right_tip{width:210px;height:50px;border:1px solid rgba(231, 251, 255, 0.75);border-radius:10px;font-size:20px;
+            color:rgba(255,255,255,0.7);margin-top: 18px;}
+        .center_right_tip span{margin: 0 5px;font-size:30px;color:#fff}
+        .center_right_tip img{ margin: 0 13px 0 18px;}
+        .bottom{padding: 0 50px;margin-top: 40px;}
+        #barChart2{width: 500px;height: 160px;}
+
+
+
+        .bg{width:760px;height: 1080px; background: -webkit-linear-gradient(left,rgba(0,0,0,0.9), rgba(0,0,0,0.7),rgba(0,0,0,0.6),rgba(0,0,0,0.4), rgba(0,0,0,0));
+            transition: all  0.6s;transform: translate(-760px,0);opacity: 0;padding: 142px 0 0 30px;}
+        .bg.in{transform: translate(0,0);opacity: 1}
+        .index{border:2px solid #A9DCFF;border-radius:4px; width: 660px;height:900px;transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
+        .index.in{transform: translate(0,0);opacity: 1}
+        .top{transition: all 0.5s;transform: translate(-660px,0);opacity: 0}
+        .top.in{transform: translate(0,0);opacity: 1}
+        .center{transition: all 0.5s 0.1s;transform: translate(-660px,0);opacity: 0}
+        .center.in{transform: translate(0,0);opacity: 1}
+        .bottom{transition: all 0.5s 0.2s;transform: translate(-660px,0);opacity: 0}
+        .bottom.in{transform: translate(0,0);opacity: 1}
+    </style>
+</head>
+<body>
+<div class="bg">
+    <div class="index">
+        <div class="top">
+            <div class="title flex_cen">智慧公厕概览</div>
+            <div class="info flex_bet"></div>
+        </div>
+        <div class="center">
+            <div class="title_small flex_bet">公厕运行状况<span>正常 / 正常率</span></div>
+            <div class="barChart"></div>
+            <div class="title_small flex_bet" style="margin-top: 30px">公厕使用情况</div>
+            <div class="center_cont">
+                <div class="center_left">
+                    <div class="donut1">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 240 240">
+                            <circle stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="transparent" r="116" cx="120" cy="120"></circle>
+                            <path id="circlePath" d="M 120 16 a 104 104 0 0 0 0 208 a 104 104 0 0 0 0 -208 Z" fill="none" stroke="rgba(255, 255, 255, 0.5)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                                <animate id="circleAnimate" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                            </path>
+                        </svg>
+                        <div class="ring_num">98%</div>
+                        <div class="ring_name">整体使用率</div>
+                    </div>
+                    <div class="donut2">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 240 240">
+                            <circle stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="transparent" r="116" cx="120" cy="120"></circle>
+                            <path id="circlePath" d="M 120 16 a 104 104 0 0 0 0 208 a 104 104 0 0 0 0 -208 Z" fill="none" stroke="rgba(249, 100, 65, 1)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                                <animate id="circleAnimate" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                            </path>
+                            <path id="circlePath2" d="M 120 16 a 104 104 0 0 1 0 208 a 104 104 0 0 1 0 -208 Z" fill="none" stroke="rgba(0, 160, 233, 1)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                                <animate id="circleAnimate2" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                            </path>
+                        </svg>
+                        <div class="ring_num"></div>
+                        <div class="ring_name">当日客流量</div>
+                    </div>
+                </div>
+                <div class="center_right">
+                    <div class="center_right_tip flex"><img width="20" height="28">当日用电<span>40</span>度</div>
+                    <div class="center_right_tip flex"><img width="20" height="28">当日用水<span>4</span>吨</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom">
+            <div class="title_small flex_bet">公厕异常报警</div>
+            <div id="barChart2"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../plugin/echarts.min.js"></script>
+<script src="../../common/js/common.js"></script>
+<script src="../../common/js/svg.js"></script>
+<script src="../../common/js/chart.js"></script>
+<script>
+
+    window.onload=function () {
+        if(window.innerWidth == 0){
+            window.onresize = function () {
+                if(window.innerWidth<600){
+                    narrow();
+                    chart()
+                }
+            };
+        }else if(window.innerWidth<600){
+            narrow();
+            chart()
+        }else if(window.innerWidth>600){
+            chart()
+        }
+    };
+
+
+    let InfoData = [{name:'65',value:'公厕(个)'},{name:'32',value:'环卫人员'}];
+    info($('.info'),InfoData);
+
+    let BarData =[{name:'公厕 ',value:'40 / 89%',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:0.8},
+        {name:'人员',value:'41 / 90%',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:0.9}];
+    barChart($('.barChart'),BarData,316);
+
+    runAnimate(96,$('.donut1'));
+    runAnimations(54,$('.donut2'),'#circleAnimate','');
+    runAnimations(36,$('.donut2'),'#circleAnimate2','');
+    let dataArray = [691,418,361,211];
+    let xArray=['人流量超标','异味超标','用电异常','用水异常'];
+    function chart(){
+        Xchart.BarChart({
+            conId: 'barChart2',
+            yAxisAxisLineShow:false,
+            gridLeft:0,
+            gridRight:0,
+            gridBottom:'16%',
+            max:800,
+            barWidth:20,
+            itemStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(192, 247, 255, 1)'}, {offset: 1, color: 'rgba(82, 252, 247, 0.1)'}]),
+            xArray:xArray,
+            dataArray:dataArray,
+        });
+    }
+
+    function comeIn() {
+        $('.bg').addClass('in');
+        $('.index').addClass('in');
+        $('.top').addClass('in');
+        $('.center').addClass('in');
+        $('.bottom').addClass('in');
+    }
+    function goOut() {
+        $('.bg').removeClass('in');
+        $('.index').removeClass('in');
+        $('.top').removeClass('in');
+        $('.center').removeClass('in');
+        $('.bottom').removeClass('in');
+
+    }
+
+</script>

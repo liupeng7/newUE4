@@ -14,17 +14,33 @@ function narrow(){
     });
 }
 
-function barChart(dom,data) {
+function barChart(dom,data,width) {
     let html = '';
-    let width = dom.find('.barChart_item_bar').width();
     for(let i =0;i<data.length;i++){
         html +=`<div class="barChart_item">
         <div class="barChart_item_name">${data[i].name}</div>
         <div class="barChart_item_bar">
-            <div class="barChart_item_ac" style=""></div>
-            <div class="barChart_item_bg" style=""></div>
+            <div class="barChart_item_ac" style="background:${data[i].color};width:${data[i].per*width}px "></div>
+            <div class="barChart_item_bg" style="width: ${width-data[i].per*width}px"></div>
         </div>
         <div class="barChart_item_num">${data[i].value}</div>
     </div>`
     }
+    dom.html(html)
+}
+
+
+function info(dom,data) {
+    let html = '';
+    for(let i =0;i<data.length;i++) {
+        html += `<div class="info_item">
+                    <img class="info_left" width="75" height="80">
+                    <div class="info_right">
+                        <div class="info_name">${data[i].name}</div>
+                        <div class="info_value">${data[i].value}</div>
+                    </div>
+                </div>
+        `
+    }
+    dom.html(html)
 }
