@@ -1,6 +1,25 @@
 
 
+function resize (reChart){
+    if(reChart){
+        reChart = reChart()
+    }
+    let windowWidth = $('html').width();
+    if(window.innerWidth == 0){
+        window.onresize = function () {
+            if(window.innerWidth<windowWidth){
+                narrow();
+                reChart;
+            }
+        };
+    }else if(window.innerWidth<windowWidth){
+        narrow();
+        reChart;
+    }else if(window.innerWidth>windowWidth){
+        reChart;
+    }
 
+}
 
 
 function narrow(){
@@ -34,13 +53,21 @@ function info(dom,data) {
     let html = '';
     for(let i =0;i<data.length;i++) {
         html += `<div class="info_item">
-                    <img class="info_left" width="75" height="80">
+                    <img class="info_left" width="75" height="80" src="">
                     <div class="info_right">
                         <div class="info_name">${data[i].name}</div>
                         <div class="info_value">${data[i].value}</div>
                     </div>
                 </div>
         `
+    }
+    dom.html(html)
+}
+
+function block(dom,num,acnum){
+    let html = '';
+    for(let i=0;i<num;i++){
+        html += `<div class="cont_block ${  i< acnum? 'ac':''}" ></div>`
     }
     dom.html(html)
 }

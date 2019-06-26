@@ -140,16 +140,5 @@
 <script src="../../../common/js/common.js"></script>
 
 <script>
-    window.onload = function () {
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                if(window.innerWidth<1000){
-                    narrow();
-                }
-            };
-        }else if(window.innerWidth<1000){
-            narrow();
-        }else if(window.innerWidth>1000){
-        }
-    };
+    resize(reChart);
 </script>

@@ -5,7 +5,7 @@
     <title>路灯报警概况</title>
     <link rel="stylesheet" href="../../../common/css/index.css">
     <style>
-        html{width:840px;height:600px;background: #000}
+        html{width:840px;height:600px;}
         .index{background:rgba(6,9,14,0.2);border:3px solid rgba(255, 97, 18, 0.75);border-radius:4px;}
         .index_title{height:118px;line-height:118px;text-align: center;font-size:40px;font-weight:bold;color:rgba(235,247,255,1);
             background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;
@@ -66,31 +66,16 @@
 
 <script>
 
-    window.onload = function () {
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                if(window.innerWidth<1000){
-                    narrow();
-                    lineChart()
-                }
-            };
-        }else if(window.innerWidth<1000){
-            narrow();
-            lineChart()
-        }else if(window.innerWidth>1000){
-            lineChart()
-        }
-    };
+    resize(reChart)
 
-    let data= [{name:'灯泡损坏',value:'5次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:5/12},
-        {name:'灯泡故障',value:'2次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:2/12},
-        {name:'线路老化',value:'3次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:3/12},
-        {name:'灯罩损坏',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12},
-        {name:'灯杆倾斜',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12}];
-    barChart($('.barChart'),data,180);
+    function reChart(){
+        let data= [{name:'灯泡损坏',value:'5次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:5/12},
+            {name:'灯泡故障',value:'2次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:2/12},
+            {name:'线路老化',value:'3次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:3/12},
+            {name:'灯罩损坏',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12},
+            {name:'灯杆倾斜',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12}];
+        barChart($('.barChart'),data,180);
 
-
-    function lineChart(){
         Xchart.LineChart({
             conId:"lineChart",
             gridBottom:'12%',
@@ -105,5 +90,7 @@
                 {name:'4月',value:5},{name:'5月',value:8},{name:'6月',value:15}]
         })
     }
+
+
 
 </script>

@@ -50,20 +50,5 @@
 <script src="../../../common/js/common.js"></script>
 <script>
 
-    window.onload = function () {
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                if(window.innerWidth<500){
-                    narrow()
-                }
-            };
-        }else if(window.innerWidth<500){
-            narrow();
-        }else if(window.innerWidth>500){
-        }
-    }
-
-    // function comeIn() {
-    //     $('.index').addClass('in');
-    // }
+    resize();
 </script>

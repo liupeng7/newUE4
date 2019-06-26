@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>金融城停车场概况</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width:640px;height:660px;}
+        .index{background:rgba(6,9,14,0.2);border:3px solid rgba(255, 97, 18, 0.75);border-radius:4px;}
+        .index_title{height:118px;line-height:118px;text-align: center;font-size:40px;font-weight:bold;color:rgba(235,247,255,1);
+            background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;
+            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;}
+        .index_cont{height: 150px;display: flex;align-items: center;justify-content: space-around}
+        .index_cont_item{display: flex;align-items: center}
+        .index_cont_item img{width: 74px;height: 80px;margin-right: 20px;}
+        .warning_num{font-size:42px;text-align: center}
+        .warning_name{font-size:20px;color:rgba(255,255,255,0.75);}
+
+        .index_bottom{margin: 30px 50px 50px; height: 285px;}
+        .title{font-size:24px;font-weight:bold;}
+
+        .cont{padding: 30px 0 0 24px;display: flex}
+        .cont_blocks{width: 224px;display: flex;flex-wrap: wrap;}
+
+        .cont_info{width:120px;height:76px;background:rgba(255,255,255,0.3);margin-left: 16px;padding: 6px 0 0 17px;}
+        .cont_info_name{font-size:18px;color:rgba(255,255,255,0.75);}
+        .cont_info_value{font-size:36px;color:rgba(225,227,228,1);font-family:AbitareSans-500wt;}
+
+        .chart{display: flex;justify-content: space-between;margin-top: 30px;}
+        #liquidChart,#liquidChart2,#liquidChart3,#liquidChart4{width: 102px;height: 102px;}
+        .chart_name{text-align: center;font-size:20px;}
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false>
+<div class="index">
+    <div class="index_title"><img>金融城停车场概况</div>
+    <div class="index_cont">
+        <div class="index_cont_item">
+            <div class="">
+                <div class="warning_num">1352</div>
+                <div class="warning_name">今日停车流量</div>
+            </div>
+        </div>
+        <div class="index_cont_item">
+            <div class="">
+                <div class="warning_num">450</div>
+                <div class="warning_name">当前在场车辆</div>
+            </div>
+        </div>
+        <div class="index_cont_item">
+            <div class="">
+                <div class="warning_num">2.5h</div>
+                <div class="warning_name">平均停车时长</div>
+            </div>
+        </div>
+    </div>
+    <div class="index_bottom">
+        <div class="title">车位使用率</div>
+        <div class="cont">
+            <div class="cont_blocks"></div>
+            <div class="cont_info">
+                <div class="cont_info_name">总车位</div>
+                <div class="cont_info_value">1468</div>
+            </div>
+            <div class="cont_info">
+                <div class="cont_info_name">使用率</div>
+                <div class="cont_info_value">73%</div>
+            </div>
+        </div>
+        <div class="chart">
+            <div class="">
+                <div id="liquidChart"></div>
+                <div class="chart_name">货车车位</div>
+            </div>
+            <div class="">
+                <div id="liquidChart2"></div>
+                <div class="chart_name">残疾人车位</div>
+            </div>
+            <div class="">
+                <div id="liquidChart3"></div>
+                <div class="chart_name">充电桩车位</div>
+            </div>
+            <div class="">
+                <div id="liquidChart4"></div>
+                <div class="chart_name">普通车位</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../plugin/echarts-liquidfill.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script src="../../../common/js/common.js"></script>
+
+<script>
+
+
+
+    resize(reChart);
+
+
+
+    function reChart(){
+        Xchart.LiquidChart({
+            conId: 'liquidChart',
+            borderColor:'rgba(48, 165, 247, 1)',
+            itemStyleColor:new echarts.graphic.LinearGradient(1,0,0,0,[
+                {offset: 0.0,color:'rgba(5, 64, 137, 1)'},
+                {offset: 1, color: 'rgba(48, 165, 247, 1)'},
+            ]),
+            dataArray:[0.25]
+        });
+        Xchart.LiquidChart({
+            conId: 'liquidChart2',
+            borderColor:'rgba(6, 217, 135, 1)',
+            itemStyleColor:new echarts.graphic.LinearGradient(1,0,0,0,[
+                {offset: 0.0,color:'rgba(6, 217, 135, 1)'},
+                {offset: 1, color: 'rgba(8, 75, 44, 1)'},
+            ]),
+            dataArray:[0.10]
+        });
+        Xchart.LiquidChart({
+            conId: 'liquidChart3',
+            borderColor:'rgba(255, 146, 28, 1)',
+            itemStyleColor:new echarts.graphic.LinearGradient(1,0,0,0,[
+                {offset: 0.0,color:'rgba(255, 146, 28, 1)'},
+                {offset: 1, color: 'rgba(200, 34, 2, 1)'},
+            ]),
+            dataArray:[0.9]
+        });
+        Xchart.LiquidChart({
+            conId: 'liquidChart4',
+            borderColor:'rgba(255, 146, 28, 1)',
+            itemStyleColor:new echarts.graphic.LinearGradient(1,0,0,0,[
+                {offset: 0.0,color:'rgba(255, 146, 28, 1)'},
+                {offset: 1, color: 'rgba(255, 146, 28, 0.4)'},
+            ]),
+            dataArray:[0.75]
+        });
+        let data= [{name:'灯泡损坏',value:'5次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:5/12},
+            {name:'灯泡故障',value:'2次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:2/12},
+            {name:'线路老化',value:'3次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:3/12},
+            {name:'灯罩损坏',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12},
+            {name:'灯杆倾斜',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12}];
+        barChart($('.barChart'),data,180);
+        block($('.cont_blocks'),70,44);
+    }
+
+</script>

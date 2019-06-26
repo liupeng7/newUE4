@@ -60,33 +60,21 @@
 <script src="../../../common/js/common.js"></script>
 <script>
 
-    window.onload = function(){
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                if(window.innerWidth<3000){
-                    narrow();
-                    chart()
-                }
-            };
-        }else if(window.innerWidth<3000){
-            narrow();
-            chart()
-        }else if(window.innerWidth>3000){
-            chart()
-        }
-    };
+    resize(chart);
 
-    let data=[{
-        chartName:'近期蹲位占用数',
-        value:['202','403','450','510','483','461','451','428','395','377','350','312',
-            '266','269','289','295','311','325','356','378','355','364','369','351','356',]
-    },{
-        chartName:'今日蹲位占用数',
-        value:['351','251','256','277','289','300','335','345','359','399','411','444',
-            '456','478','493','512','520','325'],
-    }];
+
+
 
     function chart(){
+        let data=[{
+            chartName:'近期蹲位占用数',
+            value:['202','403','450','510','483','461','451','428','395','377','350','312',
+                '266','269','289','295','311','325','356','378','355','364','369','351','356',]
+        },{
+            chartName:'今日蹲位占用数',
+            value:['351','251','256','277','289','300','335','345','359','399','411','444',
+                '456','478','493','512','520','325'],
+        }];
         Xchart.LineCharts({
             conId:'linesChart',
             titleShow:true,

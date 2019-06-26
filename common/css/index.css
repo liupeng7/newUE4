@@ -56,9 +56,12 @@ svg circle {
 .barChart_item_bg{height:2px;background:rgba(255,255,255,0.15)}
 .barChart_item_num{font-size:26px;}
 
-
+/*上下排列*/
 .info_item{display: flex;align-items: center}
 .info_left{margin-right: 20px;}
 .info_name{font-size:50px;color:rgba(255,255,255,1);}
 .info_value{font-size:20px;color:rgba(255,255,255,0.75)}
 
+/*多个小块*/
+.cont_block{width:12px;height:12px;background:rgba(255,255,255,0.25);margin-right: 4px;margin-bottom: 4px;}
+.cont_block.ac{background: #fff}

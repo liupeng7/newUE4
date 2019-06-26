@@ -324,74 +324,59 @@
     //圆环
     function RingChart(options) {
         var defaultOption={
-            conId:'', //内容id
-            type:'pie',
+            conId:'',
+
+            showTooltip:true,
+            showLegend:true,
+            itemGap:24,
+            legendRight:'center',
+            legendTop:'center',
+            legendFont:18,
+            legendColor:'rgba(255,255,255,0.6)',
+            legendArray:[],
+
+            colorArray:['#ffc569', '#74b860', '#b18af3', '#0d96ff'],
+            roseType:'area',
             radius:'60%',
             center:['50%','50%'],
-            showLegend:true,
-            showLegendPer:true,
-            legendArray:[],
-            fontSize:18,
-            legendRight:'20%',
-            colorArray:['#ffc569', '#74b860', '#b18af3', '#0d96ff'], //颜色
-            dataArray:[] //数据
+            labelFont:28,
+            labelShow:true,
+            labelLineShow:false,
+            labelShowCustom:false,
+            labelShowCustomF:'',
+            labelLineLength:40,
+            labelLineLength2:30,
 
+
+            dataArray:[]
         };
         options = $.extend(false,defaultOption,options);
 
-
-        var legendValue = null;
-        var legendPer = null;
         var legendName = [];
         for(var i=0;i<options.dataArray.length;i++){
             legendName.push(options.dataArray[i].name)
         }
-
         var option = {
             tooltip:{
+                show:options.showTooltip,
                 formatter: function (params) {
-                    for(var i=0;i<options.dataArray.length;i++){
-                        var obj=options.dataArray[i];
-                        if(params.name == obj.name){
-                            legendValue = obj.value;
-                            legendPer = obj.percent
-                        }
-                    }
-                    if(options.showLegendPer) {
-                        return params.name + ': ' + legendValue + ' ' + legendPer + '%';
-                    }else{
-                        return params.name + ': ' + legendValue;
-                    }
 
                 },
             },
             legend: {
                 show:options.showLegend,
                 orient: 'vertical',
-                top:'middle',
-                itemGap:10,
+                top:options.legendTop,
                 right: options.legendRight,
-                itemWidth:10,
-                itemHeight:10,
+                itemGap:options.itemGap,
+                itemWidth:20,
+                itemHeight:20,
                 textStyle:{
-                    color:'rgba(255,255,255,1)',
-                    fontSize:options.fontSize
+                    color:options.legendColor,
+                    fontSize:options.legendFont
                 },
                 formatter: function (name) {
-
-                    for(var i=0;i<options.dataArray.length;i++){
-                        var obj=options.dataArray[i];
-                        if(name == obj.name){
-                            legendValue = obj.value;
-                            legendPer = obj.percent
-                        }
-                    }
-
-                    if(options.showLegendPer){
-                        return name +'     '+ legendValue + '  ' + legendPer + '%';
-                    }else{
-                        return name +'       '+ legendValue;
-                    }
+                    return name
                 },
                 data:legendName
             },
@@ -402,25 +387,44 @@
                     type:'pie',
                     radius: options.radius,
                     center:options.center,
-                    avoidLabelOverlap: false,
+                    roseType: options.roseType,
+                    avoidLabelOverlap: true,
                     label: {
                         normal: {
-                            show: false,
-                            position: 'center'
+                            show: options.labelShow,
+                            fontSize:options.labelFont,
+                            color:'rgba(255,255,255,0.6)',
+                            formatter:function (pp) {
+                                if(options.labelShowCustom){
+                                    return pp.name+'\n'+'{font|'+pp.value+'}'
+
+                                }else{
+                                    return pp.value+'%';
+                                }
+                            },
+                            rich:{
+                                font:{
+                                    fontSize:36,
+                                    color:'#fff',
+                                    padding:[0,0,10,0]
+                                }
+                            }
                         },
                         emphasis: {
-                            show: false
+                            show: true,
                         }
                     },
                     labelLine: {
                         normal: {
-                            show: false
+                            show:  options.labelLineShow,
+                            length:options.labelLineLength,
+                            length2:options.labelLineLength2,
                         }
                     },
                     itemStyle:{
                         normal:{
                             borderColor:'#061d2d',
-                            borderWidth:2
+                            borderWidth:0
                         }
                     },
                     data:options.dataArray

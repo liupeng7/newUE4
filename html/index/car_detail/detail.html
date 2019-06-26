@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>金融城停车场</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width: 900px;height: 700px}
+        .index{background:rgba(2,15,29,0.2);border:2px solid rgba(231, 251, 255, 0.75);border-radius:5px;}
+        .index_title{height:118px;line-height:118px;text-align: center;text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;
+            font-size:40px;font-weight:bold;color:rgba(235,247,255,1);background:rgba(0,0,0,0.3);
+            border-bottom:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;}
+
+        #ringChart{width: 360px;height: 500px;}
+        .content{display: flex;justify-content: space-between;padding:40px}
+        .content_right_top{padding-bottom:40px;border-bottom: 1px dashed rgba(146,195,255,1)}
+        .content_right_item{font-size:22px;color:rgba(255,255,255,0.4);line-height:50px;}
+        .content_right_item span{margin-left: 25px;color: #fff;font-size: 26px;}
+        .content_right_item p{line-height: 40px;}
+        .content_right_bottom{margin-top: 20px;}
+    </style>
+</head>
+<body>
+<div class="index">
+    <div class="index_title">金融城停车场</div>
+    <div class="content">
+        <div class="content_left">
+            <div id="ringChart"></div>
+        </div>
+        <div class="content_right">
+            <div class="content_right_top">
+                <div class="content_right_item">所在位置<span>高新区天府一街54号</span></div>
+                <div class="content_right_item">建设面积<span>6000m²</span></div>
+                <div class="content_right_item">出入口数<span>8个</span></div>
+                <div class="content_right_item">建设车位<span>800个</span></div>
+            </div>
+            <div class="content_right_bottom">
+                <div class="content_right_item">管理模式 <span>收费管理</span></div>
+                <div class="content_right_item">收费标准</div>
+                <div class="content_right_item">
+                    <p>30分钟内免费  </p>
+                    <p>超过30分钟  1元/30分钟</p>
+                    <p>夜间停放  3元/次</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script>
+
+    resize(reChart);
+
+    function reChart(){
+        Xchart.RingChart({
+            conId:'ringChart',
+            // colorArray:[''],
+            legendTop:'80%',
+            center:['50%','40%'],
+            radius:['55%','80%'],
+            roseType:'radius',
+            labelShow:false,
+            dataArray:[{name:'普通车位',value:20},{name:'充电桩车位',value:24},{name:'残疾人车位',value:25},{name:'货车车位',value:36},]
+        })
+    }
+
+</script>
