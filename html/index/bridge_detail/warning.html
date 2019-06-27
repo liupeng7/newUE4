@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报警</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width: 450px;height: 600px;}
+
+        .index_title{height:118px;display: flex;align-items: center;
+            font-size:40px;font-weight:bold;color:rgba(235,247,255,1);
+            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;}
+        .spot{width:9px;height:9px;background:rgba(236,236,236,1);}
+
+        .index_border{width:157px;height:49px;background:rgba(255,141,18,0.5);border:6px solid rgba(255, 141, 18, 1);
+        font-size: 22px;display: flex;align-items: center;justify-content: center;text-shadow:none;margin-left: 17px;}
+        .index_tip{width:445px;height:50px;background:rgba(229,229,229,0.15);border-radius:4px;padding: 0 10px;font-size: 24px;font-weight: bold}
+
+        .index_cont{margin-top: 50px;}
+        .index_cont_item{width:435px;height:168px;background:rgba(6,9,14,0.95);border:3px solid rgba(255, 141, 18, 0.75);
+            border-radius:4px;position: relative;padding: 30px;}
+        .index_cont_tip{width:220px;height:40px;background:rgba(85,46,3,0.95);border:2px solid rgba(255, 141, 18, 1);border-radius:8px;
+        position: absolute;left:25px;top:-20px;font-size: 18px;line-height: 36px;padding-left: 10px;font-weight: bold}
+        .index_cont_tip span{font-weight: normal;margin-left:6px }
+        .cont_info{font-size:18px;display: flex;align-items: center;line-height:50px}
+
+        .index_cont_tip.warning_bg{background:rgba(85,3,3,0.95);border:2px solid rgba(255, 75, 33, 1);}
+
+        .cont_info span{color:rgba(153,153,153,1);}
+        .cont_blocks{display: flex}
+        .cont_block{width:8px;height:14px;}
+
+        .cont_tip{margin-top: 18px;display: flex;justify-content: space-between}
+        .cont_tip_item{display: flex;align-items: center}
+        .cont_tip_block{width:4px;height:17px;background:rgba(255,255,255,0.2);border-radius:1px;margin-right: 15px;}
+        .cont_tip_nam{font-size:18px;color:rgba(255,255,255,0.5);}
+        .cont_tip_value{font-size:18px;}
+
+
+        /*.index{transition: all  0.5s;transform: scale(0)}*/
+        /*.index.in{transition: all  0.5s;transform: scale(1)}*/
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false>
+<div class="index">
+    <div class="index_title">人南立交<div class="index_border"><div class="spot"></div> 传感器报警</div> </div>
+    <div class="index_tip flex_bet">
+        <div class="">报警数量</div>
+        <div class=""><span class="font_red">2</span> / 120</div>
+    </div>
+    <div class="index_cont">
+        <div class="index_cont_item">
+            <div class="index_cont_tip">报警① <span>表面应变计 - 05</span></div>
+            <div class="index_cont_info flex_bet">
+                <div class="cont_info"><span>报警位置 ：</span>梁身 - 001</div>
+                <div class="cont_info"><span>当前状态 ：</span>处置中</div>
+            </div>
+            <div class="cont_blocks cont_blocks1"></div>
+            <div class="cont_tip">
+                <div class="cont_tip_item">
+                    <div class="cont_tip_block"></div>
+                    <div class="cont_tip_nam">已用时：</div>
+                    <div class="cont_tip_value font_number">1天12 小时</div>
+                </div>
+                <div class="cont_tip_item">
+                    <div class="cont_tip_block"></div>
+                    <div class="cont_tip_nam">剩余：</div>
+                    <div class="cont_tip_value font_number">0天12小时</div>
+                </div>
+            </div>
+        </div>
+        <div class="index_cont_item" style="margin-top: 40px;">
+            <div class="index_cont_tip warning_bg">报警② <span>沉降传感器 - 01</span></div>
+            <div class="index_cont_info flex_bet">
+                <div class="cont_info"><span>报警位置 ：</span>梁身 - 001</div>
+                <div class="cont_info"><span>当前状态 ：</span>处置中</div>
+            </div>
+            <div class="cont_blocks cont_blocks2"></div>
+            <div class="cont_tip">
+                <div class="cont_tip_item">
+                    <div class="cont_tip_block"></div>
+                    <div class="cont_tip_nam">已用时：</div>
+                    <div class="cont_tip_value font_number">1天12 小时</div>
+                </div>
+                <div class="cont_tip_item">
+                    <div class="cont_tip_block"></div>
+                    <div class="cont_tip_nam">剩余：</div>
+                    <div class="cont_tip_value font_number">0天12小时</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script>
+
+    resize();
+
+    block($('.cont_blocks1'),32,8,'yellow');
+    block($('.cont_blocks2'),32,8,'red')
+</script>

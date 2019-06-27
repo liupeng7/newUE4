@@ -22,7 +22,7 @@
         .list_info_item span{font-size: 24px;color: #fff}
     </style>
 </head>
-<body>
+<body oncontextmenu=self.event.returnValue=false >
 <div class="index">
     <div class="top">
         <div class="title flex_cen">停车场列表</div>
@@ -138,7 +138,7 @@
 </body>
 </html>
 <script src="../../../common/js/common.js"></script>
-
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
 <script>
-    resize(reChart);
+    resize();
 </script>

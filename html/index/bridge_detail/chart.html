@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>桥梁</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width:3840px;height:200px;padding:0;}
+
+        .chart_title{width:236px;height:76px;padding: 0 25px 0 13px;background:rgba(255,255,255,0.3);display: flex;align-items: center;justify-content: space-between}
+        .chart_title p{font-size:24px;line-height:34px;}
+
+        .chart_list{margin-left: 64px;display: flex;align-items: center}
+        .donut{position: relative;width: 120px;height: 120px;margin-right: 60px;}
+        .ring_num{font-size:34px;position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);
+            border: 8px solid rgba(255,255,255,1);border-radius: 50%;width: 80px;height: 80px;line-height: 60px;}
+        .ring_name{font-size:20px;color:rgba(255,255,255,0.75);text-align: center}
+
+        .bg{width:100%;height:200px;background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.5),rgba(0,0,0,0));
+            /*transition: all  0.5s;transform: translate(0,200px);opacity: 0;*/
+        }
+        .bg.in{transform: translate(0,0);opacity: 1}
+        .index{
+            /*transition: all  0.5s;transform: translate(0,200px);opacity: 0;*/
+            display: flex;justify-content: center;align-items: center;height:200px;}
+        .index.in{transform: translate(0,0);opacity: 1}
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false >
+<div class="bg">
+    <div class="index">
+        <div class="chart_title">
+            <img width="60" height="60">
+            <p>传感器监测 <br>数值正常率</p>
+        </div>
+        <div class="chart_list">
+            <div class="donut1 donut">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 240 240">
+                    <circle stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="transparent" r="116" cx="120" cy="120"></circle>
+                    <path id="circlePath" d="M 120 16 a 104 104 0 0 0 0 208 a 104 104 0 0 0 0 -208 Z" fill="none" stroke="rgba(230, 105, 76, 1)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                        <animate id="circleAnimate" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                </svg>
+                <div class="ring_num">98%</div>
+                <div class="ring_name">应力监测</div>
+            </div>
+            <div class="donut2 donut">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 240 240">
+                    <circle stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="transparent" r="116" cx="120" cy="120"></circle>
+                    <path id="circlePath" d="M 120 16 a 104 104 0 0 0 0 208 a 104 104 0 0 0 0 -208 Z" fill="none" stroke="rgba(230, 165, 87, 1)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                        <animate id="circleAnimate" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                </svg>
+                <div class="ring_num">85%</div>
+                <div class="ring_name">变形监测</div>
+            </div>
+            <div class="donut3 donut">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 240 240">
+                    <circle stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="transparent" r="116" cx="120" cy="120"></circle>
+                    <path id="circlePath" d="M 120 16 a 104 104 0 0 0 0 208 a 104 104 0 0 0 0 -208 Z" fill="none" stroke="rgba(66, 222, 169, 1)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                        <animate id="circleAnimate" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                </svg>
+                <div class="ring_num">99%</div>
+                <div class="ring_name">摆动监测</div>
+            </div>
+            <div class="donut4 donut">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 240 240">
+                    <circle stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="transparent" r="116" cx="120" cy="120"></circle>
+                    <path id="circlePath" d="M 120 16 a 104 104 0 0 0 0 208 a 104 104 0 0 0 0 -208 Z" fill="none" stroke="rgba(41, 146, 227, 1)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                        <animate id="circleAnimate" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                </svg>
+                <div class="ring_num">100%</div>
+                <div class="ring_name">震力监测</div>
+            </div>
+            <div class="donut5 donut">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 240 240">
+                    <circle stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="transparent" r="116" cx="120" cy="120"></circle>
+                    <path id="circlePath" d="M 120 16 a 104 104 0 0 0 0 208 a 104 104 0 0 0 0 -208 Z" fill="none" stroke="rgba(67, 71, 219, 1)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                        <animate id="circleAnimate" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                </svg>
+                <div class="ring_num">98%</div>
+                <div class="ring_name">环境监测</div>
+            </div>
+            <div class="donut5 donut">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"   width="120" height="120" viewBox="0 0 240 240">
+                    <circle stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="transparent" r="116" cx="120" cy="120"></circle>
+                    <path id="circlePath" d="M 120 16 a 104 104 0 0 0 0 208 a 104 104 0 0 0 0 -208 Z" fill="none" stroke="rgba(230, 105, 76, 1)" stroke-width="16" stroke-linecap="round"   stroke-dasharray="653.4512608" >
+                        <animate id="circleAnimate" attributeName="stroke-dashoffset" from="653.4512608" to="0" dur="3s" repeatDur="" fill="freeze" begin="0" restart="whenNotActive"></animate>
+                    </path>
+                </svg>
+                <div class="ring_num">99%</div>
+                <div class="ring_name">其他监测</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script src="../../../common/js/svg.js"></script>
+<script>
+
+    resize();
+    runAnimate(96,$('.donut1'));
+    runAnimate(85,$('.donut2'));
+    runAnimate(99,$('.donut3'));
+    runAnimate(100,$('.donut4'));
+    runAnimate(98,$('.donut5'));
+    runAnimate(99,$('.donut6'));
+
+
+
+    function comeIn() {
+        $('.bg').addClass('in');
+        $('.index').addClass('in');
+    }
+    function goOut() {
+        $('.index').removeClass('in');
+        $('.bg').removeClass('in');
+    }
+</script>

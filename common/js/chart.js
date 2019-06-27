@@ -488,7 +488,7 @@
 
             XaxisLabelFontSize:18,
             boundaryGap:false, //图表是否顶头
-
+            splitNumber:5,
             showY:false,
             splitLine:false,
             axisLabel:true,
@@ -570,9 +570,6 @@
             },
             tooltip: {
                 trigger:'axis',
-                // formatter:function(params){
-                //
-                // }
             },
             grid: {
                 left: options.gridLeft,
@@ -614,6 +611,7 @@
             yAxis: {
                 type: 'value',
                 max:options.max,
+                splitNumber:options.splitNumber,
                 axisLine: {
                     show: options.showY,
                     lineStyle:{
@@ -717,6 +715,7 @@
             max:null,  //y轴最大刻度
             showSymbol:true, //拐点是否显示
             symbolSize:4,
+            splitNumber:5,
             areaStyleShow:true,
             areaStyleColor:[
                 {areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
@@ -856,6 +855,7 @@
             yAxis: {
                 type: 'value',
                 max:options.max,
+                splitNumber:options.splitNumber,
                 axisLine: {
                     show: options.showY,
                     lineStyle:{

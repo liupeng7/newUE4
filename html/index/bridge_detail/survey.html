@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>桥梁详情</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width:840px;height:820px;}
+        .index{background:rgba(6,9,14,0.2);border:3px solid rgba(255, 97, 18, 0.75);border-radius:4px;width:620px;}
+        .index_title{height:118px;line-height:118px;text-align: center;font-size:32px;font-weight:bold;color:rgba(235,247,255,1);
+            background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;
+            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;display: flex;justify-content: space-around}
+
+        .index_item{padding: 0 60px}
+        .index_title_item.ac{border-bottom: 8px solid rgba(58, 202, 255, 1)}
+        .chart{margin-top: 27px;}
+
+        .cont_top{display: flex;flex-wrap: wrap;padding: 30px 0}
+        .cont_top .cont_info{width: 240px;}
+        .cont_top .cont_info span{width:90px; }
+        .cont_info{font-size:22px;display: flex;align-items: center;line-height:50px;}
+        .cont_info span{color:rgba(153,153,153,1);margin-right: 30px; }
+        .cont_center{border-top:1px solid rgba(146,195,255,0.5);padding: 30px 0}
+
+        .index_cont{height: 150px;display: flex;align-items: center;justify-content: space-around}
+        .index_cont_item{display: flex;align-items: center}
+        .index_cont_item img{width: 74px;height: 80px;margin-right: 20px;}
+        .warning_num{font-size:50px;}
+        .warning_name{font-size:20px;color:rgba(255,255,255,1);}
+
+        .chart_title{font-size:24px;}
+        #lineChart{width: 500px;height: 180px;}
+        .index_bottom{padding-bottom: 30px;}
+        .barChart{margin-top: 20px;}
+
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false>
+<div class="index">
+    <div class="index_title">
+        <div class="index_title_item ac">桥梁详情</div>
+        <div class="index_title_item">报警统计</div>
+    </div>
+    <div class="index_item">
+        <div class="cont_top">
+            <div class="cont_info"><span>规模</span>九孔</div>
+            <div class="cont_info"><span>桥宽</span>20m</div>
+            <div class="cont_info"><span>桥梁面积</span>1440m²</div>
+            <div class="cont_info"><span>孔径</span>4.9-9.9m  </div>
+            <div class="cont_info"><span>桥长</span>72m</div>
+            <div class="cont_info"><span>承重等级</span>1200t</div>
+        </div>
+        <div class="cont_center">
+            <div class="cont_info"><span>主管部门 ：</span>成都市高新区城市管理委员会 </div>
+            <div class="cont_info"><span>权属单位 ：</span>成都市高新区区政府 </div>
+            <div class="cont_info"><span>养护单位 ：</span>成都市高新区照明管理中心</div>
+        </div>
+        <div class="cont_center">
+            <div class="cont_info"><span>所在网格 ：</span>510100005000100  </div>
+            <div class="cont_info"><span>所在位置 ：</span>成都市高新区天府一街 </div>
+        </div>
+    </div>
+    <div class="index_item" style="display: none">
+        <div class="index_cont">
+            <div class="index_cont_item">
+                <img src="../../../image/index/lamp/bj_icon_1.png">
+                <div class="">
+                    <div class="warning_num">12</div>
+                    <div class="warning_name">总报警次数</div>
+                </div>
+            </div>
+            <div class="index_cont_item">
+                <img src="../../../image/index/lamp/bj_icon_2.png">
+                <div class="">
+                    <div class="warning_num">2</div>
+                    <div class="warning_name">未处理报警</div>
+                </div>
+            </div>
+        </div>
+        <div class="index_bottom">
+            <div class="chart">
+                <div class="chart_title">报警类型分布</div>
+                <div class="barChart"></div>
+            </div>
+            <div class="chart">
+                <div class="chart_title">每月报警次数走势</div>
+                <div id="lineChart"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script src="../../../common/js/common.js"></script>
+
+<script>
+
+    resize(Chart);
+
+    let data= [{name:'灯泡损坏',value:'5次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:5/12},
+        {name:'灯泡故障',value:'2次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:2/12},
+        {name:'线路老化',value:'3次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:3/12},
+        {name:'灯罩损坏',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12},
+        {name:'灯杆倾斜',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12}];
+    barChart($('.barChart'),data,320);
+
+
+    $('.index_title_item').click(function () {
+        $('.index_title_item').removeClass('ac');
+        $(this).addClass('ac');
+        $('.index_item').hide();
+        $('.index_item').eq($(this).index()).show()
+    });
+
+    function Chart(){
+        Xchart.LineChart({
+            conId:"lineChart",
+            gridBottom:'12%',
+            gridTop:'20%',
+            isArea:true,
+            max:15,
+            splitNumber:3,
+            lineWidth:2,
+            lineColor:'#2D94D8',
+            boundaryGap:true,
+            areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
+                [{offset: 0, color: 'rgba(64,216,84,1)'},
+                    {offset: 1, color: 'rgba(79,242,240,0.3)'}]),
+            showSymbol:false,
+            dataArray:[{name:'1月',value:10},{name:'2月',value:8},{name:'3月',value:12},
+                {name:'4月',value:7},{name:'5月',value:8},{name:'6月',value:11}]
+        })
+    }
+
+</script>

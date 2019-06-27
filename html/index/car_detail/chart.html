@@ -9,7 +9,7 @@
         #linesChart{width: 800px;height: 200px;}
         #barChart{width: 800px;height: 200px;}
 
-        .bg{width:100%;height:200px;background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.5),rgba(0,0,0,0));
+        .bg{width:100%;height:200px;background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
             transition: all  0.5s;transform: translate(0,200px);opacity: 0;}
         .bg.in{transform: translate(0,0);opacity: 1}
         .index{transition: all  0.5s;transform: translate(0,200px);opacity: 0;display: flex;justify-content: center}
@@ -81,7 +81,7 @@
             dataArray:[691,480,562,387,226,369,181],
         });
     }
-
+    comeIn()
     function comeIn() {
         $('.bg').addClass('in');
         $('.index').addClass('in');

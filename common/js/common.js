@@ -64,10 +64,10 @@ function info(dom,data) {
     dom.html(html)
 }
 
-function block(dom,num,acnum){
+function block(dom,num,acnum,color){
     let html = '';
     for(let i=0;i<num;i++){
-        html += `<div class="cont_block ${  i< acnum? 'ac':''}" ></div>`
+        html += `<div class="cont_block ${  i< acnum? color:''}" ></div>`
     }
     dom.html(html)
 }
