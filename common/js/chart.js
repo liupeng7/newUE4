@@ -192,8 +192,8 @@
             legendArray:[],
 
             colorArray:['#ffc569', '#74b860', '#b18af3', '#0d96ff'], //颜色
-            roseType:'area',
-            radius:'60%',
+            roseType:false,
+            radius:['60%','85%'],
             center:['50%','50%'],
             labelFont:28,
             labelShow:true,
@@ -204,7 +204,7 @@
             labelLineLength2:30,
 
 
-            dataArray:[]
+            dataArray:[{name:'',value:''},{name:'',value:''}]
         };
         options = $.extend(false,defaultOption,options);
 
@@ -383,6 +383,7 @@
                 },
                 axisLabel: {
                     show: true,
+                    interval:0,
                     textStyle: {
                         color: "rgba(255,255,255,0.5)",
                         fontSize: options.axisLabelFontSize,
@@ -1334,6 +1335,150 @@
         myChart.setOption(option);
     }
 
+    function GaugeChart(options){
+        let defaultOption={
+            conId:'',
+            splitNumber:10,
+            min:0,
+            max:100,
+            startAngle:210,
+            endAngle:-30,
+            splitLineLength:20,
+            radius:'100%',
+            radius2:'60%',
+            radius3:'50%',
+            axisLineWidth:16,
+            opacity:0.2,
+            axisLine3Width:10,
+            lineStyle:[[1,new echarts.graphic.LinearGradient(0,0,1,0,[
+                {offset: 0.0,color:'rgba(202, 252, 255, 1)'},
+                {offset: 1, color: 'rgba(34, 152, 234, 1)'},
+            ])]]
+        };
+
+        options = $.extend(false,defaultOption,options);
+
+
+        let option = {
+            tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            series: [
+                {
+                    type: 'gauge',
+                    radius: options.radius,
+                    center:['50%','60%'],
+                    splitNumber:options.splitNumber,
+                    startAngle:options.startAngle,
+                    endAngle:options.endAngle,
+                    min:options.min,
+                    max:options.max,
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color:[[0, '#000'],[1 , '#000']],
+                            width: options.axisLineWidth,
+                            opacity:options.opacity
+                        }
+                    },
+                    axisLabel: {            // 坐标轴
+                        show:true,
+                        color: '#fff',
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    splitLine: {           // 分隔线
+                        show:false,
+                        length:options.splitLineLength,
+                        lineStyle:{
+                            width:0
+                        }
+                    },
+                    pointer: {           // 分隔线
+                        show:false
+                    },
+                    detail: {
+                        show:false,
+                    },
+                },
+                {
+                    type: 'gauge',
+                    radius:options.radius2,
+                    center:['50%','60%'],
+                    splitNumber:options.splitNumber,
+                    startAngle:options.startAngle,
+                    endAngle:options.endAngle,
+                    axisLine: {            // 坐标轴线
+                        show:false,
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            opacity: 0
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    splitLine: {           // 分隔线
+                        show:true,
+                        length:8,
+                        lineStyle:{
+                            color:'rgba(0,0,0,0.5)'
+                        }
+                    },
+                    axisLabel:{
+                        show:false,
+                    },
+                    detail:{
+                        show:false
+                    },
+                    pointer: {           // 分隔线
+                        show:false,
+                    },
+                },
+                {
+                    type: 'gauge',
+                    radius:options.radius3,
+                    center:['50%','60%'],
+                    splitNumber:options.splitNumber,
+                    startAngle:options.startAngle,
+                    endAngle:options.endAngle,
+                    axisLine: {            // 坐标轴线
+                        show:false,
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color:options.lineStyle,
+                            width: options.axisLine3Width,
+                            opacity: 1
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    splitLine: {           // 分隔线
+                        show:false,
+                    },
+                    axisLabel:{
+                        show:false,
+                    },
+                    detail:{
+                        show:false
+                    },
+                    pointer: {           // 分隔线
+                        show:false,
+                    },
+                },
+            ]
+        };
+        var dom = null;
+        if(typeof options.conId === 'string'){
+            dom = document.getElementById(options.conId);
+        }else{
+            dom = $(options.conId)[0];
+        }
+
+        var myChart = echarts.init(dom);
+        myChart.clear();
+        myChart.setOption(option);
+    }
+
 
     window.Xchart = {
         PieChart:PieChart,
@@ -1348,6 +1493,7 @@
         RadarChart:RadarChart,
         BarLineChart:BarLineChart,
         TwoBarChart:TwoBarChart,
+        GaugeChart:GaugeChart,
         // PlusMinusChart:PlusMinusChart
     }
 })();

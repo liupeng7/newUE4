@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监测</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width: 780px;height: 1080px;
+            background: -webkit-linear-gradient(left,rgba(0,0,0,0.9), rgba(0,0,0,0.7),rgba(0,0,0,0.6),rgba(0,0,0,0.4), rgba(0,0,0,0)) no-repeat;}
+        .index{padding: 150px 0 0 150px}
+        .top{display: flex;flex-wrap: wrap;width: 640px;}
+        .top_item{position: relative}
+        .chart_num{border: 1px solid;border-radius: 50%;background: #000;font-size: 34px;width: 90px;height: 90px;font-family: ABITARE;
+            position: absolute;left:50%;top:60%;transform: translate(-50%,-50%);text-align: center;line-height: 70px}
+        .chart_unit{font-size:14px;color:rgba(255,255,255,0.5);position: absolute;left:50%;top:65%;transform: translate(-50%,-50%)}
+        .chart_name{font-size:21px;font-weight: bold;position: absolute;left:50%;top:85%;transform: translate(-50%,-50%)}
+        #GaugeChart,#GaugeChart2,#GaugeChart3,#GaugeChart4{ width: 320px;height: 280px;}
+
+        .bottom_title{display: flex;align-items: center;font-size: 28px;font-weight: bold}
+        .bottom_border{height:2px;width:223px;background:rgba(255,255,255,0.3);margin: 0 38px 0 12px}
+        .bottom_chart{display: flex;align-items: center;justify-content: space-between}
+        #ringChart, #ringChart2, #ringChart3{width: 180px;height: 240px}
+    </style>
+</head>
+<body>
+<div class="index">
+    <div class="top">
+        <div class="top_item">
+            <div id="GaugeChart"></div>
+            <div class="chart_info">
+                <div class="chart_num">77.9</div>
+                <div class="chart_unit">%RH</div>
+                <div class="chart_name">室内湿度</div>
+            </div>
+        </div>
+        <div class="top_item">
+            <div id="GaugeChart2"></div>
+            <div class="chart_info">
+                <div class="chart_num">77.9</div>
+                <div class="chart_unit">摄氏度</div>
+                <div class="chart_name">室内湿度</div>
+            </div>
+        </div>
+        <div class="top_item">
+            <div id="GaugeChart3"></div>
+            <div class="chart_info">
+                <div class="chart_num">77.9</div>
+                <div class="chart_unit">ppm  优</div>
+                <div class="chart_name">异味等级</div>
+            </div>
+        </div>
+        <div class="top_item">
+            <div id="GaugeChart4"></div>
+            <div class="chart_info">
+                <div class="chart_num">77.9</div>
+                <div class="chart_unit">um/m² 良</div>
+                <div class="chart_name">PM2.5</div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom_title"><img>男 厕<div class="bottom_border"></div><img>女 厕 <div class="bottom_border" style="width: 86px;"></div></div>
+        <div class="bottom_chart">
+            <div class="bottom_chart_item">
+                <div id="ringChart"></div>
+            </div>
+            <div class="bottom_chart_item">
+                <div id="ringChart2"></div>
+            </div>
+            <div class="bottom_chart_item">
+                <div id="ringChart3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script>
+
+    resize(chart);
+
+
+    function chart(){
+
+      Xchart.GaugeChart({
+          conId:'GaugeChart',
+          splitNumber:10,
+          min:-30,
+          max:70
+      });
+      Xchart.GaugeChart({
+          conId:'GaugeChart2',
+          splitNumber:5,
+          min:0,
+          max:50,
+          lineStyle:[[1,new echarts.graphic.LinearGradient(0,0,1,0,[
+              {offset: 0,color:'rgba(34, 152, 234, 1)'},
+              {offset: 0.333, color: 'rgba(158, 232, 62, 1)'},
+              {offset: 0.666, color: 'rgba(255, 199, 66, 1)'},
+              {offset: 1, color: 'rgba(255, 82, 21, 1)'},
+          ])]]
+      });
+      Xchart.GaugeChart({
+          conId:'GaugeChart3',
+          splitNumber:5,
+          min:0,
+          max:4.8,
+          lineStyle:[[1,new echarts.graphic.LinearGradient(0,0,1,0,[
+              {offset: 0,color:'rgba(255, 199, 66, 1)'},
+              {offset: 1, color: 'rgba(255, 82, 21, 1)'},
+          ])]]
+        });
+      Xchart.GaugeChart({
+          conId:'GaugeChart4',
+          splitNumber:5,
+          min:0,
+          max:500,
+          lineStyle:[[1,new echarts.graphic.LinearGradient(0,0,1,0,[
+              {offset: 0,color:'rgba(80, 217, 57, 1)'},
+              {offset: 0.5, color: 'rgba(248, 180, 17, 1)'},
+              {offset: 1, color: 'rgba(246, 41, 0, 1)'},
+          ])]]
+      });
+
+      Xchart.RingChart({
+          conId:'ringChart',
+          colorArray:[new echarts.graphic.LinearGradient(1,0,0,0,[
+              {offset: 0.0,color:'rgba(202, 252, 255, 1)'},
+              {offset: 1, color: 'rgba(34, 152, 234, 1)'},
+          ]),'rgba(255, 255, 255, 0.2)'],
+          legendTop:'85%',
+          dataArray:[{name:'占用 7',value:'7'},{name:'空闲 3',value:'3'}]
+      });
+      Xchart.RingChart({
+            conId:'ringChart2',
+            colorArray:[new echarts.graphic.LinearGradient(1,0,0,0,[
+                {offset: 0.0,color:'rgba(75, 244, 255, 1)'},
+                {offset: 1, color: 'rgba(75, 244, 255, 0.5)'},
+            ]),'rgba(255, 255, 255, 0.2)'],
+            legendTop:'85%',
+            dataArray:[{name:'占用 4',value:'4'},{name:'空闲 5',value:'5'}]
+      });
+      Xchart.RingChart({
+          conId:'ringChart3',
+          colorArray:[new echarts.graphic.LinearGradient(1,0,0,0,[
+              {offset: 0.0,color:'rgba(229, 94, 62, 1)'},
+              {offset: 1, color: 'rgba(229, 94, 62, 0.5)'},
+          ]),'rgba(255, 255, 255, 0.2)'],
+          legendTop:'85%',
+          dataArray:[{name:'占用 3',value:'3'},{name:'空闲 2',value:'2'}]
+      })
+    }
+
+
+</script>

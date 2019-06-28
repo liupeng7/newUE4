@@ -13,6 +13,7 @@
             border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
         .info{padding: 0 90px;height: 160px;}
 
+        .top .xb_icon{font-size: 36px;margin-right: 5px}
         .center{padding: 0 40px;}
         .title_small{font-size:28px;font-weight: bold}
         .title_small span{font-size: 20px;font-weight: normal}
@@ -105,23 +106,8 @@
 <script src="../../common/js/chart.js"></script>
 <script>
 
-    window.onload=function () {
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                if(window.innerWidth<600){
-                    narrow();
-                    chart()
-                }
-            };
-        }else if(window.innerWidth<600){
-            narrow();
-            chart()
-        }else if(window.innerWidth>600){
-            chart()
-        }
-    };
 
-
+    resize(chart);
     let InfoData = [{name:'65',value:'公厕(个)'},{name:'32',value:'环卫人员'}];
     info($('.info'),InfoData);
 
@@ -132,9 +118,10 @@
     runAnimate(96,$('.donut1'));
     runAnimations(54,$('.donut2'),'#circleAnimate','');
     runAnimations(36,$('.donut2'),'#circleAnimate2','');
-    let dataArray = [691,418,361,211];
-    let xArray=['人流量超标','异味超标','用电异常','用水异常'];
+
     function chart(){
+        let dataArray = [691,418,361,211];
+        let xArray=['人流量超标','异味超标','用电异常','用水异常'];
         Xchart.BarChart({
             conId: 'barChart2',
             yAxisAxisLineShow:false,

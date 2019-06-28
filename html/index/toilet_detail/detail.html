@@ -2,42 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>报警</title>
+    <title>公厕详情</title>
     <link rel="stylesheet" href="../../../common/css/index.css">
     <style>
-        html{width: 400px;height: 500px;}
+        html{width: 370px;height: 580px;}
+        .index{background:rgba(16,16,16,0.95);border:1px solid rgba(255, 255, 255, 1)}
+        .index_title{font-size:20px;height:60px;border-bottom:1px solid rgba(255,255,255,0.3);line-height: 60px;text-align: center}
 
-        .index_title{height:118px;display: flex;align-items: center;justify-content: center;
-            font-size:40px;font-weight:bold;color:rgba(235,247,255,1);;background:rgba(0,0,0,0.3);
-            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;border-bottom:2px solid rgba(255,51,18,1);;}
-        .index_border{width:137px;height:49px;background:rgba(255,51,18,0.5);border:6px solid rgba(255, 51, 18, 1);
-        font-size: 22px;display: flex;align-items: center;justify-content: center;text-shadow:none;margin-left: 45px;}
-
-
-        .spot{width:9px;height:9px;background:rgba(236,236,236,1);}
-        .cont_center{padding:20px 0 0 15px;}
-        .cont_bottom{padding:20px 0 0 15px;}
-
-        .cont_info{font-size:22px;display: flex;align-items: center;line-height:50px}
-        .cont_info span{color:rgba(153,153,153,1);}
+        .index_cont{padding: 26px 35px;}
+        .index_top{border-top:1px dashed  rgba(146,195,255,0.5);margin: 15px 0}
+        .index_top_title{font-size:16px;font-weight:bold;color:rgba(255,255,255,1);line-height:20px;margin-top: 20px;}
+        .cont_center{border-top:1px dashed  rgba(146,195,255,0.5);padding-top: 20px;}
+        .cont_info{font-size:18px;display: flex;align-items: center;line-height:30px}
+        .cont_info span{color:rgba(153,153,153,1);font-size: 16px}
         .cont_blocks{display: flex}
         .cont_block.red{background:rgba(255,75,33,1);}
-        .cont_block{width:12px;height:31px;background:rgba(255,255,255,0.2);margin-right:4px;border-radius:2px;}
+        .cont_block{width:8px;height:14px;background:rgba(255,255,255,0.2);margin-right:4px;border-radius:2px;}
 
-        .cont_tip{margin-top: 40px;display: flex;justify-content: space-between}
+        .cont_bottom{margin-top: 24px;}
+        .cont_tip{margin-top: 10px;display: flex;justify-content: space-between}
         .cont_tip_item{display: flex;align-items: center}
-        .cont_tip_block{width:8px;height:64px;background:rgba(255,255,255,0.2);border-radius:1px;margin-right: 15px;}
-        .cont_tip_nam{font-size:22px;color:rgba(255,255,255,0.5);}
-        .cont_tip_value{font-size:34px;}
+        .cont_tip_block{width:4px;height:48px;background:rgba(255,255,255,0.2);border-radius:1px;margin-right: 15px;}
+        .cont_tip_nam{font-size:18px;color:rgba(255,255,255,0.5);}
+        .cont_tip_value{font-size:20px;}
         .cont_tip_value span{font-size: 22px;}
-
+        #lineChart{width: 300px;height: 120px;}
 
     </style>
 </head>
 <body oncontextmenu=self.event.returnValue=false>
 <div class="index">
-    <div class="index_title">灯泡损坏<div class="index_border"><div class="spot"></div> 紧急报警</div> </div>
+    <div class="index_title">详 情</div>
     <div class="index_cont">
+        <div class="cont_info"><span>报警时间 ：</span>2019/08/11  23:30:50</div>
+        <div class="index_top">
+            <div class="index_top_title">近一小时人流走势</div>
+            <div id="lineChart"></div>
+        </div>
         <div class="cont_center">
             <div class="cont_info"><span>报警设备 ：</span>光线传感器</div>
             <div class="cont_info"><span>报警时间 ：</span>2019/06/11  23:30:50 </div>
@@ -94,10 +95,28 @@
 </body>
 </html>
 <script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
 <script src="../../../common/js/common.js"></script>
 <script>
 
-    resize()
-
+    resize();
+    Xchart.LineChart({
+        conId:"lineChart",
+        gridBottom:'20%',
+        gridTop:'10%',
+        isArea:true,
+        max:15,
+        splitNumber:3,
+        lineWidth:2,
+        lineColor:'#2D94D8',
+        boundaryGap:true,
+        areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
+            [{offset: 0, color: 'rgba(64,216,84,1)'},
+                {offset: 1, color: 'rgba(79,242,240,0.3)'}]),
+        showSymbol:false,
+        dataArray:[{name:'0',value:10},{name:'10',value:8},{name:'20',value:12},
+            {name:'30',value:7},{name:'40',value:8},{name:'50',value:11},{name:'60',value:11}]
+    })
 
 </script>

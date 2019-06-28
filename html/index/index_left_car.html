@@ -10,6 +10,8 @@
 
         .title{font-size: 36px;font-weight: bold;width:100%;height:80px;background:-webkit-linear-gradient(left,rgba(169,220,255,0.15),rgba(169,220,255,0));
             border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
+
+        .top .xb_icon{font-size: 36px;margin-right: 10px}
         .cont{display: flex;justify-content: space-between;padding:50px}
         .cont_left .name{font-size: 24px}
         .cont_left .num{font-size: 56px}
@@ -47,7 +49,7 @@
 <div class="bg">
     <div class="index">
         <div class="top">
-            <div class="title flex_cen">停车位状态</div>
+            <div class="title flex_cen"><i class="xb_icon park_fill"></i>停车位状态</div>
         </div>
         <div class="center">
             <div class="cont ">
@@ -146,23 +148,133 @@
 <script src="../../plugin/jquery-3.1.1.min.js"></script>
 <script src="../../plugin/echarts.min.js"></script>
 <script src="../../plugin/chart.js"></script>
+<script src="../../common/js/common.js"></script>
 </body>
 </html>
 <script>
 
-    window.onload = function(){
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                if(window.innerWidth<600){
-                    narrow()
-                }
-            };
-        }else if(window.innerWidth<600){
-            narrow();
-        }else if(window.innerWidth>600){
-        }
-    };
-    function circleChart() {
+    resize(reChart);
+
+    function gaugeChart(dom,data) {
+        let myChart= echarts.init(document.getElementById(dom));
+        let option ={
+            tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            series: [
+                {
+                    type: 'gauge',
+                    radius: '80%',
+                    center:['50%','55%'],
+                    axisLine: {
+                        lineStyle: {
+                            color: [
+                                [
+                                    1, new echarts.graphic.LinearGradient(
+                                    0, 0, 1, 0, [{
+                                        offset: 0,
+                                        color: 'rgba(147, 234, 34, 1)'
+                                    },
+                                        {
+                                            offset: 0.5,
+                                            color: 'rgba(255, 196, 53, 1)'
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: 'rgba(255, 67, 2, 1)'
+                                        }
+                                    ]
+                                )
+                                ],
+                            ],
+                            width: 4,
+                        }
+                    },
+                    axisLabel: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    splitLine: {           // 分隔线
+                        show:false,
+                    },
+                    pointer: {           // 分隔线
+                        show:false
+                    },
+                    title:{
+                        offsetCenter: [0, '100%'],
+                        color:'#fff',
+                        fontSize:14,
+                    },
+                    detail: {
+                        show:true,
+                        offsetCenter: [0, 0],
+                        borderColor:'rgba(165, 165, 165, 1)',
+                        borderWidth:2,
+                        borderRadius:50,
+                        width:40,
+                        height:50,
+                        formatter:function (pam) {
+                            return  '{a|'+pam+'}{b|%}'
+                        },
+                        rich:{
+                            a:{
+                                fontSize:28,
+                                color:'#fff',
+                                lineHeight:50
+                            },
+                            b:{
+                                fontSize:14,
+                                color:'#fff',
+                                lineHeight:50
+                            },
+                        }
+                    },
+                    data:data
+                },
+                {
+                    type: 'gauge',
+                    radius:'65%',
+                    center:['50%','55%'],
+                    splitNumber:16,
+                    axisLine: {            // 坐标轴线
+                        show:false,
+                        lineStyle: {
+                            opacity: 0
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show:false,
+                    },
+                    splitLine: {
+                        length:8,
+                        color:'#fff'
+                    },
+                    axisLabel:{
+                        show:false
+                    },
+                    detail:{
+                        show:false
+                    },
+                    pointer: {           // 分隔线
+                        show:false,
+                    },
+                    data: [{value:'', name: ' '}]
+                },
+            ]
+        };
+        myChart.setOption(option);
+    }
+    let data= [{value:'97', name: '公共停车场使用率 '}];
+    let data2=[{value:'97', name: '公共停车场使用率 '}];
+    let data3=[{value:'97', name: '公共停车场使用率 '}];
+    gaugeChart('gaugeChart',data);
+    gaugeChart('gaugeChart2',data2);
+    gaugeChart('gaugeChart3',data3);
+
+
+    function reChart(){
         let myChart= echarts.init(document.getElementById('circleChart'));
         let option = {
             color: ['rgba(0, 54, 66, 1)',  'rgba(183, 96, 0, 1)','rgba(153, 38, 0, 1)',],
@@ -295,7 +407,7 @@
                     data: [{
                         value: 11,
                         name: '正常'
-                        },
+                    },
                         {
                             value: 4,
                             name: '紧张'
@@ -312,136 +424,6 @@
         myChart.setOption(option);
     }
 
-    let data= [{value:'97', name: '公共停车场使用率 '}];
-    let data2=[{value:'97', name: '公共停车场使用率 '}];
-    let data3=[{value:'97', name: '公共停车场使用率 '}];
-    gaugeChart('gaugeChart',data);
-    gaugeChart('gaugeChart2',data2);
-    gaugeChart('gaugeChart3',data3);
-    circleChart();
-
-    function gaugeChart(dom,data) {
-        let myChart= echarts.init(document.getElementById(dom));
-        let option ={
-            tooltip : {
-                formatter: "{a} <br/>{b} : {c}%"
-            },
-            series: [
-                {
-                    type: 'gauge',
-                    radius: '80%',
-                    center:['50%','55%'],
-                    axisLine: {
-                        lineStyle: {
-                            color: [
-                                [
-                                    1, new echarts.graphic.LinearGradient(
-                                    0, 0, 1, 0, [{
-                                        offset: 0,
-                                        color: 'rgba(147, 234, 34, 1)'
-                                    },
-                                        {
-                                            offset: 0.5,
-                                            color: 'rgba(255, 196, 53, 1)'
-                                        },
-                                        {
-                                            offset: 1,
-                                            color: 'rgba(255, 67, 2, 1)'
-                                        }
-                                    ]
-                                )
-                                ],
-                            ],
-                            width: 4,
-                        }
-                    },
-                    axisLabel: {            // 坐标轴小标记
-                        show:false,
-                    },
-                    axisTick: {            // 坐标轴小标记
-                        show:false,
-                    },
-                    splitLine: {           // 分隔线
-                        show:false,
-                    },
-                    pointer: {           // 分隔线
-                        show:false
-                    },
-                    title:{
-                        offsetCenter: [0, '100%'],
-                        color:'#fff',
-                        fontSize:14,
-                    },
-                    detail: {
-                        show:true,
-                        offsetCenter: [0, 0],
-                        borderColor:'rgba(165, 165, 165, 1)',
-                        borderWidth:2,
-                        borderRadius:50,
-                        width:40,
-                        height:50,
-                        formatter:function (pam) {
-                           return  '{a|'+pam+'}{b|%}'
-                        },
-                        rich:{
-                            a:{
-                                fontSize:28,
-                                color:'#fff',
-                                lineHeight:50
-                            },
-                            b:{
-                                fontSize:14,
-                                color:'#fff',
-                                lineHeight:50
-                            },
-                        }
-                    },
-                    data:data
-                },
-                {
-                    type: 'gauge',
-                    radius:'65%',
-                    center:['50%','55%'],
-                    splitNumber:16,
-                    axisLine: {            // 坐标轴线
-                        show:false,
-                        lineStyle: {
-                            opacity: 0
-                        }
-                    },
-                    axisTick: {            // 坐标轴小标记
-                        show:false,
-                    },
-                    splitLine: {
-                        length:8,
-                        color:'#fff'
-                    },
-                    axisLabel:{
-                        show:false
-                    },
-                    detail:{
-                        show:false
-                    },
-                    pointer: {           // 分隔线
-                        show:false,
-                    },
-                    data: [{value:'', name: ' '}]
-                },
-            ]
-        };
-        myChart.setOption(option);
-    }
-
-    function narrow(){
-        let width = $('html').width()*0.25;
-        let height = $('html').height()*0.25;
-        $('html').css({
-            position: 'absolute',
-            transform:'scale(0.5)',
-            left:-width,
-            top:-height
-        });
-    }
     function comeIn() {
         $('.bg').addClass('in');
         $('.index').addClass('in');
