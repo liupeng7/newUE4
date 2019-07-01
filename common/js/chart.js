@@ -707,8 +707,38 @@
             YaxisLabelShow:true,
             showMinLabel:true,
             YaxisLabelMargin:8,
-            markLine:true, //是否显示平均值线
-            markLine_custom:{},//自定义标注线
+            // markLine:true, //是否显示平均值线
+            markLine:{
+                symbol:'none',
+                data: [
+                    [
+                        {
+                            x: 80,
+                            y: 80,
+                            lineStyle:{
+                                color:'rgba(255, 178, 44, 1)'
+                            }
+                        },
+                        {
+                            x: 720,
+                            y: 80
+                        }
+                    ],
+                    [
+                        {
+                            x: 80,
+                            y: 120,
+                            lineStyle:{
+                                color:'rgba(61, 212, 217, 1)'
+                            }
+                        },
+                        {
+                            x: 720,
+                            y: 120
+                        }
+                    ],
+                ]
+            },//自定义标注线
             markPoint:false, //是否显示最大最小值点
             smooth:true, //是否是光滑曲线
             lineWidth:2,  //折线宽度
@@ -732,30 +762,23 @@
             dataArray:[],//数据
         };
         options = $.extend(false,defaultOption,options);
-        let series = [];
-        let markPoint='',markLine='';
-        // if(options.markPoint){
-        //
+        let series=[];
+        // if(options.markLine){
+        //     markLine={
+        //         data: [
+        //             {
+        //                 type: 'average',
+        //                 name: '平均值',
+        //                 itemStyle :{
+        //                     normal: {
+        //                         fontSize:18,
+        //                         color: options.markLinecolor,
+        //                     },
+        //                 }
+        //             }
+        //         ]
+        //     }
         // }
-        if(options.markLine){
-            markLine={
-                data: [
-                    {
-                        type: 'average',
-                        name: '平均值',
-                        itemStyle :{
-                            normal: {
-                                fontSize:18,
-                                color: options.markLinecolor,
-                            },
-                        }
-                    }
-                ]
-            }
-        }
-        if(options.markLine_custom){
-            markLine=options.markLine_custom
-        }
 
         for(let i=0;i<options.dataArray.length;i++){
             series.push({
@@ -775,7 +798,7 @@
                     }
                 },
                 markPoint:options.markPoint,
-                markLine:markLine,
+                markLine:options.markLine,
                 symbolSize: options.symbolSize,
                 data: options.dataArray[i].value,
             })

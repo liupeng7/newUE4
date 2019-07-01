@@ -28,9 +28,6 @@
 
         .cont_info span{color:rgba(153,153,153,1);}
         .cont_blocks{display: flex}
-        .cont_block.red{background:rgba(255,75,33,1);}
-        .cont_block.yellow{background:rgba(255,174,32,1);}
-        .cont_block{width:8px;height:14px;background:rgba(255,255,255,0.2);margin-right:4px;border-radius:2px;}
 
         .cont_tip{margin-top: 18px;display: flex;justify-content: space-between}
         .cont_tip_item{display: flex;align-items: center}
@@ -57,39 +54,7 @@
                 <div class="cont_info"><span>报警类型 ：</span>异味气体超标</div>
                 <div class="cont_info"><span>当前状态 ：</span>处置中</div>
             </div>
-            <div class="cont_blocks">
-                <div class="cont_block yellow"></div>
-                <div class="cont_block yellow"></div>
-                <div class="cont_block yellow"></div>
-                <div class="cont_block yellow"></div>
-                <div class="cont_block yellow"></div>
-                <div class="cont_block yellow"></div>
-                <div class="cont_block yellow"></div>
-                <div class="cont_block yellow"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-            </div>
+            <div class="cont_blocks cont_blocks1"></div>
             <div class="cont_tip">
                 <div class="cont_tip_item">
                     <div class="cont_tip_block"></div>
@@ -109,39 +74,7 @@
                 <div class="cont_info"><span>报警类型 ：</span>人流超标</div>
                 <div class="cont_info"><span>当前状态 ：</span>处置中</div>
             </div>
-            <div class="cont_blocks">
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-            </div>
+            <div class="cont_blocks cont_blocks2"></div>
             <div class="cont_tip">
                 <div class="cont_tip_item">
                     <div class="cont_tip_block"></div>
@@ -163,6 +96,9 @@
 <script src="../../../common/js/common.js"></script>
 <script>
 
-    resize()
+    resize();
+
+    block($('.cont_blocks1'),30,7,'yellow');
+    block($('.cont_blocks2'),30,5,'red')
 
 </script>
