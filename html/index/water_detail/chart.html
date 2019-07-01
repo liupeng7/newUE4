@@ -9,6 +9,10 @@
         #linesChart{width: 800px;height: 200px;}
         #barChart{width: 800px;height: 200px;}
 
+        .chart_switch{width:179px;height:170px;background:rgba(255,255,255,0.1);padding: 32px 20px}
+        .chart_switch_item{display: flex;align-items: center;font-size:16px;color:rgba(254,255,254,0.7);line-height:32px;}
+        .circle{width:14px;height:14px;background:rgba(251, 60, 29, 1);border:1px solid rgba(196,223,255,1);margin-right:12px;border-radius:7px;}
+
         .bg{width:100%;height:200px;background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
             transition: all  0.5s;transform: translate(0,200px);opacity: 0;}
         .bg.in{transform: translate(0,0);opacity: 1}
@@ -21,7 +25,12 @@
     <div class="index">
         <div id="linesChart"></div>
         <div id="barChart"></div>
-        <div class="chart_switch"></div>
+        <div class="chart_switch">
+            <div class="chart_switch_item"><div class="circle"></div>>400mm</div>
+            <div class="chart_switch_item"><div class="circle" style="background:rgba(255, 127, 13, 1)"></div>300 - 400mm</div>
+            <div class="chart_switch_item"><div class="circle" style="background:rgba(255, 203, 45, 1)"></div>150 - 300mm</div>
+            <div class="chart_switch_item"><div class="circle" style="background:rgba(61, 158, 255, 1)"></div>0 - 150mm</div>
+        </div>
     </div>
 </div>
 
