@@ -108,6 +108,8 @@
 
 <script>
 
+    comeIn()
+
     window.onload=function () {
         if(window.innerWidth == 0){
             window.onresize = function () {
@@ -168,7 +170,7 @@
                 label: {
                     show: true,
                     formatter:function(){
-                      return '红色'+ '\n' +'预警'
+                      return '暴雨'+ '\n' +'橙色预警'
                     },
                     color: '#fff',
                     insideColor: '#fff',
@@ -176,7 +178,7 @@
                     fontWeight: 'bold',
                     align: 'center',
                     baseline: 'middle',
-                    position: 'inside'
+                    position: 'inside',
                 },
                 backgroundStyle:{
                     opacity:0

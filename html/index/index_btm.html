@@ -100,20 +100,10 @@
 
 </div>
 <script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../common/js/common.js"></script>
 <script>
 
-    window.onload = function(){
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                if(window.innerWidth<3000){
-                    narrow()
-                }
-            };
-        }else if(window.innerWidth<3000){
-            narrow();
-        }else if(window.innerWidth>3000){
-        }
-    };
+    resize();
 
 
 
@@ -135,7 +125,9 @@
     function importArea6(){
         window.ue.XBWeb.webmainbuttomarea6()
     }
+
     let rotate = true;
+
     function moreArea() {
         rotate =! rotate ;
         if(rotate){
@@ -147,22 +139,8 @@
         }
     }
 
-    function narrow(){
-        let width = $('html').width()*0.25;
-        let height = $('html').height()*0.25;
-        $('html').css({
-            position: 'absolute',
-            transform:'scale(0.5)',
-            left:-width,
-            top:-height
-        });
-    }
-
     $('.index_title').on('click',function () {
         window.ue.XBWeb.webmainbuttomback();
-    });
-    $('.index_item').on('click',function () {
-
     });
     function comeIn() {
         $('.bg').addClass('in');

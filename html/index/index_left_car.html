@@ -147,13 +147,13 @@
 </div>
 <script src="../../plugin/jquery-3.1.1.min.js"></script>
 <script src="../../plugin/echarts.min.js"></script>
-<script src="../../plugin/chart.js"></script>
 <script src="../../common/js/common.js"></script>
 </body>
 </html>
 <script>
 
     resize(reChart);
+    comeIn()
 
     function gaugeChart(dom,data) {
         let myChart= echarts.init(document.getElementById(dom));
@@ -291,14 +291,10 @@
                 x: 'center',
                 y: 'center',
             },
-            // tooltip: {
-            //     trigger: 'item',
-            //     formatter: "{a} <br/>{b}: {c} ({d}%)"
-            // },
             series: [
                 {
                     type: "gauge",
-                    radius: "75 %",
+                    radius: "60%",
                     startAngle: 0,
                     endAngle: 359.9,
                     splitNumber: 48,
@@ -333,7 +329,7 @@
                 },
                 {
                     type: "gauge",
-                    radius: "60%",
+                    radius: "50%",
                     startAngle: 0,
                     endAngle: 359.9,
                     splitNumber: 24,
@@ -342,9 +338,9 @@
                         show: false
                     },
                     splitLine: {
-                        length: 42,
+                        length: 32,
                         lineStyle: {
-                            width: 6,
+                            width: 4,
                             color: "#000"
                         }
                     },
@@ -369,7 +365,7 @@
                 },
                 {
                     type: 'pie',
-                    radius: ['40%', '60%'],
+                    radius: ['35%', '50%'],
                     silent: true,
                     z: 0,
                     label: {
@@ -395,7 +391,7 @@
                     labelLine: {
                         normal: {
                             show: true,
-                            length: 20,
+                            length: 30,
                             length2: 0,
                             lineStyle: {
                                 color:'#fff',

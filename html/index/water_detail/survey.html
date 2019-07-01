@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内涝点报警概况</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width:840px;height:600px;}
+        .index{background:rgba(6,9,14,0.2);border:3px solid rgba(255, 97, 18, 0.75);border-radius:4px;}
+        .index_title{height:118px;line-height:118px;text-align: center;font-size:40px;font-weight:bold;color:rgba(235,247,255,1);
+            background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;
+            text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;}
+        .index_cont{height: 150px;display: flex;align-items: center;justify-content: space-around}
+        .index_cont_item{display: flex;align-items: center}
+        .index_cont_item img{width: 74px;height: 80px;margin-right: 20px;}
+        .warning_num{font-size:50px;}
+        .warning_name{font-size:20px;color:rgba(255,255,255,1);}
+        .index_bottom{margin: 40px auto 0;display: flex;justify-content:space-between;width: 700px; height: 285px;}
+
+        .chart_title{font-size:24px;}
+        #lineChart{width: 360px;height: 210px;}
+
+        .barChart{margin-top: 20px;}
+
+
+    </style>
+</head>
+<body oncontextmenu=self.event.returnValue=false>
+<div class="index">
+    <div class="index_title"><img>内涝点报警概况</div>
+    <div class="index_cont">
+        <div class="index_cont_item">
+            <img src="../../../image/index/lamp/bj_icon_1.png">
+            <div class="">
+                <div class="warning_num">12</div>
+                <div class="warning_name">总报警次数</div>
+            </div>
+        </div>
+        <div class="index_cont_item">
+            <img src="../../../image/index/lamp/bj_icon_2.png">
+            <div class="">
+                <div class="warning_num">2</div>
+                <div class="warning_name">未处理报警</div>
+            </div>
+        </div>
+    </div>
+    <div class="index_bottom">
+        <div class="chart">
+            <div class="chart_title">当月积水量走势</div>
+            <div id="lineChart"></div>
+        </div>
+        <div class="chart">
+            <div class="chart_title">每月报警次数走势</div>
+            <div class="barChart"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script src="../../../common/js/common.js"></script>
+
+<script>
+
+    resize(reChart)
+
+    function reChart(){
+        let data= [{name:'灯泡损坏',value:'5次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:5/12},
+            {name:'灯泡故障',value:'2次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:2/12},
+            {name:'线路老化',value:'3次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:3/12},
+            {name:'灯罩损坏',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12},
+            {name:'灯杆倾斜',value:'1次',color:'-webkit-linear-gradient(left,rgba(255, 225, 40, 0.3),rgba(255, 225, 40, 1))',per:1/12}];
+        barChart($('.barChart'),data,180);
+
+        Xchart.LineChart({
+            conId:"lineChart",
+            gridBottom:'12%',
+            isArea:true,
+            lineWidth:2,
+            lineColor:'#2D94D8',
+            // boundaryGap:true,
+            areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
+                [{offset: 0, color: 'rgba(64,216,84,1)'},
+                    {offset: 1, color: 'rgba(79,242,240,0.3)'}]),
+            showSymbol:false,
+            dataArray:[{name:'1月',value:12},{name:'2月',value:10},{name:'3月',value:12},
+                {name:'4月',value:5},{name:'5月',value:8},{name:'6月',value:15}]
+        })
+    }
+
+
+
+</script>

@@ -132,6 +132,8 @@
 <script src="../../plugin/chart.js"></script>
 <script>
 
+    comeIn()
+
     window.onload =function(){
         if(window.innerWidth == 0){
             window.onresize = function () {
@@ -162,14 +164,7 @@
             }, delay);
         }
     };
-    // function postFun(name) {
-    //     lineChart();
-    // }
-    // var re = throttle(postFun, 200);
-    // var ejector = setInterval(() => {
-    //     console.log(11)
-    //     re();
-    // }, 100);
+
 
 
 
@@ -400,7 +395,6 @@
         $('.center').addClass('in');
         $('.bottom').addClass('in');
     }
-    comeIn()
     function goOut() {
         $('.bg').removeClass('in');
         $('.top').removeClass('in');

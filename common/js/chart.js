@@ -734,20 +734,9 @@
         options = $.extend(false,defaultOption,options);
         let series = [];
         let markPoint='',markLine='';
-        if(options.markPoint){
-            markPoint={
-                data: [
-                    {
-                        type: 'max',
-                        name: '最大值',
-                        label:{
-                            show:true
-                        }
-                    },
-                    {type: 'min', name: '最小值'}
-                ]
-            }
-        }
+        // if(options.markPoint){
+        //
+        // }
         if(options.markLine){
             markLine={
                 data: [
@@ -785,7 +774,7 @@
                         color:options.areaStyleColor[i].areaStyleColor
                     }
                 },
-                markPoint:markPoint,
+                markPoint:options.markPoint,
                 markLine:markLine,
                 symbolSize: options.symbolSize,
                 data: options.dataArray[i].value,
