@@ -68,19 +68,19 @@
             </div>
         </div>
         <div class="chart">
-            <div class="">
+            <div class="chart_item" data-id="huoche">
                 <div id="liquidChart"></div>
                 <div class="chart_name">货车车位</div>
             </div>
-            <div class="">
+            <div class="chart_item" data-id="canji">
                 <div id="liquidChart2"></div>
                 <div class="chart_name">残疾人车位</div>
             </div>
-            <div class="">
+            <div class="chart_item" data-id="chongdian">
                 <div id="liquidChart3"></div>
                 <div class="chart_name">充电桩车位</div>
             </div>
-            <div class="">
+            <div class="chart_item" data-id="normal">
                 <div id="liquidChart4"></div>
                 <div class="chart_name">普通车位</div>
             </div>
@@ -102,7 +102,24 @@
 
     resize(reChart);
 
+    $('.chart_item').click(function () {
+        let index = $(this).data('id');
 
+        switch (index) {
+            case 'huoche':
+                window.ue.XBWeb.webmainleftcarhuo();
+                break;
+            case 'canji':
+                window.ue.XBWeb.webmainleftcarcan();
+                break;
+            case 'chongdian':
+                window.ue.XBWeb.webmainleftcarchong();
+                break;
+            case 'normal':
+                window.ue.XBWeb.webmainleftcarnor();
+                break;
+        }
+    });
 
     function reChart(){
         Xchart.LiquidChart({

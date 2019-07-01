@@ -1291,6 +1291,7 @@
                 type: 'liquidFill',
                 data: options.dataArray,
                 radius: '80%',
+                silent:false,
                 outline: {
                     show: true,
                     borderDistance: 8,

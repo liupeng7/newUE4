@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看详情</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{width:270px;height: 190px;}
+        .index{width:270px;height:180px;background:rgba(0,0,0,0.6);position: relative;border:1px solid rgba(255, 255, 255, 1)}
+        .corner{position: absolute;}
+        .index_title{font-size:20px;font-weight:bold;padding: 20px 18px 0 18px;}
+        .index_title span{color: rgba(255, 75, 33, 1) }
+        .index_info{margin-top: 20px;padding: 0 18px 10px;border-bottom: 1px solid rgba(0,0,0,0.4)}
+        .index_info_item{display: flex;line-height:30px;align-items: center}
+        .index_info_name{width: 110px;font-size: 16px;color:rgba(255,255,255,0.4);}
+        .index_info_value{font-size:20px;}
+        .index_btn{font-size:18px;font-weight: bold;text-align: center;line-height: 42px;cursor: pointer}
+        .index_border{width:270px;height:3px;background:rgba(255,75,33,1);margin-top: 5px;}
+    </style>
+</head>
+<body>
+<div class="index">
+    <img class="corner" src="../../../image/index/toilet/tri_down_left.png" style="bottom:2px;left: 2px;">
+    <img class="corner" src="../../../image/index/toilet/tri_down_right.png" style="bottom:2px;right:2px">
+    <img class="corner" src="../../../image/index/toilet/tri_up_left.png" style="top:2px;left:2px;">
+    <img class="corner" src="../../../image/index/toilet/tri_up_right.png" style="top:2px;right:2px;">
+    <div class="index_title">人流传感器 - <span>人流超标</span></div>
+    <div class="index_info">
+        <div class="index_info_item"><div class="index_info_name">近1小时人流:</div><div class="index_info_value font_red">45 人/次</div></div>
+        <div class="index_info_item"><div class="index_info_name">处理建议:</div><div class="index_info_value">增加巡逻次数</div></div>
+    </div>
+    <div class="index_btn">查看详情</div>
+</div>
+<div class="index_border"></div>
+</body>
+</html>
+
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script>
+    resize();
+    $('.index_btn').click(function () {
+        window.ue.XBWeb.webmaintoiletdetail();
+    })
+
+</script>

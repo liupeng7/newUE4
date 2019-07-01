@@ -33,16 +33,14 @@
         .waning_list::-webkit-scrollbar-track {background:rgba(255,255,255,0.2);}
         .waning_list::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.4);}
 
-        .waning_item{display: flex;align-items: center;justify-content: space-between;margin-top:30px;cursor: pointer}
+        .waning_item{display: flex;align-items: center;justify-content: space-between;margin-top:30px;}
         .waning_name{font-size:24px;font-weight: bold;display: flex;align-items: center}
         .waning_sta{margin-left:10px;width:70px;height:32px;background:rgba(255,74,18,0.2);border:2px solid rgba(255, 74, 18, 1);
             border-radius:4px;font-size: 18px;font-weight: normal;text-align: center;}
         .waning_sta.yellow{background:rgba(255,144,0,0.2);border:2px solid rgba(255, 200, 32, 1);}
         .waning_location{font-size:18px;color:rgba(255,255,255,0.75);margin-top: 14px;}
         .waning_blocks{display: flex}
-        .waning_block{width:9px;height:14px;border-radius:2px;margin-right: 3px;background:rgba(255,255,255,0.2);}
-        .waning_block.red{background:rgba(215,59,23,1);}
-        .waning_block.yellow{background:rgba(255, 171, 71, 1)}
+        .waning_blocks .cont_block{width: 9px;height: 14px;border-radius:2px;margin-right: 3px;}
         .waning_time{margin-top: 16px;color:rgba(255,255,255,0.5);font-size: 20px}
         /*动画*/
 
@@ -159,183 +157,7 @@
             <div class="waning">
                 <div class="waning_title">报警列表详情</div>
                 <div class="waning_list">
-                    <div class="waning_item" >
-                        <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
-                            <div class="waning_location">地址：西环东42号路</div>
-                        </div>
-                        <div class="waning_right">
-                            <div class="waning_blocks">
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                            </div>
-                            <div class="waning_time font_number">19-03-27 · 19:23:90</div>
-                        </div>
-                    </div>
-                    <div class="waning_item" >
-                        <div class="waning_left">
-                            <div class="waning_name">中杆路灯 - <span class="font_yellow">线路老化</span> <div class="waning_sta yellow">处置中</div></div>
-                            <div class="waning_location">地址：西环东42号路</div>
-                        </div>
-                        <div class="waning_right">
-                            <div class="waning_blocks">
-                                <div class="waning_block yellow"></div>
-                                <div class="waning_block yellow"></div>
-                                <div class="waning_block yellow"></div>
-                                <div class="waning_block yellow"></div>
-                                <div class="waning_block yellow"></div>
-                                <div class="waning_block yellow"></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                            </div>
-                            <div class="waning_time font_number">19-03-27 · 19:23:90</div>
-                        </div>
-                    </div>
-                    <div class="waning_item" >
-                        <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
-                            <div class="waning_location">地址：西环东42号路</div>
-                        </div>
-                        <div class="waning_right">
-                            <div class="waning_blocks">
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                            </div>
-                            <div class="waning_time font_number">19-03-27 · 19:23:90</div>
-                        </div>
-                    </div>
-                    <div class="waning_item" >
-                        <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
-                            <div class="waning_location">地址：西环东42号路</div>
-                        </div>
-                        <div class="waning_right">
-                            <div class="waning_blocks">
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                            </div>
-                            <div class="waning_time font_number">19-03-27 · 19:23:90</div>
-                        </div>
-                    </div>
-                    <div class="waning_item" >
-                        <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
-                            <div class="waning_location">地址：西环东42号路</div>
-                        </div>
-                        <div class="waning_right">
-                            <div class="waning_blocks">
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                            </div>
-                            <div class="waning_time font_number">19-03-27 · 19:23:90</div>
-                        </div>
-                    </div>
-                    <div class="waning_item" >
-                        <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
-                            <div class="waning_location">地址：西环东42号路</div>
-                        </div>
-                        <div class="waning_right">
-                            <div class="waning_blocks">
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                            </div>
-                            <div class="waning_time font_number">19-03-27 · 19:23:90</div>
-                        </div>
-                    </div>
-                    <div class="waning_item" >
-                        <div class="waning_left">
-                            <div class="waning_name">高杆路灯 - <span class="font_red">灯泡损坏</span> <div class="waning_sta">待处置</div></div>
-                            <div class="waning_location">地址：西环东42号路</div>
-                        </div>
-                        <div class="waning_right">
-                            <div class="waning_blocks">
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block red"></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                                <div class="waning_block "></div>
-                            </div>
-                            <div class="waning_time font_number">19-03-27 · 19:23:90</div>
-                        </div>
-                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -349,7 +171,40 @@
 
 
     resize();
-    comeIn()
+    let html='';
+    let data=[
+        {name:'高杆路灯 -',tip:'灯泡损坏',sta:'待处置',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'red'},
+        {name:'中杆路灯 -',tip:'线路老化',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
+        {name:'草坪灯 -',tip:'灯泡损坏',sta:'待处置',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:2,color:'red'},
+        {name:'高杆路灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
+        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
+        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
+        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'yellow'},
+        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'yellow'},
+        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
+        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
+    ];
+    for(let i=0;i<data.length;i++){
+        html+=`<div class="waning_item" >
+                        <div class="waning_left">
+                            <div class="waning_name">${data[i].name} - <span class="${data[i].sta=='处置中'?'font_yellow':'font_red'}">${data[i].tip}</span>
+                            <div class="waning_sta">${data[i].sta}</div></div>
+                            <div class="waning_location">${data[i].location}</div>
+                        </div>
+                        <div class="waning_right">
+                            <div class="waning_blocks${i} waning_blocks">
+
+                            </div>
+                            <div class="waning_time font_number">${data[i].time}</div>
+                        </div>
+                    </div>`;
+        $('.waning_list').html(html);
+        setTimeout(function () {
+            block($('.'+'waning_blocks'+ i),data[i].num,data[i].acnum,data[i].color)
+        },1);
+
+    }
+
     runAnimations(85,$('.donuts'),'#circleAnimate','#tailAnimate',);
     runAnimations(15,$('.donuts'),'#circleAnimate2','#tailAnimate2',);
     runAnimations(14,$('.donuts'),'#circleAnimate3','#tailAnimate3',);

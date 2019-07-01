@@ -61,13 +61,22 @@ function info(dom,data) {
                 </div>
         `
     }
-    dom.html(html)
+    dom.html(html);
 }
+
 
 function block(dom,num,acnum,color){
     let html = '';
     for(let i=0;i<num;i++){
         html += `<div class="cont_block ${  i< acnum? color:''}" ></div>`
     }
-    dom.html(html)
+    dom.html(html);
+    let animation = setInterval(function () {
+        if(acnum+2<num){
+            acnum = acnum+1;
+            block(dom,num,acnum,color)
+        }else {
+            clearInterval(animation)
+        }
+    },30000);
 }

@@ -21,6 +21,7 @@
     <div class="index">
         <div id="linesChart"></div>
         <div id="barChart"></div>
+        <div class="chart_switch"></div>
     </div>
 </div>
 
@@ -33,21 +34,17 @@
 <script>
 
     resize(reChart);
-
+    comeIn()
     function reChart(){
         let data=[{
-            chartName:'近期车位占用数',
-            value:['202','403','450','510','483','461','451','428','395','377','350','312',
-                '266','269','289','295','311','325','356','378','355','364','369','351','356',]
-        },{
-            chartName:'今日车位占用数',
-            value:['351','251','256','277','289','300','335','345','359','399','411','444',
+            chartName:'今日降雨量走势',
+            value:['351','251','256','277','289','318','335','345','359','468','411','444',
                 '456','478','493','512','520','325'],
         }];
         Xchart.LineCharts({
             conId:'linesChart',
             titleShow:true,
-            text:'车位资源占用走势',
+            text:'降雨量走势',
             showLegend:true,
             legendTextStyle:{
                 fontSize:14,
@@ -69,7 +66,7 @@
         Xchart.BarChart({
             conId: 'barChart',
             titleShow:true,
-            text: '停车时长分布',
+            text: '积水点分布',
             gridTop:'30%',
             gridBottom:'20%',
             YaxisLabelShow:true,

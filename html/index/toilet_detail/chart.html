@@ -14,7 +14,10 @@
         .list_item{margin-right: 30px;}
         #liquidChart,#liquidChart2,#liquidChart3,#liquidChart4{width: 136px;height: 136px;}
         .chart_name{font-size:20px;color:rgba(255,255,255,0.75);text-align: center}
-
+        .chart_switch{width:139px;height:150px;background:rgba(255,255,255,0.1);text-align: center;padding: 20px }
+        .chart_switch_title{font-size: 18px;font-weight: bold;padding-bottom: 24px;}
+        .chart_switch_item{line-height: 32px;font-size:16px;color:rgba(254,255,254,0.7);}
+        .chart_switch_item input{background:rgba(123,189,255,0);border:1px solid rgba(196,223,255,1);}
 
         .bg{width:100%;height:200px;background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.5),rgba(0,0,0,0));
             transition: all  0.5s;transform: translate(0,200px);opacity: 0}
@@ -48,6 +51,11 @@
                 </div>
             </div>
         </div>
+        <div class="chart_switch">
+            <div class="chart_switch_title">实时人流</div>
+            <div class="chart_switch_item"><input type="checkbox" > 广场</div>
+            <div class="chart_switch_item"><input type="checkbox" checked> 道路</div>
+        </div>
     </div>
 </div>
 
@@ -62,7 +70,7 @@
 
     resize(chart);
 
-
+    comeIn()
 
     function chart(){
         let data=[{

@@ -2,7 +2,7 @@
 
 @font-face{
     font-family:ABITARE ;
-    src:url("../../css/ABITARE SANS 500 WT.OTF");
+    src:url("../ABITARE SANS 500 WT.OTF");
 }
 *{padding:0;margin: 0;box-sizing: border-box;font-family:MicrosoftYaHei-Bold;color: #fff;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
 html{overflow: hidden}
