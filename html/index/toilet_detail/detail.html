@@ -46,31 +46,7 @@
             <div class="cont_info"><span>当前状态 ：</span>待处置</div>
         </div>
         <div class="cont_bottom">
-            <div class="cont_blocks">
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-            </div>
+            <div class="cont_blocks"></div>
             <div class="cont_tip">
                 <div class="cont_tip_item">
                     <div class="cont_tip_block"></div>
@@ -88,7 +64,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -100,23 +75,26 @@
 <script src="../../../common/js/common.js"></script>
 <script>
 
-    resize();
-    Xchart.LineChart({
-        conId:"lineChart",
-        gridBottom:'20%',
-        gridTop:'10%',
-        isArea:true,
-        max:15,
-        splitNumber:3,
-        lineWidth:2,
-        lineColor:'#2D94D8',
-        boundaryGap:true,
-        areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
-            [{offset: 0, color: 'rgba(64,216,84,1)'},
-                {offset: 1, color: 'rgba(79,242,240,0.3)'}]),
-        showSymbol:false,
-        dataArray:[{name:'0',value:10},{name:'10',value:8},{name:'20',value:12},
-            {name:'30',value:7},{name:'40',value:8},{name:'50',value:11},{name:'60',value:11}]
-    })
+    resize(reChart());
+    function reChart(){
+        Xchart.LineChart({
+            conId:"lineChart",
+            gridBottom:'20%',
+            gridTop:'10%',
+            isArea:true,
+            max:15,
+            splitNumber:3,
+            lineWidth:2,
+            lineColor:'#2D94D8',
+            boundaryGap:true,
+            areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
+                [{offset: 0, color: 'rgba(64,216,84,1)'},
+                    {offset: 1, color: 'rgba(79,242,240,0.3)'}]),
+            showSymbol:false,
+            dataArray:[{name:'0',value:10},{name:'10',value:8},{name:'20',value:12},
+                {name:'30',value:7},{name:'40',value:8},{name:'50',value:11},{name:'60',value:11}]
+        });
+    }
 
+    block($('.cont_blocks'),25,8,'red')
 </script>

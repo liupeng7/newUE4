@@ -18,8 +18,8 @@
         .bottom{padding-top: 40px;}
         .list_item{display: flex;justify-content: flex-end;margin-bottom: 10px;}
         .list_item_border{display: none;width:12px;height:90px;background:rgba(215,59,23,1);margin-right: 6px;}
-        .list_item_block img{position: absolute;top:-2px;left: -2px;}
-        .list_item_block{position: relative;width: 90px;height: 90px;background:rgba(255,255,255,0.3);}
+        .list_item_block .left_top_spot{position: absolute;top:-2px;left: -2px;}
+        .list_item_block{position: relative;width: 90px;height: 90px;background:rgba(255,255,255,0.3);display: flex;align-items: center;justify-content: center}
         .list_item_name{width:173px;height:90px;font-size:28px;;background:rgba(255,255,255,0.2);font-weight:bold;color:rgba(225,225,225,1);text-align: center;line-height: 90px;}
         .list_item.ac .list_item_border{display: block}
         .list_item.ac .list_item_name{width: 183px;}
@@ -34,7 +34,9 @@
 
         .center{margin-top: 47px;float: right}
         .center_item{width: 372px;display: flex;align-items: center;margin-bottom: 18px;float: right}
-        .center_item_block{width:80px;height:80px;border:2px solid rgba(255,249,244,1);border-radius:50%;margin-right: 20px;}
+        .center_item_block{width:80px;height:80px;border:2px solid rgba(255,249,244,1);border-radius:50%;margin-right: 20px;
+            display: flex;align-items: center;justify-content: center;}
+        .center_item_block .xb_icon{font-size: 36px;}
         .center_item_name{font-size:26px;font-weight:bold;color:rgba(255,255,255,1);}
         .center_item_num{display: flex;align-items: center;font-size:24px;color:rgba(254,255,254,0.75);}
         .center_item_num img{margin-right:7px;width: 18px;height: 23px; }
@@ -46,7 +48,7 @@
     <div class="index">
         <div class="left">
             <div class="topic">
-                <div class="topic_title"><img width="44" height="44"> 市政公用</div>
+                <div class="topic_title"><img src="../../image/index/right/ts_icon_3.png" width="44" height="44"> 市政公用</div>
                 <div class="topic_info">
                     <div class="topic_info_item"><img> 11145</div>
                     <div class="topic_info_item"><img> 123</div>
@@ -54,45 +56,55 @@
                 </div>
             </div>
             <div class="center">
-                <div class="center_item ac">
-                    <div class="center_item_block"></div>
+                <div class="center_item ac" data-id="lamp">
+                    <div class="center_item_block">
+                        <i class="xb_icon lightbulb"></i>
+                    </div>
+                    <div class="center_item_info" >
+                        <div class="center_item_name">路灯</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item" data-id="well">
+                    <div class="center_item_block">
+                        <i class="xb_icon stroopwafel"></i>
+                    </div>
                     <div class="center_item_info">
                         <div class="center_item_name">井盖</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item" data-id="car">
+                    <div class="center_item_block">
+                        <i class="xb_icon park_fill"></i>
+                    </div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">停车场</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item" data-id="toilet">
+                    <div class="center_item_block">
+                        <i class="xb_icon users"></i>
+                    </div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">公厕</div>
+                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                    </div>
+                </div>
+                <div class="center_item" data-id="bridge">
+                    <div class="center_item_block">
+                        <i class="xb_icon bridge"></i>
+                    </div>
+                    <div class="center_item_info">
+                        <div class="center_item_name">桥梁</div>
                         <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
                     </div>
                 </div>
                 <div class="center_item">
                     <div class="center_item_block"></div>
                     <div class="center_item_info">
-                        <div class="center_item_name">井盖</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
-                    </div>
-                </div>
-                <div class="center_item">
-                    <div class="center_item_block"></div>
-                    <div class="center_item_info">
-                        <div class="center_item_name">井盖</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
-                    </div>
-                </div>
-                <div class="center_item">
-                    <div class="center_item_block"></div>
-                    <div class="center_item_info">
-                        <div class="center_item_name">井盖</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
-                    </div>
-                </div>
-                <div class="center_item">
-                    <div class="center_item_block"></div>
-                    <div class="center_item_info">
-                        <div class="center_item_name">井盖</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
-                    </div>
-                </div>
-                <div class="center_item">
-                    <div class="center_item_block"></div>
-                    <div class="center_item_info">
-                        <div class="center_item_name">井盖</div>
+                        <div class="center_item_name">视频监控</div>
                         <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
                     </div>
                 </div>
@@ -114,6 +126,7 @@
                     <div class="list_item_border"></div>
                     <div class="list_item_block">
                         <img src="../../image/index/white_dot.png" class="left_top_spot">
+                        <img src="../../image/index/right/ts_icon_1.png">
                     </div>
                     <div class="list_item_name">市容秩序</div>
                 </div>
@@ -121,6 +134,7 @@
                     <div class="list_item_border"></div>
                     <div class="list_item_block">
                         <img src="../../image/index/white_dot.png" class="left_top_spot">
+                        <img src="../../image/index/right/ts_icon_2.png">
                     </div>
                     <div class="list_item_name">环境卫生</div>
                 </div>
@@ -128,6 +142,7 @@
                     <div class="list_item_border"></div>
                     <div class="list_item_block">
                         <img src="../../image/index/white_dot.png" class="left_top_spot">
+                        <img src="../../image/index/right/ts_icon_3.png">
                     </div>
                     <div class="list_item_name">市政公用</div>
                 </div>
@@ -135,6 +150,7 @@
                     <div class="list_item_border"></div>
                     <div class="list_item_block">
                         <img src="../../image/index/white_dot.png" class="left_top_spot">
+                        <img src="../../image/index/right/ts_icon_4.png">
                     </div>
                     <div class="list_item_name">社会治理</div>
                 </div>
@@ -142,6 +158,7 @@
                     <div class="list_item_border"></div>
                     <div class="list_item_block">
                         <img src="../../image/index/white_dot.png" class="left_top_spot">
+                        <img src="../../image/index/right/ts_icon_5.png">
                     </div>
                     <div class="list_item_name">城市生命线</div>
                 </div>
@@ -149,6 +166,7 @@
                     <div class="list_item_border"></div>
                     <div class="list_item_block">
                         <img src="../../image/index/white_dot.png" class="left_top_spot">
+                        <img src="../../image/index/right/ts_icon_6.png">
                     </div>
                     <div class="list_item_name">市民投诉</div>
                 </div>
@@ -160,25 +178,10 @@
 </html>
 <script src="../../plugin/echarts.min.js"></script>
 <script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../common/js/common.js"></script>
 <script>
 
-    window.onload = function() {
-        gaugeChart();
-        if (window.innerWidth == 0) {
-            window.onresize = function () {
-                gaugeChart();
-                if (window.innerWidth < 600) {
-                    narrow()
-                }
-            };
-        } else if (window.innerWidth < 600) {
-
-            gaugeChart();
-            narrow();
-        } else if (window.innerWidth > 600) {
-            gaugeChart();
-        }
-    }
+   resize(gaugeChart);
 
         $('.list_item').click(function () {
         $('.list_item').removeClass('ac');
@@ -186,7 +189,6 @@
        let index = $(this).index();
        switch (index) {
            case 2:
-               // window.ue.XBWeb.webmainright();
        }
     });
 

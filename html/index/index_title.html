@@ -5,8 +5,8 @@
     <title>综合态势：头部标题</title>
     <link rel="stylesheet" href="../../common/css/index.css">
     <style>
-        html{width:1740px;height:80px;overflow: hidden}
-        .index{font-weight:bold;width: 100%}
+        html{width:3840px;height:160px;}
+        .index{font-weight:bold;display: flex;justify-content: center}
         .index_title{font-size:60px;color:rgba(255,255,255,1); width: 360px ; line-height: 72px;text-shadow:#000 2px 0 2px,#000 0 2px 2px,#000 -2px 0 2px,#000 0 -2px 2px;;}
         .list{width:1400px;font-size:36px;color: rgba(228, 236, 246, 1);margin-left: 40px}
         .list_item{cursor: pointer;text-shadow:#000 1px 0 1px,#000 0 1px 1px,#000 -1px 0 1px,#000 0 -1px 1px;}
@@ -15,11 +15,15 @@
         .list_item.ac .border{border-bottom: 10px solid  rgba(255, 97, 18, 1)}
 
         /*动画*/
-        .index{transition:all  1s;opacity:0;transform:translate(0,-200px)}
+        .index{transition:all  1s 0.1s;opacity:0;transform:translate(0,-200px)}
         .index.comeIn{transform:translate(0,0);opacity:1;}
+        .bg{transition:all  1s;opacity:0;transform:translate(0,-200px);
+            width:100%;height:160px;background: -webkit-linear-gradient(top,rgba(0,0,0,0.5),rgba(0,0,0,0))}
+        .bg.comeIn{transform:translate(0,0);opacity:1;}
     </style>
 </head>
 <body oncontextmenu=self.event.returnValue=false >
+<div class="bg">
     <div class="index flex">
         <div class="index_title flex" ><img onclick="back()" src="../../image/index/btn_back.png"/>城市治理</div>
         <div class="list flex_bet">
@@ -35,48 +39,28 @@
         </div>
 
     </div>
-
+</body>
 </body>
 </html>
 <script src="../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../common/js/common.js"></script>
 <script>
+
+
+   resize();
+    $('.list_item').on('click',function () {
+        $('.list_item').removeClass('list_bg_img');
+        $(this).addClass('list_bg_img')
+    });
     function back() {
         window.ue.XBWeb.webmaintopback();
     }
-
-    function narrow(){
-        let width = $('html').width()*0.25;
-        let height = $('html').height()*0.25;
-        $('html').css({
-            position: 'absolute',
-            transform:'scale(0.5)',
-            left:-width,
-            top:-height
-        });
-    }
-    window.onload = function(){
-        $('.list_item').on('click',function () {
-            $('.list_item').removeClass('list_bg_img');
-            $(this).addClass('list_bg_img')
-        });
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                if(window.innerWidth<1600){
-                    narrow()
-                }
-            };
-        }else if(window.innerWidth<1600){
-            narrow();
-        }else if(window.innerWidth>1600){
-        }
-
-    };
-
     function comeIn() {
+        $('.bg').addClass('comeIn');
         $('.index').addClass('comeIn');
     }
-
     function goOut() {
+        $('.bg').removeClass('comeIn');
         $('.index').removeClass('comeIn');
     }
 </script>

@@ -67,31 +67,7 @@
             <div class="cont_info"><span>当前状态 ：</span>待处置</div>
         </div>
         <div class="cont_bottom">
-            <div class="cont_blocks">
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block red"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-                <div class="cont_block"></div>
-            </div>
+            <div class="cont_blocks"></div>
             <div class="cont_tip">
                 <div class="cont_tip_item">
                     <div class="cont_tip_block"></div>
@@ -121,37 +97,41 @@
 <script src="../../../common/js/common.js"></script>
 <script>
 
-    resize();
+    resize(reChart());
+    block($('.cont_blocks'),25,8,'red');
 
-    Xchart.GaugeChart({
-        conId:'GaugeChart',
-        splitNumber:5,
-        min:0,
-        max:100,
-        opacity:0,
-        splitLineLength:0,
-        radius:'115%',
-        radius2:'80%',
-        radius3:'65%',
-        axisLine3Width:4,
-    });
-    Xchart.GaugeChart({
-        conId:'GaugeChart2',
-        splitNumber:5,
-        min:0,
-        max:100,
-        opacity:0,
-        splitLineLength:0,
-        radius:'115%',
-        radius2:'80%',
-        radius3:'65%',
-        axisLine3Width:4,
-        lineStyle:[[1,new echarts.graphic.LinearGradient(0,0,1,0,[
-            {offset: 0,color:'rgba(34, 152, 234, 1)'},
-            {offset: 0.333, color: 'rgba(158, 232, 62, 1)'},
-            {offset: 0.666, color: 'rgba(255, 199, 66, 1)'},
-            {offset: 1, color: 'rgba(255, 82, 21, 1)'},
-        ])]]
-    });
+    function reChart(){
+        Xchart.GaugeChart({
+            conId:'GaugeChart',
+            splitNumber:5,
+            min:0,
+            max:100,
+            opacity:0,
+            splitLineLength:0,
+            radius:'115%',
+            radius2:'80%',
+            radius3:'65%',
+            axisLine3Width:4,
+        });
+        Xchart.GaugeChart({
+            conId:'GaugeChart2',
+            splitNumber:5,
+            min:0,
+            max:100,
+            opacity:0,
+            splitLineLength:0,
+            radius:'115%',
+            radius2:'80%',
+            radius3:'65%',
+            axisLine3Width:4,
+            lineStyle:[[1,new echarts.graphic.LinearGradient(0,0,1,0,[
+                {offset: 0,color:'rgba(34, 152, 234, 1)'},
+                {offset: 0.333, color: 'rgba(158, 232, 62, 1)'},
+                {offset: 0.666, color: 'rgba(255, 199, 66, 1)'},
+                {offset: 1, color: 'rgba(255, 82, 21, 1)'},
+            ])]]
+        });
+    }
+
 
 </script>
