@@ -1,16 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>详 情</title>
+    <title>桥梁详情</title>
     <link rel="stylesheet" href="../../../common/css/index.css">
     <style>
+        html{width: 370px;height: 550px;}
+        .index{background:rgba(16,16,16,0.95);border:1px solid rgba(255, 255, 255, 1)}
+        .index_title{font-size:20px;height:60px;border-bottom:1px solid rgba(255,255,255,0.3);line-height: 60px;text-align: center}
 
+        .index_cont{padding: 20px 30px;}
+        .index_top{margin: 15px 0}
+        .cont_center{border-top:1px dashed  rgba(146,195,255,0.5);padding-top: 12px;}
+        .cont_info{font-size:18px;display: flex;align-items: center;line-height:30px}
+        .cont_info span{color:rgba(153,153,153,1);font-size: 16px;}
+        .cont_blocks{display: flex}
+        .cont_block{width:8px;height:14px;background:rgba(255,255,255,0.2);margin-right:4px;border-radius:2px;}
 
+        .cont_bottom{margin-top: 24px;}
+        .cont_tip{margin-top: 10px;display: flex;justify-content: space-between}
+        .cont_tip_item{display: flex;align-items: center}
+        .cont_tip_block{width:4px;height:48px;background:rgba(255,255,255,0.2);border-radius:1px;margin-right: 15px;}
+        .cont_tip_nam{font-size:18px;color:rgba(255,255,255,0.5);}
+        .cont_tip_value{font-size:20px;}
+        .cont_tip_value span{font-size: 22px;}
+        #lineChart{width: 300px;height: 120px;}
 
     </style>
 </head>
-<body>
+<body oncontextmenu=self.event.returnValue=false>
+<div class="index">
+    <div class="index_title">详 情</div>
+    <div class="index_cont">
+        <div class="cont_info"><span>报警时间： </span>2019/08/11  23:30:50</div>
+        <div class="cont_info"><span>持续时长：</span>1小时10分30秒</div>
+        <div class="index_top">
+            <div id="lineChart"></div>
+        </div>
+        <div class="cont_center">
+            <div class="cont_info"><span>养护单位 ：</span>成都市公路管理局养护中心</div>
+            <div class="cont_info"><span>联系电话 ：</span>028-31314513</div>
+            <div class="cont_info"><span>处置时限 ：</span>2个工作日</div>
+            <div class="cont_info"><span>当前状态 ：</span>处置中</div>
+        </div>
+        <div class="cont_bottom">
+            <div class="cont_blocks"></div>
+            <div class="cont_tip">
+                <div class="cont_tip_item">
+                    <div class="cont_tip_block"></div>
+                    <div>
+                        <div class="cont_tip_nam">已用时</div>
+                        <div class="cont_tip_value font_number">4 <span>天 </span>12 <span>小时</span></div>
+                    </div>
 
+                </div>
+                <div class="cont_tip_item">
+                    <div class="cont_tip_block"></div>
+                    <div>
+                        <div class="cont_tip_nam">已用时</div>
+                        <div class="cont_tip_value font_number">4 <span>天 </span>12 <span>小时</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script>
+
+    resize(reChart());
+    function reChart(){
+        Xchart.LineChart({
+            conId:"lineChart",
+            gridBottom:'20%',
+            gridLeft:'16%',
+            gridTop:'10%',
+            splitLine:true,
+            xAxissplitLine:true,
+            max:150,
+            min:-150,
+            showMinLabel:true,
+            splitNumber:1,
+            lineWidth:2,
+            lineColor:'#2D94D8',
+            boundaryGap:true,
+            areaStyleColor:'rgba(0,0,0,0)',
+            showSymbol:false,
+            markLine:{
+                symbol:'none',
+                data: [
+                    [
+                        {
+                            x: 50,
+                            y: 28,
+                            lineStyle:{
+                                color:'rgba(255, 178, 44, 1)'
+                            }
+                        },
+                        {
+                            x: 260,
+                            y: 28
+                        }
+                    ],
+                    [
+                        {
+                            x: 50,
+                            y: 20,
+                            lineStyle:{
+                                color:'rgba(255, 0, 0, 1)'
+                            }
+                        },
+                        {
+                            x: 260,
+                            y: 20
+                        }
+                    ],
+                ]
+            },
+            dataArray:[{name:'0',value:-30},{name:'10',value:80},{name:'20',value:120},
+                {name:'30',value:70},{name:'40',value:80},{name:'50',value:-120},{name:'60',value:150}]
+        });
+    }
+
+    block($('.cont_blocks'),25,8,'yellow')
+</script>

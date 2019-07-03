@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>实时监测</title>
+    <link rel="stylesheet" href="../../../common/css/index.css">
+    <style>
+        html{background: #000;width: 1520px;height: 1080px;}
+
+        .index{display: flex;align-items:center;height: 800px;}
+        .list_item{margin-bottom: 30px;}
+        .list_circle{width:80px;height:80px;border:2px solid rgba(255,249,244,1);border-radius:50%;margin-right: 36px;
+        box-shadow: 0 0 30px #013c80 inset,0 0 30px #013c80}
+        .list_name{font-size:32px;width: 120px;}
+        .list_value{font-size:36px;}
+        .list_value span{color: rgba(153, 153, 153, 1)}
+
+        .chart{width:1120px;height: 800px;margin-left: 50px;}
+        .chart_top{display:flex;align-items: center;border-bottom:1px solid rgba(255,255,255,0.3);border-radius:4px 4px 0px 0px;justify-content: center}
+        .chart_title{height:118px;line-height:118px;text-align: center;text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;
+            font-size:40px;font-weight:bold;color:rgba(235,247,255,1);background:rgba(0,0,0,1);margin-right: 40px;}
+        .chart_top_item{display: flex;align-items: center}
+        .rect{width:20px;height:6px;background:linear-gradient(90deg,rgba(24,220,235,0.4),rgba(24,220,235,1));}
+        .chart_top_item span{text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;font-size: 32px}
+        .chart_top_item .name{font-size: 24px;color:rgba(255,255,255,0.75);margin:0 5px;}
+        .rect.blue{background:linear-gradient(90deg,rgba(24,123,235,0.4),rgba(24,123,235,1));margin-left: 36px;}
+    </style>
+</head>
+<body>
+<div class="index">
+    <div class="list">
+        <div class="list_item flex">
+            <div class="list_circle"></div>
+            <div class="list_name">桥塔</div>
+            <div class="list_value"><span>1</span> / 12</div>
+        </div>
+        <div class="list_item flex">
+            <div class="list_circle"></div>
+            <div class="list_name">桥身</div>
+            <div class="list_value"><span>0</span> / 15</div>
+        </div>
+        <div class="list_item flex">
+            <div class="list_circle"></div>
+            <div class="list_name">桥面</div>
+            <div class="list_value"><span>0</span> / 20</div>
+        </div>
+        <div class="list_item flex">
+            <div class="list_circle"></div>
+            <div class="list_name">拉索</div>
+            <div class="list_value"><span>0</span> / 20</div>
+        </div>
+        <div class="list_item flex">
+            <div class="list_circle"></div>
+            <div class="list_name">桥墩</div>
+            <div class="list_value"><span>2</span> / 12</div>
+        </div>
+    </div>
+    <div class="chart">
+        <div class="chart_top">
+            <div class="chart_title">桥 墩</div>
+            <div class="chart_top_item"><div class="rect"></div><div class="name">桥墩数：</div><span>4</span> 个</div>
+            <div class="chart_top_item"><div class="rect blue"></div><div class="name">传感器数：</div><span>20</span> 个</div>
+        </div>
+        <div class="content">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../plugin/jquery-3.1.1.min.js"></script>
+<script src="../../../plugin/echarts.min.js"></script>
+<script src="../../../common/js/chart.js"></script>
+<script src="../../../common/js/common.js"></script>
+<script>
+
+
+
+
+</script>

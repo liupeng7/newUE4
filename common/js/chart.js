@@ -488,20 +488,20 @@
             gridTop:'10%',
 
             XaxisLabelFontSize:18,
+            xAxissplitLine:false,
+            showMinLabel:false,
             boundaryGap:false, //图表是否顶头
             splitNumber:5,
             showY:false,
             splitLine:false,
             axisLabel:true,
-            markLine:true, //是否显示平均值线
-            markLine_custom:{},//自定义标注线
+            markLine:false, //标注线
             markPoint:false, //是否显示最大最小值点
             smooth:true, //是否是光滑曲线
             lineWidth:2,  //折线宽度
             lineColor:'',     //折线颜色
             max:null,  //y轴最大刻度
             showSymbol:true, //拐点是否显示
-            areaStyleShow:true,
             areaStyleColor:new echarts.graphic.LinearGradient(0, 0, 0, 1,
                 [{offset: 0, color: 'rgba(64,216,84,1)'},
                 {offset: 1, color: 'rgba(79,242,240,0.3)'}]),
@@ -514,44 +514,11 @@
         options = $.extend(false,defaultOption,options);
         let seriesData = [];
         let xAxisData = [];
-        let markPoint='',markLine='';
         for(let i=0;i<options.dataArray.length;i++){
             seriesData.push(options.dataArray[i].value);
             xAxisData.push(options.dataArray[i].name)
         }
-        if(options.markPoint){
-            markPoint={
-                data: [
-                    {
-                        type: 'max',
-                        name: '最大值',
-                        label:{
-                            show:true
-                        }
-                    },
-                    {type: 'min', name: '最小值'}
-                ]
-            }
-        }
-        if(options.markLine){
-            markLine={
-                data: [
-                    {
-                        type: 'average',
-                        name: '平均值',
-                        itemStyle :{
-                            normal: {
-                                fontSize:18,
-                                color: options.markLinecolor,
-                            },
-                        }
-                    }
-                ]
-            }
-        }
-        if(options.markLine_custom){
-            markLine=options.markLine_custom
-        }
+
         var option = {
             color:options.colorArray,
             legend:{
@@ -604,7 +571,11 @@
                     show: false
                 },
                 splitLine:{
-                    show:false
+                    show:options.xAxissplitLine,
+                    lineStyle:{
+                        color:'#81848b',
+                        width:1
+                    }
                 },
                 boundaryGap:options.boundaryGap,
                 data: xAxisData
@@ -612,6 +583,7 @@
             yAxis: {
                 type: 'value',
                 max:options.max,
+                min:options.min,
                 splitNumber:options.splitNumber,
                 axisLine: {
                     show: options.showY,
@@ -622,7 +594,7 @@
                 },
                 axisLabel: {
                     show: options.axisLabel,
-                    showMinLabel:false,
+                    showMinLabel:options.showMinLabel,
                     textStyle: {
                         color:options.txtColor,
                         fontSize: options.fontSize,
@@ -630,13 +602,17 @@
                     }
                 },
                 axisTick: {
-                    show: false
+                    show: false,
+                    lineStyle:{
+                        color:'#81848b',
+                        width:1
+                    }
                 },
                 splitLine: {
                     show: options.splitLine,
                     lineStyle:{
                         color:"#334050",
-                        type:'dotted'
+                        // type:''
                     }
                 },
             },
@@ -651,13 +627,12 @@
                     }
                 },
                 areaStyle: {
-                    show:options.areaStyleShow,
                     normal: {
                         color:options.areaStyleColor
                     }
                 },
-                markPoint:markPoint,
-                markLine:markLine,
+                markPoint:options.markPoint,
+                markLine:options.markLine,
                 symbolSize: 15,
                 data: seriesData,
             }
@@ -744,6 +719,7 @@
             lineWidth:2,  //折线宽度
             lineColor:'',     //折线颜色
             max:null,  //y轴最大刻度
+            min:0,
             showSymbol:true, //拐点是否显示
             symbolSize:4,
             splitNumber:5,
