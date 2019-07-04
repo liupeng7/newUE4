@@ -11,7 +11,7 @@
             position: relative; border:2px solid rgba(255, 255, 255, 0.3);box-shadow: 0 0 10px inset rgba(255, 255, 255, 0.3)}
         .top .xb_icon{font-size: 36px;margin-right: 5px}
         .center{margin-top: 32px}
-        .cont{height:215px;display: flex;align-items: center;padding-left:36px;padding-bottom: 27px;}
+        .cont{height:245px;display: flex;align-items: center;padding-left:36px;padding-bottom: 27px;}
         .donuts{width: 200px;height: 200px;}
         .cont_list{margin:0 60px 0 20px;width: 150px}
         .cont_list_item{display: flex;align-items: center;}
@@ -27,13 +27,13 @@
 
         .waning{width:660px;padding:33px 30px 0;}
         .waning_title{font-size:28px;font-weight:bold;}
+        .waning_list{height: 430px;overflow-y: auto;padding-right: 20px;}
 
-        .waning_list{height: 410px;overflow-y: auto;padding-right: 20px;}
         .waning_list::-webkit-scrollbar{width: 9px;height: 240px;position: absolute;}
         .waning_list::-webkit-scrollbar-track {background:rgba(255,255,255,0.2);}
         .waning_list::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.4);}
 
-        .waning_item{display: flex;align-items: center;justify-content: space-between;margin-top:30px;}
+        .waning_item{display: flex;align-items: center;justify-content: space-between;margin-top:20px;padding-bottom:20px;border-bottom: 1px solid rgba(255,255,255,0.15);}
         .waning_name{font-size:24px;font-weight: bold;display: flex;align-items: center}
         .waning_sta{margin-left:10px;width:70px;height:32px;background:rgba(255,74,18,0.2);border:2px solid rgba(255, 74, 18, 1);
             border-radius:4px;font-size: 18px;font-weight: normal;text-align: center;}
@@ -169,25 +169,25 @@
 <script src="../../common/js/svg.js"></script>
 <script>
 
-
     resize();
+    comeIn()
     let html='';
     let data=[
-        {name:'高杆路灯 -',tip:'灯泡损坏',sta:'待处置',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'red'},
-        {name:'中杆路灯 -',tip:'线路老化',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
-        {name:'草坪灯 -',tip:'灯泡损坏',sta:'待处置',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:2,color:'red'},
-        {name:'高杆路灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
-        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
-        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
-        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'yellow'},
-        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'yellow'},
-        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
-        {name:'地埋灯 -',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
+        {name:'高杆路灯',tip:'灯泡损坏',sta:'待处置',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'red'},
+        {name:'中杆路灯',tip:'线路老化',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
+        {name:'草坪灯',tip:'灯泡损坏',sta:'待处置',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:2,color:'red'},
+        {name:'高杆路灯',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
+        {name:'地埋灯',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
+        {name:'地埋灯',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
+        {name:'地埋灯',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'yellow'},
+        {name:'地埋灯',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:4,color:'yellow'},
+        {name:'地埋灯',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:5,color:'yellow'},
+        {name:'地埋灯',tip:'灯泡损坏',sta:'处置中',location:'地址：西环东42号路',time:'19-03-27 · 19:23:90',num:15,acnum:3,color:'yellow'},
     ];
     for(let i=0;i<data.length;i++){
         html+=`<div class="waning_item" >
                         <div class="waning_left">
-                            <div class="waning_name">${data[i].name} - <span class="${data[i].sta=='处置中'?'font_yellow':'font_red'}">${data[i].tip}</span>
+                            <div class="waning_name">${data[i].name}- <span class="${data[i].sta=='处置中'?'font_yellow':'font_red'}">${data[i].tip}</span>
                             <div class="waning_sta">${data[i].sta}</div></div>
                             <div class="waning_location">${data[i].location}</div>
                         </div>

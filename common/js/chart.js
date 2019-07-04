@@ -518,7 +518,6 @@
             seriesData.push(options.dataArray[i].value);
             xAxisData.push(options.dataArray[i].name)
         }
-
         var option = {
             color:options.colorArray,
             legend:{

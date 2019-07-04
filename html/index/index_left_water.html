@@ -18,16 +18,19 @@
         .index_img{height: 10px;width: 90%;background: url("../../image/index/white_line.png");background-size:100%;margin:0 5%; }
         .waning{width:660px;padding:33px 30px 0;}
         .waning_title{font-size:28px;font-weight:bold;}
-        .waning_item{display: flex;align-items: center;margin-top:30px;cursor: pointer}
-        .waning_item.ac .xb_icon{color:rgba(237, 78, 35, 1)}
-        .waning_item .xb_icon{margin-left:18px;font-size: 34px;color:rgba(255,174,32,1);width: 44px;}
-        .waning_location{font-size:22px;;font-weight: bold;margin:0 80px 0 20px}
-        .waning_num b{font-size: 32px}
-        .waning_num span{font-size:24px}
-        .waning_num{font-size:20px;color: rgba(255,255,255,0.75)}
-        .waning_num.current{margin-right:52px;}
-
-
+        .waning_list{height: 500px;overflow-y: auto;padding-right: 20px;}
+        .waning_left{display: flex;align-items: center}
+        .xb_icon.water-rise{font-size: 36px;margin-right: 20px}
+        .waning_item{display: flex;align-items: center;justify-content: space-between;margin-top:30px;}
+        .waning_name{font-size:24px;font-weight: bold;display: flex;align-items: center}
+        .waning_sta{margin-left:25px;width:70px;height:32px;background:rgba(255,74,18,0.2);border:2px solid rgba(255, 74, 18, 1);
+            border-radius:4px;font-size: 18px;font-weight: normal;text-align: center;}
+        .waning_sta.yellow{background:rgba(255,144,0,0.2);border:2px solid rgba(255, 200, 32, 1);}
+        .waning_location{font-size:18px;color:rgba(255,255,255,0.75);margin-top: 4px;}
+        .waning_blocks{display: flex;margin-top: 14px;}
+        .waning_blocks .cont_block{width: 9px;height: 14px;border-radius:2px;margin-right: 3px;}
+        .waning_right_value{font-size:32px;display: flex;align-items: center;line-height: 32px}
+        .waning_right_value span{font-size: 24px;}
         /*动画*/
         .bg{width:760px;height: 1080px; transition: all  0.6s;transform: translate(-760px,0);opacity: 0;padding: 142px 0 0 30px;
             background: -webkit-linear-gradient(left,rgba(0,0,0,0.9), rgba(0,0,0,0.7),rgba(0,0,0,0.6),rgba(0,0,0,0.4), rgba(0,0,0,0));}
@@ -72,76 +75,60 @@
     <div class="bottom">
         <div class="waning">
             <div class="waning_title">内涝点预警</div>
-            <div class="waning_list">
-                <div class="waning_item ac" onclick="river1()">
-                    <i class="xb_icon water-rise"></i><div class="waning_location">武侯立交<br>下凹桥区</div>
-                    <div class="waning_num current"><b>0.35</b><span>m</span><br>当前积水深度</div>
-                    <div class="waning_num"><b>0.35</b><span>m</span><br>未来1H积水深度</div>
-                </div>
-                <div class="waning_item ac" onclick="river2()">
-                    <i  class="xb_icon water-rise"></i><div class="waning_location">双流永康<br>森林公园</div>
-                    <div class="waning_num current"><b>0.31</b><span>m</span><br>当前积水深度</div>
-                    <div class="waning_num"><b>0.46</b><span>m</span><br>未来1H积水深度</div>
-                </div>
-                <div class="waning_item" onclick="river3()">
-                    <i class="xb_icon water-rise"></i><div class="waning_location">城院小区</div>
-                    <div class="waning_num current"><b>0.24</b><span>m</span><br>当前积水深度</div>
-                    <div class="waning_num"><b>0.38</b><span>m</span><br>未来1H积水深度</div>
-                </div>
-                <div class="waning_item" onclick="river4()">
-                    <i class="xb_icon water-rise"></i><div class="waning_location">三成立交<br>下凹桥区</div>
-                    <div class="waning_num current"><b>0.21</b><span>m</span><br>当前积水深度</div>
-                    <div class="waning_num"><b>0.33</b><span>m</span><br>未来1H积水深度</div>
-                </div>
-                <div class="waning_item" onclick="river5()">
-                    <i class="xb_icon water-rise "></i><div class="waning_location">银河花园</div>
-                    <div class="waning_num current"><b>0.21</b><span>m</span><br>当前积水深度</div>
-                    <div class="waning_num"><b>0.32</b><span>m</span><br>未来1H积水深度</div>
-                </div>
-            </div>
+            <div class="waning_list"></div>
         </div>
     </div>
 </div>
 </div>
 </body>
 </html>
-
+<script src="../../common/js/common.js"></script>
+<script src="../../common/js/svg.js"></script>
 <script>
 
-    comeIn()
+    comeIn();
 
-    window.onload=function () {
-        if(window.innerWidth == 0){
-            window.onresize = function () {
-                liquidChart();
-                if(window.innerWidth<600){
-                    narrow()
-                }
-            };
-        }else if(window.innerWidth<600){
-            liquidChart();
-            narrow();
-        }else if(window.innerWidth>600){
-            liquidChart();
-        }
-    };
+    resize(liquidChart);
+
+    let html='';
+    let data=[
+        {name:'创业路下穿隧道',value:750,sta:'待处置',location:'地址：成都市武侯区',num:18,acnum:4,color:'red'},
+        {name:'创业路下穿隧道',value:500,sta:'处置中',location:'地址：西环东42号路',num:18,acnum:5,color:'yellow'},
+        {name:'人民南路省体育馆段',value:350,sta:'待处置',location:'地址：成都市武侯区',num:18,acnum:2,color:'red'},
+        {name:'人民南路省体育馆段',value:500,sta:'处置中',location:'地址：成都市武侯区',num:18,acnum:3,color:'yellow'},
+        {name:'创业路下穿隧道',value:750,sta:'处置中',location:'地址：西环东42号路',num:18,acnum:5,color:'yellow'},
+        {name:'创业路下穿隧道',value:750,sta:'处置中',location:'地址：西环东42号路',num:18,acnum:3,color:'yellow'},
+        {name:'人民南路省体育馆段',value:750,sta:'处置中',location:'地址：西环东42号路',num:18,acnum:4,color:'yellow'},
+        {name:'创业路下穿隧道',value:750,sta:'处置中',location:'地址：西环东42号路',num:18,acnum:4,color:'yellow'},
+        {name:'人民南路省体育馆段',value:750,sta:'处置中',location:'地址：西环东42号路',num:18,acnum:5,color:'yellow'},
+        {name:'人民南路省体育馆段',value:750,sta:'处置中',location:'地址：西环东42号路',num:18,acnum:3,color:'yellow'},
+    ];
+    for(let i=0;i<data.length;i++){
+        html+=`<div class="waning_item" >
+                        <div class="waning_left">
+                        <i class="xb_icon water-rise ${data[i].sta=='处置中'?'font_yellow':'font_red'}"></i>
+                        <div class="">
+                            <div class="waning_name">${data[i].name}</div>
+                            <div class="waning_location">${data[i].location}</div>
+                        </div>
+                        </div>
+                        <div class="waning_right">
+                            <div class="waning_right_value">${data[i].value} <span> mm</span><div class="waning_sta  ${data[i].sta=='处置中'?'yellow':''}">${data[i].sta}</div></div>
+                            <div class="waning_blocks${i} waning_blocks"> </div>
+                        </div>
+                    </div>`;
+        $('.waning_list').html(html);
+        setTimeout(function () {
+            block($('.'+'waning_blocks'+ i),data[i].num,data[i].acnum,data[i].color)
+        },1);
+
+    }
 
 
-    function river1(){
-        window.ue.XBWeb.webmainleftriver1()
-    }
-    function river2(){
-        window.ue.XBWeb.webmainleftriver2()
-    }
-    function river3(){
-        window.ue.XBWeb.webmainleftriver3()
-    }
-    function river4(){
-        window.ue.XBWeb.webmainleftriver4()
-    }
-    function river5(){
-        window.ue.XBWeb.webmainleftriver5()
-    }
+
+
+
+
     function liquidChart(){
         var myChart = echarts.init(document.getElementById('liquidChart'));
         var option = {

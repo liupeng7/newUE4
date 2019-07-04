@@ -24,9 +24,15 @@
         .chart_top_item span{text-shadow:0 0 20px #013c80,0 0 20px #013c80,0 0 20px #013c80;font-size: 32px}
         .chart_top_item .name{font-size: 24px;color:rgba(255,255,255,0.75);margin:0 5px;}
         .rect.blue{background:linear-gradient(90deg,rgba(24,123,235,0.4),rgba(24,123,235,1));margin-left: 36px;}
+
+        .chart_cont{height: 600px;overflow: auto;padding: 40px;}
+        .chart_cont_title{font-size:26px;color:rgba(246,250,255,1);font-weight:bold;}
+        .line_name{font-size:18px;color:rgba(255,255,255,0.75);}
+        .chart_cont_item{display: flex;justify-content: space-between}
+        .line_chart{width: 240px;height: 120px;}
     </style>
 </head>
-<body>
+<body oncontextmenu=self.event.returnValue=false >
 <div class="index">
     <div class="list">
         <div class="list_item flex">
@@ -61,8 +67,11 @@
             <div class="chart_top_item"><div class="rect"></div><div class="name">桥墩数：</div><span>4</span> 个</div>
             <div class="chart_top_item"><div class="rect blue"></div><div class="name">传感器数：</div><span>20</span> 个</div>
         </div>
-        <div class="content">
-
+        <div class="chart_cont">
+            <div class="chart_cont_title">应力监测</div>
+            <div class="chart_cont_item">
+                <div class="line_chart" id="lineChart"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -73,8 +82,60 @@
 <script src="../../../common/js/chart.js"></script>
 <script src="../../../common/js/common.js"></script>
 <script>
+    let data = [{name:'表面应变计 - 01',},{name:'表面应变计 - 02',},{name:'表面应变计 - 03',},{name:'表面应变计 - 04',}]
+    loadChart($('.chart_cont_item'),data,1);
+
+    function loadChart(dom,data,type) {
+        let html = '';
+        for(let i=0;i<data.length;i++){
+            html +=`<div class="line_item">
+    <div class="line_name">${data[i].name}</div>
+    <div class="line_chart" id="lineChart${i}"></div>
+</div>`;
+            dom.html(html);
+        }
+        for(let i=0;i<data.length;i++){
+            Xchart.LineChart({
+                conId:'lineChart'+i,
+                gridBottom:'20%',
+                gridLeft:'16%',
+                gridTop:'10%',
+                splitLine:true,
+                xAxissplitLine:true,
+                max:150,
+                min:-150,
+                showMinLabel:true,
+                splitNumber:1,
+                lineWidth:2,
+                lineColor:'#2D94D8',
+                boundaryGap:true,
+                areaStyleColor:'rgba(0,0,0,0)',
+                showSymbol:false,
+                dataArray:[{name:'0',value:-30},{name:'1',value:80},{name:'2',value:120},
+                    {name:'3',value:70},{name:'4',value:80},{name:'5',value:-120},{name:'6',value:150}]
+            });
+        }
+    }
 
 
-
+    // Xchart.LineChart({
+    //     conId:"lineChart",
+    //     gridBottom:'20%',
+    //     gridLeft:'16%',
+    //     gridTop:'10%',
+    //     splitLine:true,
+    //     xAxissplitLine:true,
+    //     max:150,
+    //     min:-150,
+    //     showMinLabel:true,
+    //     splitNumber:1,
+    //     lineWidth:2,
+    //     lineColor:'#2D94D8',
+    //     boundaryGap:true,
+    //     areaStyleColor:'rgba(0,0,0,0)',
+    //     showSymbol:false,
+    //     dataArray:[{name:'0',value:-30},{name:'1',value:80},{name:'2',value:120},
+    //         {name:'3',value:70},{name:'4',value:80},{name:'5',value:-120},{name:'6',value:150}]
+    // });
 
 </script>

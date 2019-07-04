@@ -67,3 +67,7 @@ svg circle {
 .cont_block.white{background: #fff}
 .cont_block.red{background:rgba(255,75,33,1);}
 .cont_block.yellow{background:rgba(255,174,32,1);}
+
+/*详情装饰*/
+.deco_left{position: absolute;left:-16px;top:50%;transform: translate(0,-50%)}
+.deco_right{position: absolute;right:-16px;top:50%;transform: translate(0,-50%)}

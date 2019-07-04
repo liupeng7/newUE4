@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="../../plugin/icon/iconfont.css">
     <link rel="stylesheet" href="../../common/css/index.css">
     <style>
-        html{width: 740px;height: 1080px;background: #000}
+        html{width: 740px;height: 1080px;}
 
-        .index{position: relative;margin-top: 100px;}
-        .right{width: 325px;float: right}
-        .left{width: 415px;float: left;margin-top: 44px; }
+        .index{position: relative;}
+        .right{width: 325px;height: 980px;float: right;margin-top: 100px;background: url("../../image/index/right/right_nav_bg2.png") no-repeat;
+            background-size: 100% 100%;}
+        .left{width: 415px;float: left;margin-top: 144px; }
         .gauge{display: flex;align-items: center}
         .gauge_name{font-size:24px;font-weight:bold;color:rgba(255,255,255,1);}
         .gauge_sta{font-size:40px;font-weight:bold;color:rgba(255,174,32,1);}
@@ -24,16 +25,20 @@
         .list_item.ac .list_item_border{display: block}
         .list_item.ac .list_item_name{width: 183px;}
 
-        .topic{float: right}
+        .topic{margin-left: 40px;}
         .topic_title{display: flex;align-items: center;font-size:38px;font-weight:bold;color:rgba(255,255,255,1)}
         .topic_title img{margin-right: 15px;}
-        .topic_info{margin-top: 27px;width:366px;height:40px;background:-webkit-linear-gradient(left,rgba(255,97,18,0.3),rgba(255,97,18,0.01));border:1px solid rgba(255, 175, 60, 0.5);display: flex;padding-left: 14px;}
-        .topic_info_item{font-size:30px;color:rgba(254,255,254,1);margin-right: 20px}
-        .topic_info_item img{width: 18px;height: 23px;}
+        .topic_info{margin-top: 27px;width:366px;height:40px;background:-webkit-linear-gradient(left,rgba(255,97,18,0.3),rgba(255,97,18,0.01));
+            border:1px solid rgba(255, 175, 60, 0.5);display: flex;align-items: center;padding-left: 14px;}
+        .topic_info_item{font-size:30px;color:rgba(254,255,254,1);margin-right: 20px;display: flex;align-items: center}
+        .topic_info_item .xb_icon{font-size: 20px;margin-right: 7px;}
+        .topic_info_item .map-marker-important{color:rgba(238, 56, 7, 1)}
 
 
-        .center{margin-top: 47px;float: right}
-        .center_item{width: 372px;display: flex;align-items: center;margin-bottom: 18px;float: right}
+        .center{margin-top: 13px;float: right}
+        .center_item{width: 372px;height:104px;display: flex;align-items: center;float: right;position: relative;cursor: pointer}
+        .center_item img{position: absolute;left: -18px;z-index: -1;}
+        .center_item .active{display: none}
         .center_item_block{width:80px;height:80px;border:2px solid rgba(255,249,244,1);border-radius:50%;margin-right: 20px;
             display: flex;align-items: center;justify-content: center;}
         .center_item_block .xb_icon{font-size: 36px;}
@@ -42,17 +47,23 @@
         .center_item_num img{margin-right:7px;width: 18px;height: 23px; }
         .center_item_bar{margin: 0 13px;width:1px;height:18px;background:rgba(255,255,255,0.3);}
         .center_item.ac{width: 382px;}
+        .center_item.ac .active{display: block}
+        .center_item.ac .normal{display: none;}
+
+
+        .bg{width:740px;height:1080px; background: -webkit-linear-gradient(right,rgba(0,0,0,0.9), rgba(0,0,0,0.7),rgba(0,0,0,0.6),rgba(0,0,0,0.4), rgba(0,0,0,0));}
     </style>
 </head>
 <body oncontextmenu=self.event.returnValue=false>
+<div class="bg">
     <div class="index">
         <div class="left">
             <div class="topic">
                 <div class="topic_title"><img src="../../image/index/right/ts_icon_3.png" width="44" height="44"> 市政公用</div>
                 <div class="topic_info">
-                    <div class="topic_info_item"><img> 11145</div>
-                    <div class="topic_info_item"><img> 123</div>
-                    <div class="topic_info_item"><img> 12</div>
+                    <div class="topic_info_item"><i class="xb_icon map-marker-important "></i> 11145</div>
+                    <div class="topic_info_item"><i class="xb_icon map-marker-times"></i> 123</div>
+                    <div class="topic_info_item"><i class="xb_icon map-marker-plus"></i> 12</div>
                 </div>
             </div>
             <div class="center">
@@ -62,8 +73,11 @@
                     </div>
                     <div class="center_item_info" >
                         <div class="center_item_name">路灯</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                        <div class="center_item_num"><i class="xb_icon map-marker-important "></i> 123 <div class="center_item_bar"></div>
+                            <i class="xb_icon map-marker-times "></i> 123 </div>
                     </div>
+                    <img class="normal" src="../../image/index/right/right_nav_bg.png">
+                    <img class="active" src="../../image/index/right/right_nav_bg_s.png">
                 </div>
                 <div class="center_item" data-id="well">
                     <div class="center_item_block">
@@ -71,8 +85,11 @@
                     </div>
                     <div class="center_item_info">
                         <div class="center_item_name">井盖</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                        <div class="center_item_num"><i class="xb_icon map-marker-important "></i> 123 <div class="center_item_bar"></div>
+                            <i class="xb_icon map-marker-times "></i> 123 </div>
                     </div>
+                    <img class="normal" src="../../image/index/right/right_nav_bg.png">
+                    <img class="active" src="../../image/index/right/right_nav_bg_s.png">
                 </div>
                 <div class="center_item" data-id="car">
                     <div class="center_item_block">
@@ -80,8 +97,11 @@
                     </div>
                     <div class="center_item_info">
                         <div class="center_item_name">停车场</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                        <div class="center_item_num"><i class="xb_icon map-marker-important "></i> 123 <div class="center_item_bar"></div>
+                            <i class="xb_icon map-marker-times "></i> 123 </div>
                     </div>
+                    <img class="normal" src="../../image/index/right/right_nav_bg.png">
+                    <img class="active" src="../../image/index/right/right_nav_bg_s.png">
                 </div>
                 <div class="center_item" data-id="toilet">
                     <div class="center_item_block">
@@ -89,8 +109,11 @@
                     </div>
                     <div class="center_item_info">
                         <div class="center_item_name">公厕</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                        <div class="center_item_num"><i class="xb_icon map-marker-important "></i> 123 <div class="center_item_bar"></div>
+                            <i class="xb_icon map-marker-times "></i> 123 </div>
                     </div>
+                    <img class="normal" src="../../image/index/right/right_nav_bg.png">
+                    <img class="active" src="../../image/index/right/right_nav_bg_s.png">
                 </div>
                 <div class="center_item" data-id="bridge">
                     <div class="center_item_block">
@@ -98,15 +121,21 @@
                     </div>
                     <div class="center_item_info">
                         <div class="center_item_name">桥梁</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                        <div class="center_item_num"><i class="xb_icon map-marker-important "></i> 123 <div class="center_item_bar"></div>
+                            <i class="xb_icon map-marker-times "></i> 123 </div>
                     </div>
+                    <img class="normal" src="../../image/index/right/right_nav_bg.png">
+                    <img class="active" src="../../image/index/right/right_nav_bg_s.png">
                 </div>
                 <div class="center_item">
                     <div class="center_item_block"></div>
                     <div class="center_item_info">
                         <div class="center_item_name">视频监控</div>
-                        <div class="center_item_num"><img> 123 <div class="center_item_bar"></div> <img> 123 </div>
+                        <div class="center_item_num"><i class="xb_icon map-marker-important "></i> 123 <div class="center_item_bar"></div>
+                            <i class="xb_icon map-marker-times "></i> 123 </div>
                     </div>
+                    <img class="normal" src="../../image/index/right/right_nav_bg.png">
+                    <img class="active" src="../../image/index/right/right_nav_bg_s.png">
                 </div>
             </div>
         </div>
@@ -174,6 +203,8 @@
         </div>
 
     </div>
+
+</div>
 </body>
 </html>
 <script src="../../plugin/echarts.min.js"></script>
